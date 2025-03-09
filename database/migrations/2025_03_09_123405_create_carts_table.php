@@ -1,4 +1,11 @@
 <?php
+//TODO 
+// MAKE SURE TO ADD THE RIGHT NAMING SCHEME TO DRAW.IO
+// MAKE SURE THAT ALL ADDTIONS TO THE MIGRATIONS FOLLOW THE NAMING SCHEME YOU HAVE 
+// ALSO DONT FORGET TO HAVE AN AMAZING DAY!!!!!!!!
+
+
+
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -16,11 +23,43 @@ return new class extends Migration
             //fk to users table
             $table->foreignId('user_id')->constrained('users', 'user_id'); //1 
 
-            // fk to certfiedProduct  products
+
+
+
+            //im adding the fk to my pivoit tables here because i want to enforce a many to many relation between 
+            // cart -> Certfied wood products table
+            // cart -> Certfied metal products table
+            // cart -> Certfied steel products table
+            // cart -> Certfied asphalt products table
+            //through the pivoit table notCertfiedProducts.
+            // im doing the same with my non certfied poroducts through the pivoit table notCertfiedProducts
+
+
+            // fk to certfiedProduct pivoit table 
             $table->foreignId('certfiedProduct_id')->constrained('certfiedProducts', 'certfiedProduct_id'); // 0
 
-            // fk to notCertifried products
+            // fk to notCertifried pivoit table
+
             $table->foreignId('notCertfiedProduct_id')->constrained('notCertfiedProducts', 'notCertfiedProduct_id'); // 0
+
+
+
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //////////////////                                      ↓ CERTFIED PRODUCTS ↓                                      ////////////////////
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+            // fk to not certfied WOOD products table
+            $table->foreignId('CertfiedWoodProducts_id')->constrained('CertfiedWoodProducts', 'CertfiedWoodProducts_id'); // 0
+
+            // fk to certfied METAL products table
+            $table->foreignId('CertfiedMetalProducts_id')->constrained('CertfiedMetalProducts', 'CertfiedMetalProducts_id'); // 0
+
+            // fk to certfied STEEL products table
+            $table->foreignId('CertfiedSteelProducts_id')->constrained('CertfiedSteelProducts', 'CertfiedSteelProducts_id'); // 0
+
+            // fk to certfied ASPAHLT products table
+            $table->foreignId('CertfiedAsphaltProducts_id')->constrained('CertfiedAsphaltProducts', 'CertfiedAsphaltProducts_id'); // 0
 
 
 
@@ -29,7 +68,7 @@ return new class extends Migration
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             // fk to not certfied WOOD products table
-            $table->foreignId('notCertfiedWoodProducts_id')->constrained('notCertfiedWoodProducts', 'ncWoodProducts_id'); // 0
+            $table->foreignId('notCertfiedWoodProducts_id')->constrained('notCertfiedWoodProducts', 'notCertfiedWoodProducts_id'); // 0
 
             // fk to not certfied METAL products table
             $table->foreignId('notCertfiedMetalProducts_id')->constrained('notCertfiedMetalProducts', 'notCertfiedMetalProducts_id'); // 0
@@ -42,29 +81,9 @@ return new class extends Migration
 
 
 
-            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            //////////////////                                      ↓ CERTFIED PRODUCTS ↓                                      ////////////////////
-            //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-            // fk to not certfied WOOD products table
-            $table->foreignId('CertfiedWoodProducts_id')->constrained('CertfiedWoodProducts', 'ncWoodProducts_id'); // 0
-
-            // fk to  certfied METAL products table
-            $table->foreignId('CertfiedMetalProducts_id')->constrained('CertfiedMetalProducts', 'CertfiedMetalProducts_id'); // 0
-
-            // fk to  certfied STEEL products table
-            $table->foreignId('CertfiedSteelProducts_id')->constrained('CertfiedSteelProducts', 'CertfiedSteelProducts_id'); // 0
-
-            // fk to  certfied ASPAHLT products table
-            $table->foreignId('CertfiedAsphaltProducts_id')->constrained('CertfiedAsphaltProducts', 'CertfiedAsphaltProducts_id'); // 0
-
-            // fk to Certifried products
-            $table->foreignId('user_id')->constrained('users', 'user_id'); // 0
-
-
-
-            $table->timestamps();
+            //MAYBE I MIGHT NEED IT PROBLEY NOT 
+            // $table->timestamps();
         });
     }
 

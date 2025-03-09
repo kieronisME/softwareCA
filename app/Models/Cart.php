@@ -10,6 +10,20 @@ class Cart extends Model
     use HasFactory;
 
 
+    // to not certified Products ↓
+    // many Products that are not certified can be in many carts
+    public function notCertifiedProducts()
+    {
+        return $this->belongsToMany(notCertfiedProducts::class, 'not_cart_certified_product');
+    }
+
+
+    // to certified Products ↓
+    // many certified Products can be in many carts
+    public function certifiedProducts()
+    {
+        return $this->belongsToMany(certfiedProducts::class, 'cart_certified_product');
+    }
 
     // to supplier ↓
     // supplier can have one supplier and supplier can only have one supplier

@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('admins', function (Blueprint $table) {
+        Schema::create('cart_not_certified_products', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('cart_id')->constrained('carts', 'cart_id'); 
-            $table->string('user_name');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('email');
-            $table->integer('phoneNumber');
+
+            $table->foreignId('cart_id')->constrained('carts'); 
+            $table->foreignId('not_certfied_products_id')->constrained('not_certfied_products');
+            
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('admins');
+        Schema::dropIfExists('cart_not_certified_products');
     }
 };

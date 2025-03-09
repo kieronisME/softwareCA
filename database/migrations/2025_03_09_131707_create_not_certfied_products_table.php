@@ -12,11 +12,11 @@ return new class extends Migration
         Schema::create('not_certfied_products', function (Blueprint $table) {
             $table->id();
 
-            // have to link to this to cart
-            // need to link these tables 
-            // not certified wood 
-            // not certified steel
-            // not certified mettal
+            $table->string('not cert wood');
+            $table->string('not cert steel');
+            $table->string('not cert metal');
+            $table->string('not cert asphalt');
+  
 
             $table->timestamps();
         });

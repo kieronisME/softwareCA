@@ -6,20 +6,23 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+
     public function up(): void
     {
         Schema::create('not_certfied_products', function (Blueprint $table) {
             $table->id();
+
+            // have to link to this to cart
+            // need to link these tables 
+            // not certified wood 
+            // not certified steel
+            // not certified mettal
+
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
+
     public function down(): void
     {
         Schema::dropIfExists('not_certfied_products');

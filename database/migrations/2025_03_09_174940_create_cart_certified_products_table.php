@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('certfied_products', function (Blueprint $table) {
+        Schema::create('cart_certified_products', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });
@@ -22,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('certfied_products');
+        Schema::dropIfExists('cart_certified_products');
     }
 };

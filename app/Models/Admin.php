@@ -12,6 +12,18 @@ class Admin extends Model
 
 
 
+
+
+
+
+    // to Cart ↓
+    // cart can have one admin and admin can only have one cart
+    public function cart()
+    {
+        return $this->hasOne(Cart::class, 'admin_id', 'admin_id');
+    }
+
+
     // to CERTFIED PRODUCTS SUPPLIER table ↓
     // certifiedProductsSuppliers is the MANY in the one to many relation ship between admin and Certfied Product Suplier.
     // an admin can supply many products but a product can only belong to one admin 

@@ -11,6 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
+
+        Schema::enableForeignKeyConstraints();
         Schema::create('certfied_wood_products', function (Blueprint $table) {
             $table->id();
 

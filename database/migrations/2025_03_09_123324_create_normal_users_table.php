@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::enableForeignKeyConstraints();
+
         Schema::create('normal_users', function (Blueprint $table) {
             $table->id();
             //this might be CART not CARTS but we will see....
+            
             $table->foreignId('cart_id')->constrained('carts', 'cart_id'); 
             $table->string('user_name');
             $table->string('first_name');

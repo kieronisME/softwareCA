@@ -11,6 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
+
+        Schema::enableForeignKeyConstraints();
         Schema::create('cart_not_certified_products', function (Blueprint $table) {
             $table->id();
 

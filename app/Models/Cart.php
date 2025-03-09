@@ -11,7 +11,14 @@ class Cart extends Model
 
 
 
-    // to admin ↓
+    // to supplier ↓
+    // supplier can have one supplier and supplier can only have one supplier
+    public function supplier()
+    {
+        return $this->hasOne(Cart::class, 'supplier_id', 'supplier_id');
+    }
+
+    // to user ↓
     // user can have one user and user can only have one user
     public function user()
     {

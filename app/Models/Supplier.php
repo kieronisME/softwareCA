@@ -10,7 +10,12 @@ class Supplier extends Model
     use HasFactory;
 
 
-
+    // to Cart ↓
+    // cart can have one supplier and supplier can only have one cart
+    public function cart()
+    {
+        return $this->hasOne(Cart::class, 'supplier_id', 'supplier_id');
+    }
 
 
     // to CERTFIED PRODUCTS SUPPLIER table ↓

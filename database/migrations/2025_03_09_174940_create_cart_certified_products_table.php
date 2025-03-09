@@ -6,13 +6,17 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+
     public function up(): void
     {
         Schema::create('cart_certified_products', function (Blueprint $table) {
             $table->id();
+            
+            //links to only cart and cert prod 
+            $table->foreignId('cart_id')->constrained('carts'); 
+            $table->foreignId('certified_product_id')->constrained('certified_products');
+
+    
             $table->timestamps();
         });
     }

@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('certfied_asphalt_products', function (Blueprint $table) {
+        Schema::create('certfied_steel_products', function (Blueprint $table) {
             $table->id();
 
             /////////////////////////// BEFORE API ADDTION ///////////////////////////
             $table->foreignId('certified_product_id')->constrained('certified_products'); // fk to my pivoit table
             $table->string('Product_name');
-            $table->decimal('Price', 8, 2); 
-            $table->text('About')->nullable(); 
-            $table->integer('quantity'); 
-            $table->decimal('co2', 8, 2); 
+            $table->decimal('Price', 8, 2);
+            $table->text('About')->nullable();
+            $table->integer('quantity');
+            $table->decimal('co2', 8, 2);
 
             $table->timestamps();
         });
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('certfied_asphalt_products');
+        Schema::dropIfExists('certfied_steel_products');
     }
 };

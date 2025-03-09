@@ -21,7 +21,6 @@ class Admin extends Model
     }
 
 
-
     // to NOT CERTFIED PRODUCTS SUPPLIER table ↓
     // notcertifiedProductsSuppliers is the MANY in the one to many relation ship between admin and Not Certfied Product Suplier.
     // an admin can supply many not certfied products but a not certfied product can only belong to one admin 

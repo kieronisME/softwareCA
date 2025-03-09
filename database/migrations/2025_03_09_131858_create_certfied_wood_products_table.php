@@ -11,14 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('admins', function (Blueprint $table) {
+        Schema::create('certfied_wood_products', function (Blueprint $table) {
             $table->id();
-            //add fk to cart
-            $table->string('user_name');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('email');
-            $table->integer('phoneNumber');
             $table->timestamps();
         });
     }
@@ -28,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('admins');
+        Schema::dropIfExists('certfied_wood_products');
     }
 };

@@ -13,8 +13,19 @@ class CertifiedProductSupplier extends Model
 
 
 
+
+    // to ADMIN ↓
+    // Admin is the ONE in the one to many relation ship between Admin and Certfied Product Suplier.
+    // a Admin can supply many products but a product can only belong to one Admin 
+    public function admins()
+    {
+        return $this->belongsTo(Admin::class);
+    }
+
+
+
     // to SUPPLIER ↓
-    //supplier is the ONE in the one to many relation ship supplier and Certfied Product Suplier have 
+    //supplier is the ONE in the one to many relation ship between supplier and Certfied Product Suplier.
     // a supplier can supply many products but a product can only belong to one supplier 
     public function supplier()
     {

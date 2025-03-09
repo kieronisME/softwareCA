@@ -14,7 +14,7 @@ class Supplier extends Model
 
 
     // to CERTFIED PRODUCTS SUPPLIER table ↓
-    //certifiedProductsSuppliers is the MANY in the one to many relation ship supplier and Certfied Product Suplier have 
+    //certifiedProductsSuppliers is the MANY in the one to many relation ship between  supplier and Certfied Product Suplier have 
     // a supplier can supply many products but a product can only belong to one supplier 
     public function certifiedProductsSuppliers()
     {
@@ -24,7 +24,7 @@ class Supplier extends Model
 
 
     // to NOT CERTFIED PRODUCTS SUPPLIER table ↓
-    // notcertifiedProductsSuppliers is the MANY in the one to many relation ship supplier and Not Certfied Product Suplier have 
+    // notcertifiedProductsSuppliers is the MANY in the one to many relation ship between  supplier and Not Certfied Product Suplier have 
     // a supplier can supply many not certfied products but a not certfied product can only belong to one supplier 
     public function notCertifiedProductSuppliers()
     {

@@ -11,11 +11,23 @@ class Supplier extends Model
 
 
 
-    // to certfied products supplier table ↓
+
+
+    // to CERTFIED PRODUCTS SUPPLIER table ↓
     //certifiedProductsSuppliers is the MANY in the one to many relation ship supplier and Certfied Product Suplier have 
     // a supplier can supply many products but a product can only belong to one supplier 
     public function certifiedProductsSuppliers()
     {
         return $this->hasMany(CertifiedProductSupplier::class);
+    }
+
+
+
+    // to NOT CERTFIED PRODUCTS SUPPLIER table ↓
+    // notcertifiedProductsSuppliers is the MANY in the one to many relation ship supplier and Not Certfied Product Suplier have 
+    // a supplier can supply many not certfied products but a not certfied product can only belong to one supplier 
+    public function notCertifiedProductSuppliers()
+    {
+        return $this->hasMany(NotCertifiedProductSupplier::class);
     }
 }

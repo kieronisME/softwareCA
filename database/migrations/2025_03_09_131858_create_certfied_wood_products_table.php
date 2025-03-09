@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('certfied_wood_products', function (Blueprint $table) {
             $table->id();
+
+            /////////////////////////// BEFORE API ADDTION ///////////////////////////
+
+            $table->string('Product_name');
+            $table->decimal('Price', 8, 2); 
+            $table->text('About')->nullable(); 
+            $table->integer('quantity'); 
+            $table->decimal('co2', 8, 2); 
+
             $table->timestamps();
         });
     }

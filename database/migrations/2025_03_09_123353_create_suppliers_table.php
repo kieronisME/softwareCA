@@ -11,7 +11,8 @@ return new class extends Migration
     {
         Schema::create('suppliers', function (Blueprint $table) {
             $table->id();
-            //add fk to cart
+            //if this doesnt work its porobaly beacuas i need to change CARTS to CARTS but we will see...
+            $table->foreignId('cart_id')->constrained('carts', 'cart_id'); // 0
             $table->string('user_name');
             $table->string('first_name');
             $table->string('last_name');

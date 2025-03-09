@@ -35,6 +35,10 @@ return new class extends Migration
             // im doing the same with my non certfied poroducts through the pivoit table notCertfiedProducts
 
 
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //////////////////                                      ↓ Pivoit Tables ↓                                          ////////////////////
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
             // fk to certfiedProduct pivoit table 
             $table->foreignId('certfiedProduct_id')->constrained('certfiedProducts', 'certfiedProduct_id'); // 0
 
@@ -42,7 +46,7 @@ return new class extends Migration
 
             $table->foreignId('notCertfiedProduct_id')->constrained('notCertfiedProducts', 'notCertfiedProduct_id'); // 0
 
-
+            
 
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             //////////////////                                      ↓ CERTFIED PRODUCTS ↓                                      ////////////////////

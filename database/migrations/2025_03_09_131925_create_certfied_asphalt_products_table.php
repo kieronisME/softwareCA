@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
 
-        Schema::enableForeignKeyConstraints();
+ Schema::disableForeignKeyConstraints();
         Schema::create('certfied_asphalt_products', function (Blueprint $table) {
             $table->id();
 

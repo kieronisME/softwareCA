@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
 
-        Schema::enableForeignKeyConstraints();
+ Schema::disableForeignKeyConstraints();
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
             $table->foreignId('cart_id')->constrained('carts', 'cart_id'); 

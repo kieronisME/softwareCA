@@ -10,7 +10,7 @@ return new class extends Migration
     public function up(): void
     {
 
-        Schema::enableForeignKeyConstraints();
+ Schema::disableForeignKeyConstraints();
         Schema::create('suppliers', function (Blueprint $table) {
             $table->id();
             //if this doesnt work its porobaly beacuas i need to change CARTS to CARTS but we will see...

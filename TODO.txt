@@ -1,0 +1,5 @@
+TO DO LIST
+
+2025_03_09_131911_create_certfied_metal_products_table.php
+-you messed up the naming convbention of the fk it says certified_products when it should be certified_product_id. it REALLY doesnt mattter ibr
+but this is something you can clean up later 

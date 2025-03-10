@@ -18,7 +18,7 @@ return new class extends Migration
 
             /////////////////////////// BEFORE API ADDTION ///////////////////////////
             $table->foreignId('certified_product_id')->constrained('certified_products'); // fk to my pivoit
-            $table->string('Product_name');
+            $table->string('Product_name'); 
             $table->decimal('Price', 8, 2); 
             $table->text('About')->nullable(); 
             $table->integer('quantity'); 

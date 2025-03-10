@@ -19,7 +19,7 @@ return new class extends Migration
     public function up(): void
     {
 
- Schema::disableForeignKeyConstraints();
+// Schema::disableForeignKeyConstraints();
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
             //fk to users table

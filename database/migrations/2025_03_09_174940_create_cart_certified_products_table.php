@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             
             //links to only cart and cert prod 
-            $table->foreignId('cart_id')->constrained('carts'); 
-            $table->foreignId('certified_product_id')->constrained('certified_products');
+            // $table->foreignId('cart_id')->constrained('carts'); 
+            // $table->foreignId('certified_product_id')->constrained('certified_products');
 
     
             $table->timestamps();

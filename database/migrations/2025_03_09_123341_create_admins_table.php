@@ -15,7 +15,7 @@ return new class extends Migration
 // Schema::disableForeignKeyConstraints();
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('cart_id')->constrained('carts', 'cart_id'); 
+            // $table->foreignId('cart_id')->constrained('carts', 'cart_id'); 
             $table->string('user_name');
             $table->string('first_name');
             $table->string('last_name');

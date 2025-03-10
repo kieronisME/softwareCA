@@ -16,8 +16,10 @@ return new class extends Migration
         Schema::create('certfied_wood_products', function (Blueprint $table) {
             $table->id();
 
-            /////////////////////////// BEFORE API ADDTION ///////////////////////////
-            $table->foreignId('certified_product_id')->constrained('certified_products'); // fk to my pivoit
+            /////////////////////////// BEFORE API ADDTION ///////////////////////////#
+            
+            // $table->foreignId('certified_product_id')->constrained('certified_products'); // fk to my pivoi
+
             $table->string('Product_name'); 
             $table->decimal('Price', 8, 2); 
             $table->text('About')->nullable(); 

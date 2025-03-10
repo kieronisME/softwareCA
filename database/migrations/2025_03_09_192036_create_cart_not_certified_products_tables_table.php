@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('cart_not_certified_products', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('cart_id')->constrained('carts'); 
-            $table->foreignId('not_certfied_products_id')->constrained('not_certfied_products');
+            // $table->foreignId('cart_id')->constrained('carts'); 
+            // $table->foreignId('not_certfied_products_id')->constrained('not_certfied_products');
             
             $table->timestamps();
         });

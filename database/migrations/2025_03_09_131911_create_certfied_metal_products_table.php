@@ -18,7 +18,7 @@ return new class extends Migration
 
             /////////////////////////// BEFORE API ADDTION ///////////////////////////
             //the name here should be cercertified_product_id not certified_products change later 
-            $table->foreignId('certified_product_id')->constrained('certified_products'); // fk to my pivoit table
+            // $table->foreignId('certified_product_id')->constrained('certified_products'); // fk to my pivoit table
             $table->string('Product_name');
             $table->decimal('Price', 8, 2); 
             $table->text('About')->nullable(); 

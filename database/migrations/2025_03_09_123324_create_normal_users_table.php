@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             //this might be CART not CARTS but we will see....
             
-            $table->foreignId('cart_id')->constrained('carts', 'cart_id'); 
+            // $table->foreignId('cart_id')->constrained('carts', 'cart_id'); 
             $table->string('user_name');
             $table->string('first_name');
             $table->string('last_name');

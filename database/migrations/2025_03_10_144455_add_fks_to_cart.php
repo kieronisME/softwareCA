@@ -131,7 +131,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('carts', function (Blueprint $table) {
-      
+
             $table->dropForeign(['user_id']);
             $table->dropForeign(['certfied_product_id']);
             $table->dropForeign(['not_certfied_product_id']);

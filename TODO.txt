@@ -1,5 +1,25 @@
 TO DO LIST
 
-2025_03_09_131911_create_certfied_metal_products_table.php
--you messed up the naming convbention of the fk it says certified_products when it should be certified_product_id. it REALLY doesnt mattter ibr
-but this is something you can clean up later 
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////                                      ↓ Composer commands↓                                       ////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+1:
+composer require guizoxxv/laravel-breeze-bootstrap --dev
+
+2:
+php artisan breeze-bootstrap:install
+
+3:
+php artisan migrate
+
+(you dont need to but just incase  -> npm install)
+
+4:
+npm run dev

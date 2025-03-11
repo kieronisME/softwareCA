@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('normal_users', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             // Add the foreign key 
             $table->unsignedBigInteger('cart_id')->after('id'); 
             $table->foreign('cart_id')
@@ -26,7 +26,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('normal_users', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             $table->dropForeign(['cart_id']);
             $table->dropColumn('cart_id');
         });

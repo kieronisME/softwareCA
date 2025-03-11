@@ -1,31 +1,29 @@
 <?php
 
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-   public function up(): void
+    public function up(): void
     {
-        Schema::table('admins', function (Blueprint $table) {
-            // Add the foreign key 
-            $table->unsignedBigInteger('cart_id')->after('id'); 
-            $table->foreign('cart_id')
+        Schema::table('certfied_wood_products', function (Blueprint $table) {
+
+            $table->unsignedBigInteger('certified_products_id')->after('id'); 
+            $table->foreign('certified_products_id')
                 ->references('id')
-                ->on('carts')
+                ->on('certfied_products')
                 ->onDelete('cascade'); 
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::table('admins', function (Blueprint $table) {
-            $table->dropForeign(['cart_id']);
-            $table->dropColumn('cart_id');
+        Schema::table('certfied_wood_products', function (Blueprint $table) {
+            $table->dropForeign(['certified_products_id']);
+            $table->dropColumn('certified_products_id');
         });
     }
 };

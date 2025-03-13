@@ -11,17 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cart_non_certified_wood', function (Blueprint $table) {
+        Schema::create('cart_not_certified_wood', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('cart_id')->constrained()->onDelete('cascade');
+            $table->foreignId('not_certfied_wood_products_id')->constrained()->onDelete('cascade');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
+
     public function down(): void
     {
-        Schema::dropIfExists('cart_non_certified_wood');
+        Schema::dropIfExists('cart_not_certified_wood');
     }
 };

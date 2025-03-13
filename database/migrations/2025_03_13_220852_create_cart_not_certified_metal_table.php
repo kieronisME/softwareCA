@@ -9,16 +9,16 @@ return new class extends Migration
 
     public function up(): void
     {
-        Schema::create('cart_certified_steel', function (Blueprint $table) {
+        Schema::create('cart_not_certified_metal', function (Blueprint $table) {
             $table->id();
             $table->foreignId('cart_id')->constrained()->onDelete('cascade');
-            $table->foreignId('certfied_steel_products_id')->constrained()->onDelete('cascade');
+            $table->foreignId('not_certfied_metal_products_id')->constrained()->onDelete('cascade');
         });
     }
 
-
+ 
     public function down(): void
     {
-        Schema::dropIfExists('cart_certified_steel');
+        Schema::dropIfExists('cart_not_certified_metal');
     }
 };

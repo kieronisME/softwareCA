@@ -25,6 +25,8 @@ return new class extends Migration
             $table->text('About')->nullable(); 
             $table->integer('quantity'); 
             $table->decimal('co2', 8, 2); 
+            $table->string('weight'); 
+            $table->string('weight_unit');
 
             $table->timestamps();
         });

@@ -5,3 +5,7 @@ fix word doc
 -typos 
 -any missing sections 
 
+CARBON_INTERFACE_API_KEY=rrs9AZYqfkWpqrWu8MaEQ
+  'carbon_interface' => [
+    'api_key' => env('CARBON_INTERFACE_API_KEY'),
+    ],

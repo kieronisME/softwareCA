@@ -27,7 +27,7 @@ class carts extends Model
     }
 
 
-    
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////                                    ↓ not certified products ↓                                   ////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -45,5 +45,17 @@ class carts extends Model
     public function nonCertifiedMetal()
     {
         return $this->belongsToMany(notCertfiedMetalProducts::class, 'cart_non_certified_metal');
+    }
+
+
+
+
+
+
+    // to Admin ↓
+    // Admin can have one cart and cart can only have one Admin at a time
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class, 'admin_id', 'admin_id');
     }
 }

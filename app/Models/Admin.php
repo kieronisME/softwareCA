@@ -17,10 +17,10 @@ class Admin extends Model
 
 
     // to Cart ↓
-    // cart can have one admin and admin can only have one cart
+    // cart can have one admin and admin can only have one cart at a time
     public function cart()
     {
-        return $this->hasOne(Cart::class, 'admin_id', 'admin_id');
+        return $this->hasOne(carts::class, 'admin_id', 'admin_id');
     }
 
 

@@ -1,11 +1,11 @@
 TO DO LIST
 
-do More trello 
-fix word doc 
--typos 
--any missing sections 
-
+suppliers table needs to be filled with admin id and supplier id and a time stamp and any other extras
+add user to seeder idk why its not there 
+add api when ready 
 CARBON_INTERFACE_API_KEY=rrs9AZYqfkWpqrWu8MaEQ
+
+
   'carbon_interface' => [
     'api_key' => env('CARBON_INTERFACE_API_KEY'),
     ],

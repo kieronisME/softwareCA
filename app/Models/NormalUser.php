@@ -15,6 +15,6 @@ class NormalUser extends Model
     // cart can have one user and user can only have one cart
     public function cart()
     {
-        return $this->hasOne(Cart::class, 'user_id', 'user_id');
+        return $this->hasOne(carts::class, 'user_id', 'user_id');
     }
 }

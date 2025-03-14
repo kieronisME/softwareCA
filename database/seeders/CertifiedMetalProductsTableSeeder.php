@@ -1,9 +1,14 @@
 <?php
 
 namespace Database\Seeders;
-
+use App\Models\CertfiedMetalProducts; //i think this is an issue maybe the name need to be the same 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+
+
+
+
+
 
 class CertifiedMetalProductsTableSeeder extends Seeder
 {
@@ -21,6 +26,7 @@ class CertifiedMetalProductsTableSeeder extends Seeder
                 'About' => 'High-quality oak wood certified for sustainability.',
                 'quantity' => 100,
                 'co2' => 10.5,
+                //testing this for api later
                 'weight' => '50',
                 'weight_unit' => 'kg',
                 'created_at' => now(),

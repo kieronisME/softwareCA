@@ -1,5 +1,6 @@
 TO DO LIST
 
+fix db seeder issue 
 suppliers table needs to be filled with admin id and supplier id and a time stamp and any other extras
 add user to seeder idk why its not there 
 add api when ready 

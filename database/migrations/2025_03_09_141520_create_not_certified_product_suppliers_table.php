@@ -15,6 +15,7 @@ return new class extends Migration
 // Schema::disableForeignKeyConstraints();
         Schema::create('not_certified_product_suppliers', function (Blueprint $table) {
             $table->id();
+            
             $table->timestamps();
         });
     }

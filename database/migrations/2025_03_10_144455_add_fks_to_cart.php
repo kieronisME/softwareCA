@@ -35,19 +35,19 @@ return new class extends Migration
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             // fk to certfiedProduct pivoit table 
-            $table->unsignedBigInteger('certfied_product_id');
-            $table->foreign('certfied_product_id')
-                ->references('id')
-                ->on('certfied_products')
-                ->onDelete('cascade');
+            // $table->unsignedBigInteger('certfied_product_id');
+            // $table->foreign('certfied_product_id')
+            //     ->references('id')
+            //     ->on('certfied_products')
+            //     ->onDelete('cascade');
 
 
-            // fk to notCertifried pivoit table
-            $table->unsignedBigInteger('not_certfied_product_id');
-            $table->foreign('not_certfied_product_id')
-                ->references('id')
-                ->on('not_certfied_products')
-                ->onDelete('cascade');
+            // // fk to notCertifried pivoit table
+            // $table->unsignedBigInteger('not_certfied_product_id');
+            // $table->foreign('not_certfied_product_id')
+            //     ->references('id')
+            //     ->on('not_certfied_products')
+            //     ->onDelete('cascade');
 
 
 
@@ -79,13 +79,6 @@ return new class extends Migration
                 ->onDelete('cascade');
 
 
-            // fk to certfied ASPAHLT products table
-            $table->unsignedBigInteger('certfied_asphalt_products_id');
-            $table->foreign('certfied_asphalt_products_id')
-                ->references('id')
-                ->on('certfied_asphalt_products')
-                ->onDelete('cascade');
-
 
 
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -113,12 +106,6 @@ return new class extends Migration
                 ->on('not_certfied_steel_products')
                 ->onDelete('cascade');
 
-            // fk to not certfied ASPAHLT products table
-            $table->unsignedBigInteger('not_certfied_asphalt_products_id');
-            $table->foreign('not_certfied_asphalt_products_id')
-                ->references('id')
-                ->on('not_certfied_asphalt_products')
-                ->onDelete('cascade');
 
             // Timestamps (optional)
             $table->timestamps();
@@ -133,30 +120,27 @@ return new class extends Migration
         Schema::table('carts', function (Blueprint $table) {
 
             $table->dropForeign(['user_id']);
-            $table->dropForeign(['certfied_product_id']);
-            $table->dropForeign(['not_certfied_product_id']);
+            // $table->dropForeign(['certfied_product_id']);
+            // $table->dropForeign(['not_certfied_product_id']);
             $table->dropForeign(['certfied_wood_products_id']);
             $table->dropForeign(['certfied_metal_products_id']);
             $table->dropForeign(['certfied_steel_products_id']);
-            $table->dropForeign(['certfied_asphalt_products_id']);
             $table->dropForeign(['not_certfied_wood_products_id']);
             $table->dropForeign(['not_certfied_metal_products_id']);
             $table->dropForeign(['not_certfied_steel_products_id']);
-            $table->dropForeign(['not_certfied_asphalt_products_id']);
+
 
 
             $table->dropColumn([
                 'user_id',
-                'certfied_product_id',
-                'not_certfied_product_id',
+                // 'certfied_product_id',
+                // 'not_certfied_product_id',
                 'certfied_wood_products_id',
                 'certfied_metal_products_id',
                 'certfied_steel_products_id',
-                'certfied_asphalt_products_id',
                 'not_certfied_wood_products_id',
                 'not_certfied_metal_products_id',
                 'not_certfied_steel_products_id',
-                'not_certfied_asphalt_products_id',
             ]);
         });
     }

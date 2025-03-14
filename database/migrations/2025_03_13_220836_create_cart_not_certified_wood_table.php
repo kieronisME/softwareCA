@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('cart_not_certified_wood', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('cart_id')->constrained()->onDelete('cascade');
-            $table->foreignId('not_certfied_wood_products_id')->constrained()->onDelete('cascade');
+            $table->foreignId('carts_id')->constrained('carts')->onDelete('cascade');
+            $table->foreignId('not_certfied_wood_products_id')->constrained('not_certfied_wood_products')->onDelete('cascade');
         });
     }
 

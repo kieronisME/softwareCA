@@ -11,8 +11,8 @@ return new class extends Migration
     {
         Schema::create('cart_certified_metal', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('cart_id')->constrained()->onDelete('cascade');
-            $table->foreignId('certfied_metal_products_id')->constrained()->onDelete('cascade');
+            $table->foreignId('carts_id')->constrained('carts')->onDelete('cascade');
+            $table->foreignId('certfied_metal_products_id')->constrained('certfied_metal_products')->onDelete('cascade');
         });
     }
 

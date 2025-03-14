@@ -11,10 +11,11 @@ return new class extends Migration
     {
         Schema::create('cart_certified_wood', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('cart_id')->constrained()->onDelete('cascade');
-            $table->foreignId('certfied_wood_products_id')->constrained()->onDelete('cascade');
+            $table->foreignId('carts_id')->constrained('carts')->onDelete('cascade');
+            $table->foreignId('certfied_wood_products_id')->constrained('certfied_wood_products')->onDelete('cascade');
         });
     }
+
 
     public function down(): void
     {

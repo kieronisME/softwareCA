@@ -8,7 +8,7 @@ return new class extends Migration
 {
   public function up(): void
     {
-        Schema::table('admin_supplier_notCert_product_supplier', function (Blueprint $table) {
+        Schema::table('not_certified_product_suppliers', function (Blueprint $table) {
 
             $table->unsignedBigInteger('admins_id');
             $table->foreign('admins_id')
@@ -27,7 +27,7 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::table('admin_supplier_notCert_product_supplier', function (Blueprint $table) {
+        Schema::table('not_certified_product_suppliers', function (Blueprint $table) {
             $table->dropForeign(['admins_id']);
             $table->dropColumn('admins_id');
 

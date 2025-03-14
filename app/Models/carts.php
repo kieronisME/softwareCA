@@ -18,8 +18,8 @@ class carts extends Model
 
     public function certifiedMetals()
     {
-        return $this->belongsToMany(CertfiedMetalProducts::class, 'cart_certified_metal');
-    }
+        return $this->belongsToMany(CertifiedMetalProduct::class, 'cart_certified_metal');
+    }                               
 
     public function certifiedSteels()
     {

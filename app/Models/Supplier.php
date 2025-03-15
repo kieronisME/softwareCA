@@ -10,6 +10,27 @@ class Supplier extends Model
     use HasFactory;
 
 
+
+
+
+    protected $fillable = [
+        'user_name',
+        'first_name',
+        'last_name',
+        'email',
+        'phoneNumber',
+        // 'weight',
+        // 'weight_unit',
+    ];
+
+
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////                                    ↓ relationship ↓                                             ////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     // to Cart ↓
     // cart can have one supplier and supplier can only have one cart
     public function cart()

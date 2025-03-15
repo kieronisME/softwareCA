@@ -9,9 +9,15 @@ class Admin extends Model
 {
     use HasFactory;
 
-
-
-
+    protected $fillable = [
+        'user_name',
+        'first_name',
+        'last_name',
+        'email',
+        'phoneNumber',
+        // 'weight',
+        // 'weight_unit',
+    ];
 
 
 
@@ -22,7 +28,11 @@ class Admin extends Model
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////                                    ↓ relationship ↓                                             ////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
+
+
+
+
+
     // to Cart ↓
     // cart can have one admin and admin can only have one cart at a time
     public function cart()

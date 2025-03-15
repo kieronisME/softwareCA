@@ -10,13 +10,13 @@ return new class extends Migration
     {
         Schema::table('certified_product_suppliers', function (Blueprint $table) {
 
-            $table->unsignedBigInteger('admins_id');
+            $table->unsignedBigInteger('admins_id')->nullable();;
             $table->foreign('admins_id')
                 ->references('id')
                 ->on('admins')
                 ->onDelete('cascade');
 
-            $table->unsignedBigInteger('suppliers_id');
+            $table->unsignedBigInteger('suppliers_id')->nullable();;
             $table->foreign('suppliers_id')
                 ->references('id')
                 ->on('suppliers')
@@ -38,4 +38,3 @@ return new class extends Migration
 };
 
 
-//want to add supllier and admin id to product supplier table

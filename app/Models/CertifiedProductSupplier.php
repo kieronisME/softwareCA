@@ -7,7 +7,13 @@ class CertifiedProductSupplier extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_name',
+        'Product_name',
+        'quantity',
 
+
+    ];
 
 
 

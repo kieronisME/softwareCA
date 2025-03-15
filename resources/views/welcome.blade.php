@@ -13,40 +13,60 @@
     <div class="text-center">
         <h1 class="mb-4">Welcome</h1>
 
-        @if (Route::has('login'))
-        <div>
-            @auth
-             <a href="{{ url('/dashboard') }}" class="btn btn-success">Dashboard</a>
-            @else
-
-            <a href="{{ route('login') }}" class="btn btn-primary me-2">Login</a>
-
-            @if (Route::has('register'))
-             <a href="{{ route('register') }}" class="btn btn-secondary">Register</a>
-            @endif
-
-            @endauth
-        </div>
- 
 
 
 
 
+                                                 <!-- API -->
         @if (Route::has('myRoutes.work'))
-         <a href="{{ route('myRoutes.work') }}" class="btn btn-primary me-2">damn</a>
+         <a href="{{ route('myRoutes.work') }}" class="btn btn-warning me-2 px-4 py-3">Carbon footprint api</a>
         @endif
 
-        @if (Route::has('myRoutes.work'))
-         <a href="{{ route('myRoutes.work') }}" class="btn btn-primary me-2 px-4 py-3">damn 2</a>
+
+
+                                                 <!-- USER VIEWS -->
+        @if (Route::has('myRoutes.adminUserView'))
+         <a href="{{ route('myRoutes.adminUserView') }}" class="btn btn-success me-2 px-4 py-3">admin dashboard</a>
         @endif
 
-        @if (Route::has('myRoutes.work'))
-         <a href="{{ route('myRoutes.work') }}" class="btn btn-primary me-2 px-4 py-3">damn 2</a>
+        @if (Route::has('myRoutes.supplierUserView'))
+         <a href="{{ route('myRoutes.supplierUserView') }}" class="btn btn-success me-2 px-4 py-3">supplier dashboard</a>
+
         @endif
 
-        @if (Route::has('myRoutes.work'))
-         <a href="{{ route('myRoutes.work') }}" class="btn btn-primary me-2 px-4 py-3">damn 2</a>
+
+
+
+                                              <!-- certifeid section -->
+
+   
+
+        @if (Route::has('myRoutes.certProd.wood'))
+         <a href="{{ route('myRoutes.certProd.wood') }}" class="btn btn-primary me-2 px-4 py-3">Show Wood</a>
         @endif
+
+        @if (Route::has('myRoutes.certProd.metal'))
+         <a href="{{ route('myRoutes.certProd.metal') }}" class="btn btn-primary me-2 px-4 py-3">show metal</a>
+        @endif
+
+        @if (Route::has('myRoutes.certProd.steel'))
+         <a href="{{ route('myRoutes.certProd.steel') }}" class="btn btn-primary me-2 px-4 py-3">show steel</a>
+        @endif
+
+
+
+
+                                             <!-- not certifeid section -->
+        @if (Route::has('myRoutes.certProd.wood'))
+         <a href="{{ route('myRoutes.certProd.Nwood') }}" class="btn btn-danger me-2 px-4 py-3">show not cert wood</a>
+        @endif
+        @if (Route::has('myRoutes.certProd.metal'))
+         <a href="{{ route('myRoutes.certProd.Nmetal') }}" class="btn btn-danger me-2 px-4 py-3">show not cert metal</a>
+        @endif
+        @if (Route::has('myRoutes.certProd.steel'))
+         <a href="{{ route('myRoutes.certProd.Nsteel') }}" class="btn btn-danger me-2 px-4 py-3">show not cert steel</a>
+        @endif
+
 
 
 

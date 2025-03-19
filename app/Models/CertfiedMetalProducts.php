@@ -9,7 +9,7 @@ class CertifiedMetalProduct extends Model
 {
 
     //this is where i let the model know what table i want it to work with
-    protected $table = 'certified_metal_products';
+    protected $table = 'certfied_metal_products';
 
 
     protected $fillable = [

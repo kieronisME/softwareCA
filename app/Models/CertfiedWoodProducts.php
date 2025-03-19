@@ -9,7 +9,7 @@ class CertfiedWoodProducts extends Model
 {
 
     //this is where i let the model know what table i want it to work with
-    protected $table = 'certified_wood_products';
+    protected $table = 'certfied_wood_products';
 
     /**
      * The attributes that are mass assignable.

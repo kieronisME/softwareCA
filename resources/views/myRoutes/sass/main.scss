@@ -1,13 +1,15 @@
+@use "sass:math";
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
+/////////////////// pretty colors /////////////////////
 
-// Variables
-@import 'variables';
+$kikiGray: #888888;
+$bgGray: #636564;
+/////////////////// pretty colors /////////////////////
 
 
 
-//////////////////// Containers /////////////////////
-
+//////////////////// Universal /////////////////////
 body {
 //just incase
 
@@ -19,6 +21,124 @@ body {
     background-color: #636564;
 }
 
+:root {
+    --92px: 5.775rem;
+    --72px: 4.5rem;
+    --64px: 4rem;
+    --56px: 3.5rem;
+    --48px: 3rem;
+    --40px: 2.5rem;
+    --32px: 2rem;
+    --24px: 1.5rem;
+    --20px: 1.25rem;
+    --15px: 0.9375rem
+}
+
+//////////////////// Universal /////////////////////
+
+
+
+
+
+//////////////////// Fonts /////////////////////
+$font-family-sans-serif: "Inter", sans-serif;
+
+a:link {
+    color: black;
+
+    &:hover {
+        color: rgb(247, 13, 177);
+    }
+}
+
+h1.rem {
+    font-size: var(--92px);
+}
+
+h2.rem {
+    font-size: var(--72px);
+}
+
+h3.rem {
+    font-size: var(--64px);
+}
+
+h4.rem {
+    font-size: var(--56px);
+}
+
+h5.rem {
+    font-size: var(--48px);
+}
+
+h6.rem {
+    font-size: var(--40px);
+}
+
+h7.rem {
+    font-size: var(--32px);
+}
+
+h8.rem {
+    font-size: var(--24px);
+}
+
+h9.rem {
+    font-size: var(--20px);
+}
+
+h10.rem {
+    font-size: var(--15px);
+}
+
+
+
+
+
+
+//stoping my fonts frombeing this wierd gray color once and for all
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+h7,
+h8,
+h9,
+h10 {
+    color: black !important;
+}
+
+//////////////////// Fonts /////////////////////
+
+
+//////////////////// Defualt Containers /////////////////////
+
+
+
+
+$MainContainerHeight: 62.5rem; // 1000px
+$MainContainerWidth: 305rem; // 1680px 
+
+// Height based on main container
+// Half of main container
+$halfMcHeight: math.div($MainContainerHeight , 2); // 31.25rem
+$halfMcWidth: math.div($MainContainerWidth , 2); // 52.5rem
+
+// Quarter of main container
+$quarterMcHeight: math.div($halfMcHeight , 2); // 15.625rem
+$quarterMcWidth: math.div($halfMcWidth , 2); // 26.25rem
+
+// Height based on me
+$MEhalfMcHeight: 1.25rem; // 20px 
+$MEhalfMcWidth: 12.5rem; // 200px 
+
+$HandHeldScreenHeight: 64rem; // 1024px 
+$HandHeldScreenWidth: 64rem; // 1024px
+
+$smallScreenHeight: 64rem; // 1024px 
+$smallScreenWidth: 37.5rem; // 600px 
 
 //background
 .bgContainer {
@@ -174,5 +294,6 @@ video {
 
 
 
+
+@import "~bootstrap/scss/bootstrap";
 @import "../node_modules/bootstrap/scss/bootstrap";
-@import "../node_modules/bootstrap/scss/bootstrap.scss";

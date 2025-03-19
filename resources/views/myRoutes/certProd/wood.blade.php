@@ -4,9 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MEMEME</title>
-    <link rel="stylesheet" href="../sass/main.scss">
+    <title>i beg</title>
+    <link rel="stylesheet" href="../c">
     <link href="../node_modules/bootstrap/dist/css/bootstrap-grid.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
 
@@ -14,20 +15,21 @@
 
     <div class="bgContainer">
         <!-- <div class="navBarContainer"></div> -->
-        <div class="MainContainer ">
-            <a href="{{ route('login') }}" class="btn btn-primary me-2">wood</a>
+        <h1>Certified Wood Products</h1>
 
-            <button type="button" class="btn btn-primary">Primary</button>
-            <button type="button" class="btn btn-secondary">Secondary</button>
-            <button type="button" class="btn btn-success">Success</button>
-            <button type="button" class="btn btn-danger">Danger</button>
-            <button type="button" class="btn btn-warning">Warning</button>
-            <button type="button" class="btn btn-info">Info</button>
-            <button type="button" class="btn btn-light">Light</button>
-            <button type="button" class="btn btn-dark">Dark</button>
-
-            <button type="button" class="btn btn-link">Link</button>
-        </div>
+        <ul>
+            @foreach ($woodProducts as $product)
+            <li>
+                <strong>{{ $product->Product_name }}</strong><br>
+                Certificate: {{ $product->Certificate }}<br>
+                Price: ${{ $product->Price }}<br>
+                Quantity: {{ $product->quantity }}<br>
+                CO2: {{ $product->co2 }}<br>
+                Weight: {{ $product->weight }} {{ $product->weight_unit }}<br>
+                About: {{ $product->About }}
+            </li>
+            @endforeach
+        </ul>
     </div>
 
 

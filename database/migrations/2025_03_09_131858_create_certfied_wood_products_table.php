@@ -21,6 +21,7 @@ return new class extends Migration
             // $table->foreignId('certified_product_id')->constrained('certified_products'); // fk to my pivoi
 
             $table->string('Product_name'); 
+            $table->string('Certificate'); 
             $table->decimal('Price', 8, 2); 
             $table->text('About')->nullable(); 
             $table->integer('quantity'); 

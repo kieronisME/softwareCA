@@ -17,10 +17,10 @@ class AdminsTableSeeder extends Seeder
     {
         $products = [
             [
-                'user_name' => 'FireToasterGamer',
-                'first_name' => 'Nathail',
-                'last_name' => 'B',
-                'email' => 'SOAPjujuOnThatBeat@gmail.com',
+                'user_name' => 'Admins Defualt user',
+                'first_name' => 'admin01',
+                'last_name' => 'deault user',
+                'email' => 'admin01@gmail.com',
                 'phoneNumber' => 1234567490,
                 // 'created_at' => now(),
                 // 'updated_at' => now(),

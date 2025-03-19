@@ -14,10 +14,10 @@ class SuppliersTableSeeder extends Seeder
     {
         $products = [
             [
-                'user_name' => 'FireToasterGamer',
-                'first_name' => 'Nathail',
-                'last_name' => 'B',
-                'email' => 'SOAPjujuOnThatBeat@gmail.com',
+                'user_name' => 'Supplier Defualt user',
+                'first_name' => 'supplier01',
+                'last_name' => ' defualt user',
+                'email' => 'Supplier01@gmail.com',
                 'phoneNumber' => 1234567490,
                 'created_at' => now(),
                 'updated_at' => now(),

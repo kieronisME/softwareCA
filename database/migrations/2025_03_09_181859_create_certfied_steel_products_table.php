@@ -12,13 +12,13 @@ return new class extends Migration
     public function up(): void
     {
 
-// Schema::disableForeignKeyConstraints();
+
         Schema::create('certfied_steel_products', function (Blueprint $table) {
             $table->id();
 
             /////////////////////////// BEFORE API ADDTION ///////////////////////////
-            // $table->foreignId('certified_product_id')->constrained('certified_products'); // fk to my pivoit table
             $table->string('Product_name');
+            $table->string('Certificate');
             $table->decimal('Price', 8, 2);
             $table->text('About')->nullable();
             $table->integer('quantity');

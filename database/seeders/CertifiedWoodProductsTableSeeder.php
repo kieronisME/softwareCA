@@ -17,6 +17,7 @@ class CertifiedWoodProductsTableSeeder extends Seeder
             [
                 'Product_name' => 'Certified Oak Wood',
                 'Price' => 150.00,
+                'Certificate'=> 'fsc',
                 'About' => 'High-quality oak wood certified for sustainability.',
                 'quantity' => 100,
                 'co2' => 10.5,
@@ -27,6 +28,7 @@ class CertifiedWoodProductsTableSeeder extends Seeder
             ],
             [
                 'Product_name' => 'Certified Pine Wood',
+                'Certificate'=> 'fsc',
                 'Price' => 120.00,
                 'About' => 'Eco-friendly pine wood with sustainability certification.',
                 'quantity' => 200,
@@ -38,6 +40,7 @@ class CertifiedWoodProductsTableSeeder extends Seeder
             ],
             [
                 'Product_name' => 'Certified Teak Wood',
+                'Certificate'=> 'fsc',
                 'Price' => 200.00,
                 'About' => 'Premium teak wood with environmental certification.',
                 'quantity' => 50,

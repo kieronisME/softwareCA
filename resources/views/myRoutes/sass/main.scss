@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+// Variables
+@import 'variables';
+
+
+
+//////////////////// Containers /////////////////////
+
+body {
+//just incase
+
+}
+
+.darkmode {
+    width: 100vw;
+    height: 100vh;
+    background-color: #636564;
+}
+
+
+//background
+.bgContainer {
+    width: 100%;
+    height: 100%;
+    // background-image: url('/images/SPOILER_op_1134_owl_002.png'); 
+    background-size: cover;
+    background-position: center; //keep this for responiveness
+    background-repeat: no-repeat;
+}
+
+//nav bar
+.navBarContainer {
+    margin-left: 3.75rem; // 60px
+    margin-right: 3.75rem; // 60px
+    min-height: 6.25rem; // 100px
+    max-width: 112.5rem; // 1800px
+    min-width: 12.5rem; // 200px
+    border: 2px solid rgb(0, 26, 255);
+
+    @media (max-width: 1024px) {
+        margin-left: 1.25rem; // 20px
+        margin-right: 1.25rem; // 20px
+        max-width: $HandHeldScreenWidth;
+        max-height: $HandHeldScreenHeight;
+        border: 2px solid rgb(255, 230, 0);
+    }
+
+    @media (max-width: 667px) {
+        // 667px
+        margin-left: 0.625rem; // 10px
+        margin-right: 0.625rem; // 10p
+        max-width: $smallScreenWidth;
+        max-height: $smallScreenHeight;
+        border: 2px solid rgb(0, 255, 42);
+    }
+
+
+}
+
+
+.MainContainer {
+    // background-color: #636564;
+    margin-left: 7.5rem; // 120px
+    margin-right: 7.5rem; // 120px
+    min-height: $MainContainerHeight;
+    max-width: $MainContainerWidth;
+    min-width: 200px;
+    border: 2px solid rgb(255, 0, 0);
+
+    @media (max-width: 1024px) {
+        margin-left: 2.5rem; // 40px
+        margin-right: 2.5rem; // 40px
+        max-width: $HandHeldScreenWidth;
+        max-height: $HandHeldScreenHeight;
+        border: 2px solid rgb(255, 230, 0);
+    }
+
+    @media (max-width: 667px) {
+        margin-left: 1.25rem; // 20px
+        margin-right: 1.25rem; // 20px
+        max-width: $smallScreenWidth;
+        max-height: $smallScreenHeight;
+        border: 2px solid rgb(0, 255, 42);
+    }
+}
+
+
+.cart {
+    max-width: $HandHeldScreenWidth;
+    max-height: $HandHeldScreenHeight;
+    border: 2px solid rgb(0, 140, 255);
+}
+
+.halfMc {
+    //not responsive
+    min-height: $MEhalfMcHeight;
+    max-width: $halfMcWidth;
+
+    //responsive
+    // min-height: ;
+    // max-width: ;
+    border: 2px solid rgb(0, 0, 0);
+
+
+}
+
+.quarterMc {
+    //not responsive
+    min-height: $quarterMcHeight;
+    max-width: $quarterMcWidth;
+
+    //responsive
+    // min-height: ;
+    // max-width: ;
+    border: 2px solid rgb(0, 255, 76);
+
+}
+
+img {
+    //not responsive
+    min-height: $halfMcHeight;
+    max-width: $halfMcWidth;
+
+    //responsive
+    // min-height: ;
+    // max-width: ;
+
+    &:hover {
+        filter: grayscale(50%);
+    }
+}
+
+video {
+    //not responsive
+    min-height: $halfMcHeight;
+    max-width: $halfMcWidth;
+
+    //responsive
+    // min-height: ;
+    // max-width: ;
+
+    &:hover {
+        filter: grayscale(50%);
+    }
+
+}
+
+
+//////////////////// Containers /////////////////////
+
+
+//////////////////// cool effects /////////////////////
+//hover over a box that has words in it and the box will turn [insert color1] and the text will change to [insert color2]
+
+
+.box {
+    min-height: 100px;
+    max-width: 100px;
+    border: 2px solid rgb(0, 255, 76);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    color: black;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: green; //insert color 1
+        color: white; //insert color 2
+    }
+}
+
+
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "../node_modules/bootstrap/scss/bootstrap.scss";

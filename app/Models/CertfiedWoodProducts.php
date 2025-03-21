@@ -18,8 +18,9 @@ class CertfiedWoodProducts extends Model
      */
     protected $fillable = [
         'Product_name',
+        'Certificate',
         'Price',
-        'About',
+        'About',   
         'quantity',
         'co2',
         'weight',
@@ -33,7 +34,6 @@ class CertfiedWoodProducts extends Model
         'quantity' => 'integer',
         'co2' => 'float',
     ];
-
 
 
     //many to many relasionship to carts

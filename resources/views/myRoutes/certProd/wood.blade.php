@@ -17,6 +17,10 @@
         <!-- <div class="navBarContainer"></div> -->
         <h1>Certified Wood Products</h1>
 
+        <a href="{{ route('myRoutes.CRUD.create') }}">
+            <div class="btn btn-primary me-2">add a product</div>
+        </a>
+
         <ul>
             @foreach ($woodProducts as $product)
             <li>
@@ -28,12 +32,20 @@
                 Weight: {{ $product->weight }} {{ $product->weight_unit }}<br>
                 About: {{ $product->About }}
             </li>
+            <div>
+
+
+
+                <button type="submit" class="bg-blue text-white px-4 py-2 rounded hover:bg-blue-600">
+                    delete
+                </button>
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    edit
+                </button>
+            </div>
             @endforeach
         </ul>
     </div>
-
-
-
 
 
 

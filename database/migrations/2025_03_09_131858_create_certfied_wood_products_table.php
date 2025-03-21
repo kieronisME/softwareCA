@@ -23,13 +23,17 @@ return new class extends Migration
             $table->string('Product_name'); 
             $table->string('Certificate'); 
             $table->decimal('Price', 8, 2); 
-            $table->text('About')->nullable(); 
+            $table->string('About')->nullable(); 
             $table->integer('quantity'); 
             $table->decimal('co2', 8, 2); 
             $table->string('weight'); 
             $table->string('weight_unit');
 
             $table->timestamps();
+
+            
+
+            
         });
     }
 

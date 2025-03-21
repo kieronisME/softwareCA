@@ -13,11 +13,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-
+//Crud
+Route::get('/myRoutes/CRUD/create', [MaterialController::class, 'create'])->name('myRoutes.CRUD.create'); 
+Route::post('/myRoutes/certProd/wood', [MaterialController::class, 'store'])->name('myRoutes.store');
+Route::delete('/delete', [MaterialController::class, 'destroy'])->name('wood.destroy');
 
 //api
 Route::get('/myRoutes/work', [ApiController::class, 'work'])->name('myRoutes.work');

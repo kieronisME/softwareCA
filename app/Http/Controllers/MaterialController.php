@@ -17,17 +17,15 @@ class MaterialController extends Controller
 
         // Pass the data to the view
         return view('myRoutes.certProd.wood', compact('woodProducts'));
-
+        
     }
 
 
     public function create()
     {
-        
+
         // Pass the data to the view
         return view('myRoutes.CRUD.create');
-
-
     }
 
     public function store(Request $request)
@@ -55,25 +53,24 @@ class MaterialController extends Controller
             'co2' => $request->co2,
             'weight' => $request->weight,
             'weight_unit' => $request->weight_unit,
-        
+
         ]);
         return redirect()->route('myRoutes.certProd.wood');
     }
 
 
-    public function destroy(CertfiedWoodProducts $CertfiedWoodProducts)
+    public function destroy(CertfiedWoodProducts $certfiedWoodProducts)
     {
 
-        // if ($CertfiedWoodProducts->image) {
-        //     Storage::delete('ArtistImg/images/' . $CertfiedWoodProducts->image);
-        // }
+        //add delete images when you get the images 
 
-        $CertfiedWoodProducts->delete();
+        $certfiedWoodProducts->delete();
         return redirect()->route('myRoutes.certProd.wood')->with('success', 'Album deleted successfully!');
     }
 
 
-    
+
+
 
 
     public function metal()
@@ -105,6 +102,4 @@ class MaterialController extends Controller
     {
         return view('myRoutes.notCertProd.Nsteel');
     }
-
-
 }

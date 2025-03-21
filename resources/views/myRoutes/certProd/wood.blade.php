@@ -22,23 +22,31 @@
         </a>
 
         <ul>
-            @foreach ($woodProducts as $product)
+            @foreach ($woodProducts as $certfiedWoodProducts)
             <li>
-                <strong>{{ $product->Product_name }}</strong><br>
-                Certificate: {{ $product->Certificate }}<br>
-                Price: ${{ $product->Price }}<br>
-                Quantity: {{ $product->quantity }}<br>
-                CO2: {{ $product->co2 }}<br>
-                Weight: {{ $product->weight }} {{ $product->weight_unit }}<br>
-                About: {{ $product->About }}
+                <strong>{{ $certfiedWoodProducts->Product_name }}</strong><br>
+                Certificate: {{ $certfiedWoodProducts->Certificate }}<br>
+                Price: ${{ $certfiedWoodProducts->Price }}<br>
+                Quantity: {{ $certfiedWoodProducts->quantity }}<br>
+                CO2: {{ $certfiedWoodProducts->co2 }}<br>
+                Weight: {{ $certfiedWoodProducts->weight }} {{ $certfiedWoodProducts->weight_unit }}<br>
+                About: {{ $certfiedWoodProducts->About }}
             </li>
+
+            <form action="{{ route('crud.destroy', $certfiedWoodProducts) }}" method="POST" onsubmit="return confirm('This action is permanent!');">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="bg-red-800 rounded-lg mr-4 my-3 text-black py-1 px-1 hover:bg-red-300">
+                    Delete
+                </button>
+            </form>
             <div>
 
 
 
-                <button type="submit" class="bg-blue text-white px-4 py-2 rounded hover:bg-blue-600">
-                    delete
-                </button>
+
+
+
                 <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
                     edit
                 </button>

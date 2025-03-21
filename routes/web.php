@@ -21,7 +21,9 @@ Route::get('/dashboard', function () {
 //Crud
 Route::get('/myRoutes/CRUD/create', [MaterialController::class, 'create'])->name('myRoutes.CRUD.create'); 
 Route::post('/myRoutes/certProd/wood', [MaterialController::class, 'store'])->name('myRoutes.store');
-Route::delete('/delete', [MaterialController::class, 'destroy'])->name('wood.destroy');
+Route::delete('/myRoutes/{certfiedWoodProducts}', [MaterialController::class, 'destroy'])->name('crud.destroy');
+
+
 
 //api
 Route::get('/myRoutes/work', [ApiController::class, 'work'])->name('myRoutes.work');

@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Storage;
 class MaterialController extends Controller
 {
 
+    //################################################################################################################################################################################################################################
+    //                                                                                           wood view
+    //################################################################################################################################################################################################################################
+
     //certfied
     public function wood()
     {
@@ -17,8 +21,10 @@ class MaterialController extends Controller
 
         // Pass the data to the view
         return view('myRoutes.certProd.wood', compact('woodProducts'));
-        
     }
+    //################################################################################################################################################################################################################################
+    //                                                                                           Create
+    //################################################################################################################################################################################################################################
 
 
     public function create()
@@ -27,6 +33,13 @@ class MaterialController extends Controller
         // Pass the data to the view
         return view('myRoutes.CRUD.create');
     }
+
+
+    //################################################################################################################################################################################################################################
+    //                                                                                           Store
+    //################################################################################################################################################################################################################################
+
+
 
     public function store(Request $request)
     {
@@ -57,6 +70,68 @@ class MaterialController extends Controller
         ]);
         return redirect()->route('myRoutes.certProd.wood');
     }
+
+
+
+
+    //################################################################################################################################################################################################################################
+    //                                                                                             Edit
+    //################################################################################################################################################################################################################################
+    public function edit(CertfiedWoodProducts $certfiedWoodProducts)
+    {
+        return view('myRoutes.CRUD.edit', compact('certfiedWoodProducts'));
+    }
+
+
+
+
+    //################################################################################################################################################################################################################################
+    //                                                                                           Update
+    //################################################################################################################################################################################################################################
+    public function update(Request $request, CertfiedWoodProducts $certfiedWoodProducts)
+    {
+        // Validations
+        $request->validate([
+            'Product_name' => 'required|string|max:255',
+            'Certificate' => 'required|string|max:255',
+            'Price' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
+            'About' => 'required|string|max:1000',
+            'quantity' => 'required|integer|min:1',
+            'co2' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
+            'weight' => 'required|string|max:50',
+            'weight_unit' => 'required|string|max:50',
+        ]);
+
+        // checks if image uplaoded
+        // if ($request->hasFile('image')) {
+        //     if ($certfiedWoodProducts->image) {
+        //         Storage::delete('ArtistImg/images/' . $certfiedWoodProducts->image);
+        //     }
+
+        //     $imageName = time() . '.' . $request->image->extension();
+        //     $request->image->move(public_path('ArtistImg/images'), $imageName);
+        //     $certfiedWoodProducts->image = $imageName;
+        // }
+
+        // assighnes new meaning to each 
+        $certfiedWoodProducts->Product_name = $request->Product_name;
+        $certfiedWoodProducts->Certificate = $request->Certificate;
+        $certfiedWoodProducts->Price = $request->Price;
+        $certfiedWoodProducts->About = $request->About;
+        $certfiedWoodProducts->quantity = $request->quantity;
+        $certfiedWoodProducts->co2 = $request->co2;
+        $certfiedWoodProducts->weight = $request->weight;
+        $certfiedWoodProducts->weight_unit = $request->weight_unit;
+        $certfiedWoodProducts->save();
+
+        return redirect()->route('myRoutes.certProd.wood')->with('success', 'Album updated successfully!');
+    }
+
+
+
+
+
+
 
 
     public function destroy(CertfiedWoodProducts $certfiedWoodProducts)

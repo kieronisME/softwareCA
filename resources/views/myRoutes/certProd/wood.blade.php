@@ -40,17 +40,18 @@
                     Delete
                 </button>
             </form>
+
+            <form action="{{ route('crud.edit', $certfiedWoodProducts) }}">
+                @csrf
+                <button type="submit" class="bg-red-800 rounded-lg mr-4 my-3 text-black py-1 px-1 hover:bg-red-300">
+                   edit
+                </button>
+            </form>
+
+            <div> ------------------------------------------ </div>
             <div>
 
 
-
-
-
-
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-                    edit
-                </button>
-            </div>
             @endforeach
         </ul>
     </div>

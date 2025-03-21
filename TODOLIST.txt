@@ -1,7 +1,10 @@
 TO DO LIST
 
-suppliers table needs to be filled with admin id and supplier id and a time stamp and any other extras
-add user to seeder idk why its not there 
+when updating and editing form price needs to be able to take an
+
+
+
+
 add api when ready 
 CARBON_INTERFACE_API_KEY=rrs9AZYqfkWpqrWu8MaEQ
 

@@ -23,6 +23,9 @@ Route::get('/myRoutes/CRUD/create', [MaterialController::class, 'create'])->name
 Route::post('/myRoutes/certProd/wood', [MaterialController::class, 'store'])->name('myRoutes.store');
 Route::delete('/myRoutes/{certfiedWoodProducts}', [MaterialController::class, 'destroy'])->name('crud.destroy');
 
+Route::put('/myRoutes/{certfiedWoodProducts}/update', [MaterialController::class, 'update'])->name('crud.update');
+Route::get('/myRoutes/{certfiedWoodProducts}/edit', [MaterialController::class, 'edit'])->name('crud.edit');
+
 
 
 //api

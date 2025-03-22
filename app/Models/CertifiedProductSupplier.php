@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Models;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,7 +18,9 @@ class CertifiedProductSupplier extends Model
     ];
 
 
-
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////                                        ↓ Roles ↓                                                ////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // to ADMIN ↓
     // Admin is the ONE in the one to many relation ship between Admin and Certfied Product Suplier.
@@ -37,4 +41,35 @@ class CertifiedProductSupplier extends Model
     }
 
 
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////                                    ↓ certified products ↓                                       ////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //to Certified Wood Products 
+    //a supplier/admin can supply many porducts but a product can only have one idvidual supplier/admin
+    //Wood is the many in the relastionship
+    public function certifiedWoodProducts()
+    {
+        return $this->hasMany(CertfiedWoodProducts::class, 'certified_wood_products_id');
+    }
+
+
+    //to Certified Metal Products 
+    //a supplier/admin can supply many porducts but a product can only have one idvidual supplier/admin
+    //Metal is the many in the relastionship
+    public function certifiedMetalProducts()
+    {
+        return $this->hasMany(CertifiedMetalProduct::class, 'certified_metal_products_id');
+    }
+
+
+    //to Certified Steel Products 
+    //a supplier/admin can supply many porducts but a product can only have one idvidual supplier/admin
+    //Steel is the many in the relastionship
+    public function certifiedSteelProducts()
+    {
+        return $this->hasMany(CertfiedSteelProducts::class, 'certified_steel_products_id');
+    }
 }

@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Models;
+
 use Illuminate\Database\Eloquent\Model;
 
 
@@ -35,5 +37,14 @@ class CertfiedSteelProducts extends Model
     public function carts()
     {
         return $this->belongsToMany(carts::class, 'cart_certified_steel');
+    }
+
+
+    //to Certified Product Supplier 
+    //a supplier/admin can supply many porducts but a product can only have one idvidual supplier/admin
+    //steel is the many in the relastionship
+    public function certifiedProductSupplier()
+    {
+        return $this->belongsTo(CertifiedProductSupplier::class, 'certified_steel_products_id');
     }
 }

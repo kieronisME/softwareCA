@@ -25,47 +25,8 @@ class NotCertifiedProductSuppliersTableSeeder extends Seeder
         ]);
 
 
-        DB::table('not_certfied_wood_products')->insertGetId([
-            'Product_name' => 'RAGHHHHHHHHHH',
-            'Price' => 23,
-            'About' => 'RAGHHHHHHHHHH',
-            'quantity' => 12,
-            'co2' => 0.3,
-            // 'weight' => 12,
-            // 'weight_unit' => 12,
-            'created_at' => now(),
-            'updated_at' => now(),
-
-        ]);
 
 
-
-        DB::table('not_certfied_metal_products')->insertGetId([
-            'Product_name' => 'RAGHHHHHHHHHH',
-            'Price' => 23,
-            'About' => 'RAGHHHHHHHHHH',
-            'quantity' => 12,
-            'co2' => 0.3,
-            // 'weight' => 12,
-            // 'weight_unit' => 12,
-            'created_at' => now(),
-            'updated_at' => now(),
-
-        ]);
-
-
-        DB::table('not_certfied_steel_products')->insertGetId([
-            'Product_name' => 'RAGHHHHHHHHHH',
-            'Price' => 23,
-            'About' => 'RAGHHHHHHHHHH',
-            'quantity' => 12,
-            'co2' => 0.3,
-            // 'weight' => 12,
-            // 'weight_unit' => 12,
-            'created_at' => now(),
-            'updated_at' => now(),
-
-        ]);
 
 
     }

@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Models;
+
 use Illuminate\Database\Eloquent\Model;
 
 
@@ -16,7 +18,7 @@ class CertfiedWoodProducts extends Model
         'Product_name',
         'Certificate',
         'Price',
-        'About',   
+        'About',
         'quantity',
         'co2',
         'weight',
@@ -36,5 +38,15 @@ class CertfiedWoodProducts extends Model
     public function carts()
     {
         return $this->belongsToMany(carts::class, 'cart_certified_wood');
+    }
+
+
+
+    //to Certified Product Supplier 
+    //a supplier/admin can supply many porducts but a product can only have one idvidual supplier/admin
+    //wood is the many in the relastionship
+    public function certifiedProductSupplier()
+    {
+        return $this->belongsTo(CertifiedProductSupplier::class, 'certified_wood_products_id');
     }
 }

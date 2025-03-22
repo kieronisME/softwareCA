@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 
 
-class AdminsTableSeeder extends Seeder
+class UserTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,7 +25,6 @@ class AdminsTableSeeder extends Seeder
                 // 'created_at' => now(),
                 // 'updated_at' => now(),
             ],
-
         ];
 
 

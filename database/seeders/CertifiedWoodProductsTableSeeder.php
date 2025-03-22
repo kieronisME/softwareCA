@@ -24,30 +24,7 @@ class CertifiedWoodProductsTableSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
-            [
-                'Product_name' => 'Certified Pine Wood',
-                'Certificate'=> 'fsc',
-                'Price' => 120.00,
-                'About' => 'Eco-friendly pine wood with sustainability certification.',
-                'quantity' => 200,
-                'co2' => 8.2,
-                'weight' => '40',
-                'weight_unit' => 'kg',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'Product_name' => 'Certified Teak Wood',
-                'Certificate'=> 'fsc',
-                'Price' => 200.00,
-                'About' => 'Premium teak wood with environmental certification.',
-                'quantity' => 50,
-                'co2' => 15.0,
-                'weight' => '60',
-                'weight_unit' => 'kg',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
+ 
         ];
 
         // Insert the data into the certified_wood_products table

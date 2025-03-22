@@ -10,11 +10,9 @@ return new class extends Migration
     public function up(): void
     {
 
-// Schema::disableForeignKeyConstraints();
+ 
         Schema::create('suppliers', function (Blueprint $table) {
             $table->id();
-            //if this doesnt work its porobaly beacuas i need to change CARTS to CARTS but we will see...
-            // $table->foreignId('cart_id')->constrained('carts', 'cart_id'); 
             $table->string('user_name');
             $table->string('first_name');
             $table->string('last_name');
@@ -23,10 +21,7 @@ return new class extends Migration
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     */
+  
     public function down(): void
     {
         Schema::dropIfExists('suppliers');

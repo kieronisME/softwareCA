@@ -8,9 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class NotCertifiedMetalProductsTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
+
     public function run(): void
     {
         

@@ -6,11 +6,10 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    //add cart to user
+
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            // Add the foreign key 
             $table->unsignedBigInteger('cart_id')->after('id');
             $table->foreign('cart_id')
                 ->references('id')

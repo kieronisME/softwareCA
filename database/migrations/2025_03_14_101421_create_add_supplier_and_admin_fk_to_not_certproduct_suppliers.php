@@ -6,16 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-  public function up(): void
+    public function up(): void
     {
         Schema::table('not_certified_product_suppliers', function (Blueprint $table) {
 
+
+            //admin id
             $table->unsignedBigInteger('admins_id')->nullable();;
             $table->foreign('admins_id')
                 ->references('id')
                 ->on('admins')
                 ->onDelete('cascade');
 
+
+            //supplier id
             $table->unsignedBigInteger('suppliers_id')->nullable();;
             $table->foreign('suppliers_id')
                 ->references('id')

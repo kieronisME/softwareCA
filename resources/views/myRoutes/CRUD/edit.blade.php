@@ -10,7 +10,7 @@
             <source src="{{ asset('ArtistImg/vid/lucki.mp4') }}" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-        <div class="absolute inset-0 bg-black opacity-50 z-10"></div> <!-- Dark overlay -->
+        <div class="absolute inset-0 bg-black opacity-50 z-10"></div> 
     </div>
 
     <div class="relative py-12">
@@ -18,8 +18,6 @@
             <div class="bg-black opacity-75 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-black">
                     <h3 class="font-semibold text-lg mb-4">Update wood: {{ $certfiedWoodProducts->Product_name }}</h3>
-                    <!-- laravl knows this from is a link to album.form so it directs it there -->
-                     <!-- sends the request back to update route -->
                     <x-pleasework-form
                         :action="route('crud.update',  $certfiedWoodProducts->id)" 
                         method="PUT" 

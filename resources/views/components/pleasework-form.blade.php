@@ -1,4 +1,3 @@
-
 @props(['action', 'method', 'CertfiedWoodProducts' => null])
 
 <form action="{{ $action }}" method="POST">
@@ -7,6 +6,9 @@
     @method($method)
     @endif
 
+
+
+    <!-- product -->
     <div class="mb-4">
         <label for="Product_name" class="block text-sm text-gray-700">Product_name</label>
         <input type="text" name="Product_name" id="Product_name" value="{{ old('Product_name', $CertfiedWoodProducts->Product_name ?? '') }}" required
@@ -15,8 +17,12 @@
         <p class="text-sm text-red-600">{{ $message }}</p>
         @enderror
     </div>
+    <!-- product -->
+
 
     
+
+    <!-- Certificate -->
     <div class="mb-4">
         <label for="Certificate" class="block text-sm text-gray-700">Certificate</label>
         <input type="text" name="Certificate" id="Certificate"
@@ -26,7 +32,12 @@
         <p class="text-sm text-red-600">{{ $message }}</p>
         @enderror
     </div>
+    <!-- Certificate -->
 
+
+
+
+    <!-- Price -->
     <div class="mb-4">
         <label for="Price" class="block text-sm text-gray-700">Price</label>
         <input type="text" name="Price" id="Price"
@@ -36,8 +47,12 @@
         <p class="text-sm text-red-600">{{ $message }}</p>
         @enderror
     </div>
+    <!-- Price -->
 
 
+
+
+    <!-- About -->
     <div class="mb-4">
         <label for="About" class="block text-sm text-gray-700">About</label>
         <input type="text" name="About" id="About"
@@ -47,7 +62,12 @@
         <p class="text-sm text-red-600">{{ $message }}</p>
         @enderror
     </div>
+    <!-- About -->
 
+
+
+
+    <!-- quantity -->
     <div class="mb-4">
         <label for="quantity" class="block text-sm text-gray-700">quantity</label>
         <input
@@ -60,7 +80,12 @@
         <p class="text-sm text-red-600">{{ $message }}</p>
         @enderror
     </div>
+    <!-- quantity -->
 
+
+
+
+    <!-- co2 -->
     <div class="mb-4">
         <label for="co2" class="block text-sm text-gray-700">co2</label>
         <input
@@ -73,7 +98,12 @@
         <p class="text-sm text-red-600">{{ $message }}</p>
         @enderror
     </div>
+    <!-- co2 -->
 
+
+
+
+    <!-- weight -->
     <div class="mb-4">
         <label for="weight" class="block text-sm text-gray-700">weight</label>
         <input
@@ -86,7 +116,10 @@
         <p class="text-sm text-red-600">{{ $message }}</p>
         @enderror
     </div>
+    <!-- weight -->
 
+
+    <!-- weight_unit -->
     <div class="mb-4">
         <label for="weight_unit" class="block text-sm text-gray-700">weight_unit</label>
         <input
@@ -99,15 +132,13 @@
         <p class="text-sm text-red-600">{{ $message }}</p>
         @enderror
     </div>
+    <!-- weight_unit -->
 
 
 
-    
     <div>
         <x-primary-button>
-        {{ isset($CertfiedWoodProducts) ? 'Update CertfiedWoodProducts' : 'Add CertfiedWoodProducts' }}
+            {{ isset($CertfiedWoodProducts) ? 'Update CertfiedWoodProducts' : 'Add CertfiedWoodProducts' }}
         </x-primary-button>
     </div>
-
-    <!-- <input type="hidden" name="_token" value="your-csrf-token-here"> -->
 </form>

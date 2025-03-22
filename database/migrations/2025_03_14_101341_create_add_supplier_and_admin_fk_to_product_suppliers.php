@@ -10,12 +10,15 @@ return new class extends Migration
     {
         Schema::table('certified_product_suppliers', function (Blueprint $table) {
 
+            //admin id
             $table->unsignedBigInteger('admins_id')->nullable();;
             $table->foreign('admins_id')
                 ->references('id')
                 ->on('admins')
                 ->onDelete('cascade');
 
+
+            //supplier id
             $table->unsignedBigInteger('suppliers_id')->nullable();;
             $table->foreign('suppliers_id')
                 ->references('id')
@@ -36,5 +39,3 @@ return new class extends Migration
         });
     }
 };
-
-

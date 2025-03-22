@@ -15,12 +15,16 @@ return new class extends Migration
 
         Schema::table('not_certified_product_suppliers', function (Blueprint $table) {
 
+
+            //Nwood
             $table->unsignedBigInteger('not_certfied_wood_products_id');
             $table->foreign('not_certfied_wood_products_id', 'ncwp_fk')
                 ->references('id')
                 ->on('not_certfied_wood_products')
                 ->onDelete('cascade');
 
+
+            //Nmetal
             $table->unsignedBigInteger('not_certfied_metal_products_id');
             $table->foreign('not_certfied_metal_products_id', 'ncmp_fk')
                 ->references('id')
@@ -28,6 +32,8 @@ return new class extends Migration
                 ->onDelete('cascade');
 
 
+
+            //Nsteel
             $table->unsignedBigInteger('not_certfied_steel_products_id');
             $table->foreign('not_certfied_steel_products_id', 'ncsp_fk')
                 ->references('id')

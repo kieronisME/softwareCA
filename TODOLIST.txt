@@ -1,6 +1,12 @@
 TO DO LIST
 
-when updating and editing form price needs to be able to take an
+ADD USER ROLES
+ADD USER 
+MAKE API WORK 
+LOOK FOR MORE API
+SYTLE 
+
+
 
 
 

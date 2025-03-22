@@ -11,7 +11,6 @@
                 <div class="p-4 text-dark">
                     <h3 class="fw-semibold fs-4 mb-4">Add a New wood</h3>
                     <x-pleasework-form :action="route('myRoutes.store')" method="POST" />
-
                 </div>
             </div>
         </div>

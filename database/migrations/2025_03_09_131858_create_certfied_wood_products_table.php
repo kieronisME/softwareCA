@@ -12,14 +12,9 @@ return new class extends Migration
     public function up(): void
     {
 
-// Schema::disableForeignKeyConstraints();
+ 
         Schema::create('certfied_wood_products', function (Blueprint $table) {
             $table->id();
-
-            /////////////////////////// BEFORE API ADDTION ///////////////////////////#
-            
-            // $table->foreignId('certified_product_id')->constrained('certified_products'); // fk to my pivoi
-
             $table->string('Product_name'); 
             $table->string('Certificate'); 
             $table->decimal('Price', 8, 3); 
@@ -36,10 +31,7 @@ return new class extends Migration
             
         });
     }
-
-    /**
-     * Reverse the migrations.
-     */
+  
     public function down(): void
     {
         Schema::dropIfExists('certfied_wood_products');

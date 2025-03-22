@@ -10,12 +10,17 @@ return new class extends Migration
     {
         Schema::table('certified_product_suppliers', function (Blueprint $table) {
 
+
+            //wood
             $table->unsignedBigInteger('certfied_wood_products_id')->nullable();
             $table->foreign('certfied_wood_products_id')
                 ->references('id')
                 ->on('certfied_wood_products')
                 ->onDelete('cascade');
 
+
+
+            //metal
             $table->unsignedBigInteger('certfied_metal_products_id')->nullable();
             $table->foreign('certfied_metal_products_id')
                 ->references('id')
@@ -23,6 +28,9 @@ return new class extends Migration
                 ->onDelete('cascade');
 
 
+
+
+            //steel
             $table->unsignedBigInteger('certfied_steel_products_id')->nullable();
             $table->foreign('certfied_steel_products_id')
                 ->references('id')
@@ -33,7 +41,7 @@ return new class extends Migration
 
 
     public function down(): void
-    {                  
+    {
         Schema::table('certified_product_suppliers', function (Blueprint $table) {
             $table->dropForeign(['certfied_wood_products_id']);
             $table->dropColumn('certfied_wood_products_id');

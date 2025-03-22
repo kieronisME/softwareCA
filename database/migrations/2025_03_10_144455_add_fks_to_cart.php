@@ -6,14 +6,11 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+
     public function up(): void
     {
         Schema::table('carts', function (Blueprint $table) {
 
-            // Foreign key to users table
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
                 ->references('id')
@@ -21,10 +18,7 @@ return new class extends Migration
                 ->onDelete('cascade');
         });
     }
-
-    /**
-     * Reverse the migrations.
-     */
+  
     public function down(): void
     {
         Schema::table('carts', function (Blueprint $table) {

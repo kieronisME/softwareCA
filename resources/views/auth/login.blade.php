@@ -51,7 +51,7 @@
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
-                                        {{ __('Remember me') }}
+                                        {{ __('Remember MEEE') }}
                                     </label>
                                 </div>
                             </div>
@@ -68,6 +68,47 @@
                                         {{ __('Forgot your password?') }}
                                     </a>
                                 @endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                @if (Route::has('myRoutes.topDogRoutes.topDogAuth'))
+                                    <a class="btn btn-link" href="{{ route('myRoutes.topDogRoutes.topDogAuth') }}">
+                                        {{ __('im an admin/supplier') }}
+                                    </a>
+                                @endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                             </div>
                         </div>
                     </form>

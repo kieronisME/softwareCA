@@ -4,6 +4,7 @@
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\Auth\TopDogAuthentication;
 
 //DEFUALT PATHS
 use App\Http\Controllers\ProfileController;
@@ -19,11 +20,45 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
+// ORDER 
+
+// Login Routes
+// USERS 
+// API 
+// Crud
+// certfied materials
+// not certfied materials
+
+//################################################################################################################################################################################################################################
+//                                                                                          REMEBER
+// POST -> USED TO SEND DATA 
+// GET  -> USED TO RETRIEVE DATA
+// PUT  -> USED TO UPDATE OR REPLACE A FULL RESOURCE
+// PATCH -> USED TO PARTIALLY UPDATE/REPLACE A RECOURCE                                                                                                    
+//################################################################################################################################################################################################################################
+//################################################################################################################################################################################################################################
+//                                                                                       Login Routes                                             
+//################################################################################################################################################################################################################################
+
+// GET route for the authentication form
+Route::get('/topDogAuth', [TopDogAuthentication::class, 'theTopDogView'])->name('myRoutes.topDogRoutes.topDogAuth');
+
+// GET route for the admin page
+Route::get('/topDogAdmin', function () {
+    return view('myRoutes.topDogRoutes.topDogAdmin');
+})->name('myRoutes.topDogRoutes.topDogAdmin');
+
+// POST route for handling the authentication form submission
+Route::post('/topDogAdmin', [TopDogAuthentication::class, 'adminPassword'])->name('myRoutes.topDogRoutes.topDogAdmin.post');
+
+
 
 //################################################################################################################################################################################################################################
 //                                                                                          USERS                                              
 //################################################################################################################################################################################################################################
 
+
+//add users later today
 Route::get('/myRoutes/adminUserView', [UsersController::class, 'adminUserView'])->name('myRoutes.adminUserView');
 Route::get('/myRoutes/supplierUserView', [UsersController::class, 'supplierUserView'])->name('myRoutes.supplierUserView');
 

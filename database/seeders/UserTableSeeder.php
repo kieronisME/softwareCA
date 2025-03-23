@@ -18,6 +18,7 @@ class UserTableSeeder extends Seeder
         $products = [
             [
                 'user_name' => 'Admins Defualt user',
+                'cart_id' => 1,
                 'first_name' => 'admin01',
                 'last_name' => 'deault user',
                 'email' => 'admin01@gmail.com',
@@ -28,7 +29,7 @@ class UserTableSeeder extends Seeder
         ];
 
 
-        DB::table('admins')->insert($products);
+        // DB::table('admins')->insert($products);
     }
     
 }

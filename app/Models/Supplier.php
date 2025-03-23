@@ -9,10 +9,6 @@ class Supplier extends Model
 {
     use HasFactory;
 
-
-
-
-
     protected $fillable = [
         'user_name',
         'first_name',
@@ -39,6 +35,15 @@ class Supplier extends Model
     }
 
 
+
+
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////                                    ↓ certified products ↓                                       ////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     // to CERTFIED PRODUCTS SUPPLIER table ↓
     //certifiedProductsSuppliers is the MANY in the one to many relation ship between  supplier and Certfied Product Suplier have 
     // a supplier can supply many products but a product can only belong to one supplier 
@@ -48,6 +53,12 @@ class Supplier extends Model
     }
 
 
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////                                    ↓ not certified products ↓                                   ////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // to NOT CERTFIED PRODUCTS SUPPLIER table ↓
     // notcertifiedProductsSuppliers is the MANY in the one to many relation ship between  supplier and Not Certfied Product Suplier have 

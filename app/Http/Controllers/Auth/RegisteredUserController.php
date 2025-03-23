@@ -48,3 +48,5 @@ class RegisteredUserController extends Controller
         return redirect(route('dashboard', absolute: false));
     }
 }
+
+//make sure users deatils getrs stored in here

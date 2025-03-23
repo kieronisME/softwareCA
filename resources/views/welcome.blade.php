@@ -9,67 +9,41 @@
 </head>
 
 <body class="d-flex justify-content-center align-items-center vh-100 bg-light">
+    
+<div class="relative min-h-screen flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
+            <div class="relative w-full max-w-2xl px-6 lg:max-w-7xl">
+                <header class="grid grid-cols-2 items-center gap-5 py-10 lg:grid-cols-2 ">
+                    <div class="">
 
-    <div class="text-center">
-        <h1 class="mb-4">Welcome</h1>
+                    </div>
+                    @if (Route::has('login'))
+                    <nav class="- ">
+                        @auth
+                        <a
+                            href="{{ url('/dashboard') }}"
+                            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                            Dashboard
+                        </a>
+                        @else
+                        <a
+                            href="{{ route('login') }}"
+                            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                            Log in
+                        </a>
 
-
-
-
-
-        <!-- API -->
-        @if (Route::has('myRoutes.work'))
-        <a href="{{ route('myRoutes.work') }}" class="btn btn-warning me-2 px-4 py-3">Carbon footprint api</a>
-        @endif
-
-
-
-        <!-- USER VIEWS -->
-        @if (Route::has('myRoutes.adminUserView'))
-        <a href="{{ route('myRoutes.adminUserView') }}" class="btn btn-success me-2 px-4 py-3">admin dashboard</a>
-        @endif
-
-        @if (Route::has('myRoutes.supplierUserView'))
-        <a href="{{ route('myRoutes.supplierUserView') }}" class="btn btn-success me-2 px-4 py-3">supplier dashboard</a>
-
-        @endif
-
-
-
-
-        <!-- certifeid section -->
-
-
-        @if (Route::has('myRoutes.certProd.wood'))
-        <a href="{{ route('myRoutes.certProd.wood') }}" class="btn btn-primary me-2 px-4 py-3">Show Wood</a>
-        @endif
-
-        @if (Route::has('myRoutes.certProd.metal'))
-        <a href="{{ route('myRoutes.certProd.metal') }}" class="btn btn-primary me-2 px-4 py-3">show metal</a>
-        @endif
-
-        @if (Route::has('myRoutes.certProd.steel'))
-        <a href="{{ route('myRoutes.certProd.steel') }}" class="btn btn-primary me-2 px-4 py-3">show steel</a>
-        @endif
-
-
-
-
-        <!-- not certifeid section -->
-        @if (Route::has('myRoutes.certProd.wood'))
-        <a href="{{ route('myRoutes.certProd.Nwood') }}" class="btn btn-danger me-2 px-4 py-3">show not cert wood</a>
-        @endif
-        @if (Route::has('myRoutes.certProd.metal'))
-        <a href="{{ route('myRoutes.certProd.Nmetal') }}" class="btn btn-danger me-2 px-4 py-3">show not cert metal</a>
-        @endif
-        @if (Route::has('myRoutes.certProd.steel'))
-        <a href="{{ route('myRoutes.certProd.Nsteel') }}" class="btn btn-danger me-2 px-4 py-3">show not cert steel</a>
-        @endif
-
-
-
-
-    </div>
+                        @if (Route::has('register'))
+                        <a
+                            href="{{ route('register') }}"
+                            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                            Register
+                        </a>
+                        @endif
+                        @endauth
+                    </nav>
+                    @endif
+                </header>
+            </div>
+        </div>
 
 
 </body>

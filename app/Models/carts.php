@@ -6,6 +6,39 @@ use Illuminate\Database\Eloquent\Model;
 
 class carts extends Model
 {
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////                                        ↓ Roles ↓                                                ////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    // to Admin ↓
+    // Admin can have one cart and cart can only have one Admin at a time
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class, 'admin_id', 'admin_id');
+    }
+
+
+    // to Admin ↓
+    // Admin can have one cart and cart can only have one Admin at a time
+    public function suppliers()
+    {
+        return $this->belongsTo(Supplier::class, 'supplier_id', 'supplier_id');
+    }
+
+
+    // to User↓
+    // User can have one cart and cart can only have one Admin at a time
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+
+
+
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////                                    ↓ certified products ↓                                       ////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -19,7 +52,7 @@ class carts extends Model
     public function certifiedMetals()
     {
         return $this->belongsToMany(CertifiedMetalProduct::class, 'cart_certified_metal');
-    }                               
+    }
 
     public function certifiedSteels()
     {
@@ -45,17 +78,5 @@ class carts extends Model
     public function nonCertifiedMetal()
     {
         return $this->belongsToMany(notCertfiedMetalProducts::class, 'cart_non_certified_metal');
-    }
-
-
-
-
-
-
-    // to Admin ↓
-    // Admin can have one cart and cart can only have one Admin at a time
-    public function admin()
-    {
-        return $this->belongsTo(Admin::class, 'admin_id', 'admin_id');
     }
 }

@@ -70,6 +70,12 @@
                                     {{ __('Register') }}
                                 </button>
                             </div>
+
+                            @if (Route::has('myRoutes.topDogRoutes.topDogAuth'))
+                                    <a class="btn btn-link" href="{{ route('myRoutes.topDogRoutes.topDogAuth') }}">
+                                        {{ __('im an admin/supplier') }}
+                                    </a>
+                                @endif
                         </div>
                     </form>
                 </div>

@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Models;
-
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Admin extends Model
+class Admin extends Authenticatable
 {
     use HasFactory;
 
@@ -15,8 +15,7 @@ class Admin extends Model
         'last_name',
         'email',
         'phoneNumber',
-        // 'weight',
-        // 'weight_unit',
+        'password',
     ];
 
 
@@ -29,10 +28,6 @@ class Admin extends Model
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////                                    ↓ cart relationship ↓                                        ////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
 
     // to Cart ↓
     // cart can have one admin and admin can only have one cart at a time

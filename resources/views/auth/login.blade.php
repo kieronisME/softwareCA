@@ -71,41 +71,11 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                 @if (Route::has('myRoutes.topDogRoutes.topDogAuth'))
                                     <a class="btn btn-link" href="{{ route('myRoutes.topDogRoutes.topDogAuth') }}">
-                                        {{ __('im an admin/supplier') }}
+                                        {{ __('ADD LOGIN FOR ADMIN AND SUPPLIER') }}
                                     </a>
                                 @endif
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

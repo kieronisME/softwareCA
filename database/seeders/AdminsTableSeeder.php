@@ -21,9 +21,9 @@ class AdminsTableSeeder extends Seeder
                 'first_name' => 'admin01',
                 'last_name' => 'deault user',
                 'email' => 'admin01@gmail.com',
+                'password' => 'password',
                 'phoneNumber' => 1234567490,
-                // 'created_at' => now(),
-                // 'updated_at' => now(),
+                
             ],
 
         ];

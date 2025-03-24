@@ -53,6 +53,12 @@ Route::post('/topDogAdmin', [TopDogAuthentication::class, 'adminPassword'])->nam
 
 
 
+//create admin 
+Route::get('/topdogCreateAdmin', [TopDogAuthentication::class, 'topdogCreate'])->name('topdogCreate');
+
+Route::post('/STOREtopdogCreateAdmin', [TopDogAuthentication::class, 'topdogStore'])->name('myRoutes.topdogStore');
+
+
 //################################################################################################################################################################################################################################
 //                                                                                          USERS                                              
 //################################################################################################################################################################################################################################
@@ -65,7 +71,8 @@ Route::get('/myRoutes/supplierUserView', [UsersController::class, 'supplierUserV
 
 
 
-
+//test page view
+Route::get('/MainTestPage', [MaterialController::class, 'viewTestPage'])->name('MainTestPage');
 
 
 

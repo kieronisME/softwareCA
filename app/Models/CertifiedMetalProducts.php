@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 
 
-class CertifiedMetalProduct extends Model
+class CertifiedMetalProducts extends Model
 {
 
     //this is where i let the model know what table i want it to work with
@@ -16,12 +16,13 @@ class CertifiedMetalProduct extends Model
 
     protected $fillable = [
         'Product_name',
+        'Certificate',
         'Price',
         'About',
         'quantity',
         'co2',
-        // 'weight',
-        // 'weight_unit',
+        'weight',
+        'weight_unit',
     ];
 
 

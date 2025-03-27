@@ -9,70 +9,51 @@
 </head>
 
 <body class="d-flex justify-content-center align-items-center vh-100 bg-light">
-    
-
     <div class="text-center">
         <h1 class="mb-4">Welcome</h1>
 
-
-
-
-
-        <!-- API -->
-        @if (Route::has('myRoutes.work'))
-        <a href="{{ route('myRoutes.work') }}" class="btn btn-warning me-2 px-4 py-3">Carbon footprint api</a>
+        @if (Route::has('myRoutes.cart'))
+        <x-secondary-button>
+            <a href="{{ route('myRoutes.cart') }}" class="text-decoration-none text-dark">Carts</a>
+        </x-secondary-button>
         @endif
 
+        @if (Route::has('myRoutes.work'))
+        <x-secondary-button class="btn-warning">
+            <a href="{{ route('myRoutes.work') }}" class="text-decoration-none text-dark">Carbon Footprint API</a>
+        </x-secondary-button>
+        @endif
 
-
-        <!-- USER VIEWS -->
         @if (Route::has('myRoutes.adminUserView'))
-        <a href="{{ route('myRoutes.adminUserView') }}" class="btn btn-success me-2 px-4 py-3">admin dashboard</a>
+        <x-secondary-button class="btn-success">
+            <a href="{{ route('myRoutes.adminUserView') }}" class="text-decoration-none text-dark">Admin Dashboard</a>
+        </x-secondary-button>
         @endif
 
         @if (Route::has('myRoutes.supplierUserView'))
-        <a href="{{ route('myRoutes.supplierUserView') }}" class="btn btn-success me-2 px-4 py-3">supplier dashboard</a>
-
+        <x-secondary-button class="btn-success">
+            <a href="{{ route('myRoutes.supplierUserView') }}" class="text-decoration-none text-dark">Supplier Dashboard</a>
+        </x-secondary-button>
         @endif
 
-
-
-
-        <!-- certifeid section -->
-
-
         @if (Route::has('myRoutes.certProd.wood'))
-        <a href="{{ route('myRoutes.certProd.wood') }}" class="btn btn-primary me-2 px-4 py-3">Show Wood</a>
+        <x-secondary-button>
+            <a href="{{ route('myRoutes.certProd.wood') }}" class="text-decoration-none text-dark">Show Wood</a>
+        </x-secondary-button>
         @endif
 
         @if (Route::has('myRoutes.certProd.metal'))
-        <a href="{{ route('myRoutes.certProd.metal') }}" class="btn btn-primary me-2 px-4 py-3">show metal</a>
+        <x-secondary-button>
+            <a href="{{ route('myRoutes.certProd.metal') }}" class="text-decoration-none text-dark">Show Metal</a>
+        </x-secondary-button>
         @endif
 
         @if (Route::has('myRoutes.certProd.steel'))
-        <a href="{{ route('myRoutes.certProd.steel') }}" class="btn btn-primary me-2 px-4 py-3">show steel</a>
+        <x-secondary-button>
+            <a href="{{ route('myRoutes.certProd.steel') }}" class="text-decoration-none text-dark">Show Steel</a>
+        </x-secondary-button>
         @endif
-
-
-
-
-        <!-- not certifeid section -->
-        @if (Route::has('myRoutes.certProd.wood'))
-        <a href="{{ route('myRoutes.certProd.Nwood') }}" class="btn btn-danger me-2 px-4 py-3">show not cert wood</a>
-        @endif
-        @if (Route::has('myRoutes.certProd.metal'))
-        <a href="{{ route('myRoutes.certProd.Nmetal') }}" class="btn btn-danger me-2 px-4 py-3">show not cert metal</a>
-        @endif
-        @if (Route::has('myRoutes.certProd.steel'))
-        <a href="{{ route('myRoutes.certProd.Nsteel') }}" class="btn btn-danger me-2 px-4 py-3">show not cert steel</a>
-        @endif
-
-
-
-
     </div>
-
-
 </body>
 
 </html>

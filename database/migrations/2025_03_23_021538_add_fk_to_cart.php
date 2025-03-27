@@ -19,14 +19,6 @@ return new class extends Migration
                 ->onDelete('cascade');
 
 
-
-                $table->unsignedBigInteger('supplier_id');
-                $table->foreign('supplier_id')
-                    ->references('id')
-                    ->on('suppliers')
-                    ->onDelete('cascade');
-
-
             //im adding the fk to my pivoit tables here because i want to enforce a many to many relation between 
             // cart -> Certfied wood products table
             // cart -> Certfied metal products table

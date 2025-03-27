@@ -7,6 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class carts extends Model
 {
 
+
+    protected $fillable = [
+        'user_id',
+        'admin_id',
+        'supplier_id',
+        'product_id', // Add this if you're storing product IDs
+        'quantity',   // Add this if you're storing quantities
+    ];
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////                                        ↓ Roles ↓                                                ////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -51,7 +60,7 @@ class carts extends Model
 
     public function certifiedMetals()
     {
-        return $this->belongsToMany(CertifiedMetalProduct::class, 'cart_certified_metal');
+        return $this->belongsToMany(CertifiedMetalProducts::class, 'cart_certified_metal');
     }
 
     public function certifiedSteels()

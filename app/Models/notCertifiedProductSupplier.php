@@ -59,7 +59,7 @@ class notCertifiedProductSupplier extends Model
     //not Certified Metal is the many in the relastionship
     public function notCertifiedMetalProducts()
     {
-        return $this->hasMany(CertifiedMetalProduct::class, 'not_certified_metal_products_id');
+        return $this->hasMany(CertifiedMetalProducts::class, 'not_certified_metal_products_id');
     }
 
 

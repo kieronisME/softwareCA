@@ -63,6 +63,12 @@
                                     {{ __('Log in') }}
                                 </button>
 
+                                @if (Route::has('myRoutes.topDogRoutes.topDogAuth'))
+                                    <a class="btn btn-link" href="{{ route('myRoutes.topDogRoutes.topDogAuth') }}">
+                                        {{ __('im an admin/supplier') }}
+                                    </a>
+                                @endif
+
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot your password?') }}

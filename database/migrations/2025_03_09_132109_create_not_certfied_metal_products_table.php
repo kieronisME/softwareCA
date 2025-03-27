@@ -13,11 +13,14 @@ return new class extends Migration
  
         Schema::create('not_certfied_metal_products', function (Blueprint $table) {
             $table->id();
-            $table->string('Product_name');
-            $table->decimal('Price', 8, 2); 
-            $table->text('About')->nullable(); 
+            $table->string('Product_name'); 
+            // $table->string('Certificate'); 
+            $table->decimal('Price', 8, 3); 
+            $table->string('About')->nullable(); 
             $table->integer('quantity'); 
             $table->decimal('co2', 8, 2); 
+            $table->string('weight'); 
+            $table->string('weight_unit');
 
             $table->timestamps();
         });

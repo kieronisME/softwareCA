@@ -59,9 +59,9 @@ class CertifiedProductSupplier extends Model
     //to Certified Metal Products 
     //a supplier/admin can supply many porducts but a product can only have one idvidual supplier/admin
     //Metal is the many in the relastionship
-    public function certifiedMetalProducts()
+    public function CertifiedMetalProducts()
     {
-        return $this->hasMany(CertifiedMetalProduct::class, 'certified_metal_products_id');
+        return $this->hasMany(CertifiedMetalProducts::class, 'certified_metal_products_id');
     }
 
 

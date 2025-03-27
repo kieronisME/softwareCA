@@ -11,17 +11,18 @@ class CertfiedSteelProducts extends Model
 {
 
     //this is where i let the model know what table i want it to work with
-    protected $table = 'certified_steel_products'; // Explicitly define the table name
+    protected $table = 'certfied_steel_products'; // Explicitly define the table name
 
 
     protected $fillable = [
         'Product_name',
+        'Certificate',
         'Price',
         'About',
         'quantity',
         'co2',
-        // 'weight',
-        // 'weight_unit',
+        'weight',
+        'weight_unit',
     ];
 
 

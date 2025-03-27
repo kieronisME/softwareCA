@@ -7,14 +7,8 @@ use App\Models\CertfiedWoodProducts;
 use Illuminate\Support\Facades\Storage;
 
 
-class MaterialController extends Controller
+class WoodController extends Controller
 {
-
-
-
-
-
-
 
     //veiw test page
     public function viewTestPage()
@@ -35,9 +29,6 @@ class MaterialController extends Controller
         // Pass the data to the view
         return view('myRoutes.certProd.wood', compact('woodProducts'));
     }
-
-
-
 
 
     //################################################################################################################################################################################################################################
@@ -88,8 +79,6 @@ class MaterialController extends Controller
         ]);
         return redirect()->route('myRoutes.certProd.wood');
     }
-
-
 
 
 
@@ -148,11 +137,11 @@ class MaterialController extends Controller
         return redirect()->route('myRoutes.certProd.wood')->with('success', 'Album updated successfully!');
     }
 
-
-
-
-
-
+    
+    //################################################################################################################################################################################################################################
+    //                                                                                           delete
+    //################################################################################################################################################################################################################################
+   
 
 
     public function destroy(CertfiedWoodProducts $certfiedWoodProducts)
@@ -164,38 +153,4 @@ class MaterialController extends Controller
         return redirect()->route('myRoutes.certProd.wood')->with('success', 'Album deleted successfully!');
     }
 
-
-
-
-
-
-    public function metal()
-    {
-        return view('myRoutes.certProd.metal');
-    }
-
-
-    public function steel()
-    {
-        return view('myRoutes.certProd.steel');
-    }
-
-
-    //not certfied
-    public function Nwood()
-    {
-        return view('myRoutes.notCertProd.Nwood');
-    }
-
-
-    public function Nmetal()
-    {
-        return view('myRoutes.notCertProd.Nmetal');
-    }
-
-
-    public function Nsteel()
-    {
-        return view('myRoutes.notCertProd.Nsteel');
-    }
 }

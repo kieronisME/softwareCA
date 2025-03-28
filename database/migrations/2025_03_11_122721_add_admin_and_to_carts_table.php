@@ -9,29 +9,23 @@ return new class extends Migration
 
     public function up(): void
     {
-
-        //add admins to carts 
         Schema::table('carts', function (Blueprint $table) {
-            // Add the foreign key 
-            $table->unsignedBigInteger('admins_id')->after('id'); 
+            $table->unsignedBigInteger('admins_id')->nullable()->after('id');
             $table->foreign('admins_id')
                 ->references('id')
                 ->on('admins')
-                ->onDelete('cascade'); 
+                ->onDelete('cascade');
         });
 
-
-        //add suppliers to carts
         Schema::table('carts', function (Blueprint $table) {
-            // Add the foreign key 
-            $table->unsignedBigInteger('suppliers_id')->after('id'); 
+            $table->unsignedBigInteger('suppliers_id')->nullable()->after('id');
             $table->foreign('suppliers_id')
                 ->references('id')
                 ->on('suppliers')
-                ->onDelete('cascade'); 
+                ->onDelete('cascade');
         });
     }
-  
+
     public function down(): void
     {
         Schema::table('carts', function (Blueprint $table) {

@@ -12,12 +12,11 @@ return new class extends Migration
         Schema::table('carts', function (Blueprint $table) {
 
             // Foreign key to users table
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
-
 
             //im adding the fk to my pivoit tables here because i want to enforce a many to many relation between 
             // cart -> Certfied wood products table
@@ -32,9 +31,9 @@ return new class extends Migration
             //////////////////                                      ↓ Pivoit Tables ↓                                          ////////////////////
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
             // fk to certfiedProduct pivoit table 
-            
-            $table->unsignedBigInteger('certified_product_suppliers_id');
+            $table->unsignedBigInteger('certified_product_suppliers_id')->nullable();
             $table->foreign('certified_product_suppliers_id')
                 ->references('id')
                 ->on('certified_product_suppliers')
@@ -42,7 +41,7 @@ return new class extends Migration
 
 
             // fk to notCertifried pivoit table
-            $table->unsignedBigInteger('not_certified_product_suppliers_id');
+            $table->unsignedBigInteger('not_certified_product_suppliers_id')->nullable();
             $table->foreign('not_certified_product_suppliers_id')
                 ->references('id')
                 ->on('not_certified_product_suppliers')
@@ -56,14 +55,14 @@ return new class extends Migration
 
 
             // fk to not certfied WOOD products table
-            $table->unsignedBigInteger('certfied_wood_products_id');
+            $table->unsignedBigInteger('certfied_wood_products_id')->nullable();
             $table->foreign('certfied_wood_products_id')
                 ->references('id')
                 ->on('certfied_wood_products')
                 ->onDelete('cascade');
 
             // fk to certfied METAL products table
-            $table->unsignedBigInteger('certfied_metal_products_id');
+            $table->unsignedBigInteger('certfied_metal_products_id')->nullable();
             $table->foreign('certfied_metal_products_id')
                 ->references('id')
                 ->on('certfied_metal_products')
@@ -71,11 +70,12 @@ return new class extends Migration
 
 
             // fk to certfied STEEL products table
-            $table->unsignedBigInteger('certfied_steel_products_id');
+            $table->unsignedBigInteger('certfied_steel_products_id')->nullable();
             $table->foreign('certfied_steel_products_id')
                 ->references('id')
                 ->on('certfied_steel_products')
                 ->onDelete('cascade');
+
 
 
 
@@ -85,28 +85,25 @@ return new class extends Migration
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             // fk to not certfied WOOD products table
-            $table->unsignedBigInteger('not_certfied_wood_products_id');
+            $table->unsignedBigInteger('not_certfied_wood_products_id')->nullable();
             $table->foreign('not_certfied_wood_products_id')
                 ->references('id')
                 ->on('not_certfied_wood_products')
                 ->onDelete('cascade');
 
             // fk to not certfied METAL products table
-            $table->unsignedBigInteger('not_certfied_metal_products_id');
+            $table->unsignedBigInteger('not_certfied_metal_products_id')->nullable();
             $table->foreign('not_certfied_metal_products_id')
                 ->references('id')
                 ->on('not_certfied_metal_products')
                 ->onDelete('cascade');
 
             // fk to not certfied STEEL products table
-            $table->unsignedBigInteger('not_certfied_steel_products_id');
+            $table->unsignedBigInteger('not_certfied_steel_products_id')->nullable();
             $table->foreign('not_certfied_steel_products_id')
                 ->references('id')
                 ->on('not_certfied_steel_products')
                 ->onDelete('cascade');
-
-
-
         });
     }
 

@@ -28,8 +28,9 @@ class DatabaseSeeder extends Seeder
             CertifiedProductSuppliersTableSeeder::class,
             NotCertifiedProductSuppliersTableSeeder::class,
 
-            //seed 
-            
+            //seed carts
+            CartsSeeder::class,
+
 
         ]);
     }

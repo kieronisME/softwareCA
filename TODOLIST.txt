@@ -1,10 +1,9 @@
 TO DO LIST
 
-ADD USER ROLES
-ADD USER 
-MAKE API WORK 
-LOOK FOR MORE API
-SYTLE 
+
+if something doest work:
+
+pivoit cartd table fk in carts migration has nullable
 
 
 

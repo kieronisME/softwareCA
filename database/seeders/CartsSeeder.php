@@ -1,33 +1,50 @@
 <?php
 
-
 namespace Database\Seeders;
-use App\Models\carts; 
+
+use App\Models\Carts; 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
 class CartsSeeder extends Seeder
 {
-
     public function run(): void
     {
-        $products = [
+        $carts = [
             [
-                'Product_name' => 'Certified Oak Wood',
-                'Price' => 150.00,
-                'Certificate'=> 'fsc',
-                'About' => 'High-quality oak wood certified for sustainability.',
-                'quantity' => 100,
-                'co2' => 10.5,
-                'weight' => '50',
-                'weight_unit' => 'kg',
+                'suppliers_id' => 1,
+                'admins_id' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'user_id' => null,
+                'certified_product_suppliers_id' => 1,
+                'not_certified_product_suppliers_id' => null,
+                'certfied_wood_products_id' => null,
+                'certfied_metal_products_id' => null,
+                'certfied_steel_products_id' => null,
+                'not_certfied_wood_products_id' => null,
+                'not_certfied_metal_products_id' => null,
+                'not_certfied_steel_products_id' => null,
             ],
- 
+            [
+                'suppliers_id' => null,
+                'admins_id' => 1,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'user_id' => null,
+                'certified_product_suppliers_id' => null,
+                'not_certified_product_suppliers_id' => null,
+                'certfied_wood_products_id' => null,
+                'certfied_metal_products_id' => null,
+                'certfied_steel_products_id' => null,
+                'not_certfied_wood_products_id' => 1,
+                'not_certfied_metal_products_id' => null,
+                'not_certfied_steel_products_id' => null,
+            ],
+
         ];
 
-        // Insert the data into the certified_wood_products table
-        DB::table('certfied_wood_products')->insert($products);
+        // Insert the data into the carts table
+        DB::table('carts')->insert($carts);
     }
 }

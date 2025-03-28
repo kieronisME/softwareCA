@@ -19,8 +19,10 @@ use App\Http\Controllers\NMetalController;
 use App\Http\Controllers\CartController;
 
 
+//USER TYPES
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\Auth\TopDogAuthentication;
+use App\Http\Controllers\Auth\TopDogSAuthentication;
 
 //DEFUALT PATHS
 use App\Http\Controllers\ProfileController;
@@ -67,7 +69,7 @@ Route::get('/dashboard', function () {
 // PATCH -> USED TO PARTIALLY UPDATE/REPLACE A RECOURCE                                                                                                    
 //################################################################################################################################################################################################################################
 //################################################################################################################################################################################################################################
-//                                                                                 certfied materials views                                       
+// TOP<-                                                                               certfied materials views                                       
 //################################################################################################################################################################################################################################
 
 Route::get('/myRoutes/certProd/wood', [WoodController::class, 'wood'])->name('myRoutes.certProd.wood');
@@ -80,7 +82,7 @@ Route::get('/myRoutes/certProd/steel', [SteelController::class, 'steel'])->name(
 
 
 //################################################################################################################################################################################################################################
-//                                                                                not certfied materials views                                      
+// TOP<-                                                                            not certfied materials views                                      
 //################################################################################################################################################################################################################################
 
 Route::get('/myRoutes/certProd/Nwood', [WoodController::class, 'Nwood'])->name('myRoutes.certProd.Nwood');
@@ -91,12 +93,13 @@ Route::get('/myRoutes/certProd/Nsteel', [WoodController::class, 'Nsteel'])->name
 
 
 //################################################################################################################################################################################################################################
-//                                                                                         Cart crud                                     
+// TOP<-                                                                                     Cart crud                                     
 //################################################################################################################################################################################################################################
 
-
-
+//VIEW
 Route::get('/myRoutes/cart', [CartController::class, 'viewCart'])->name('myRoutes.cart');
+
+//CRUD
 Route::patch('/cart/{product}/updateQuantity', [CartController::class, 'updateQuantity'])->name('cart.updateQuantity');
 Route::post('/cart/{product}/add', [CartController::class, 'addToCart'])->name('cart.add');
 // Route::get('/myRoutes/cart', [CartController::class, 'update'])->name('myRoutes.update');
@@ -107,7 +110,7 @@ Route::post('/cart/{product}/add', [CartController::class, 'addToCart'])->name('
 
 
 //################################################################################################################################################################################################################################
-//                                                                                      Certified Wood Crud                                              
+// MIDDLE<-                                                                            Certified Wood Crud                                              
 //################################################################################################################################################################################################################################
 
 Route::get('/myRoutes/CRUD/create', [WoodController::class, 'create'])->name('myRoutes.CRUD.create');
@@ -119,7 +122,7 @@ Route::delete('/myRoutes/{certfiedWoodProducts}', [WoodController::class, 'destr
 
 
 //################################################################################################################################################################################################################################
-//                                                                                       Certified Steel Crud                                              
+// MIDDLE<-                                                                            Certified Steel Crud                                              
 //################################################################################################################################################################################################################################
 
 Route::get('/myRoutes/CRUD/create', [SteelController::class, 'create'])->name('myRoutes.CRUD.create');
@@ -132,7 +135,7 @@ Route::delete('/myRoutes/{certfiedWoodProducts}', [SteelController::class, 'dest
 
 
 //################################################################################################################################################################################################################################
-//                                                                                       Certified Metal Crud                                              
+// MIDDLE<-                                                                            Certified Metal Crud                                              
 //################################################################################################################################################################################################################################
 
 Route::get('/myRoutes/CRUD/create', [MetalController::class, 'create'])->name('myRoutes.CRUD.create');
@@ -143,26 +146,12 @@ Route::delete('/myRoutes/{certfiedWoodProducts}', [MetalController::class, 'dest
 
 
 
-//################################################################################################################################################################################################################################
-//                                                                                           Carts Crud                                              
-//################################################################################################################################################################################################################################
-
-Route::get('/myRoutes/CRUD/create', [CartController::class, 'create'])->name('myRoutes.CRUD.create');
-Route::post('/myRoutes/certProd/wood', [CartController::class, 'store'])->name('myRoutes.store');
-Route::put('/myRoutes/{certfiedWoodProducts}/update', [CartController::class, 'update'])->name('crud.update');
-Route::get('/myRoutes/{certfiedWoodProducts}/edit', [CartController::class, 'edit'])->name('crud.edit');
-Route::delete('/myRoutes/{certfiedWoodProducts}', [CartController::class, 'destroy'])->name('crud.destroy');
-
-
-
-
-
 
 
 
 
 //################################################################################################################################################################################################################################
-//                                                                                       Login Routes                                             
+// MIDDLE<-                                                                           Login Routes Admin                                            
 //################################################################################################################################################################################################################################
 
 // GET route for the authentication form
@@ -184,13 +173,50 @@ Route::get('/topdogCreateAdmin', [TopDogAuthentication::class, 'topdogCreate'])-
 Route::post('/STOREtopdogCreateAdmin', [TopDogAuthentication::class, 'topdogStore'])->name('myRoutes.topdogStore');
 
 
+
+
+
+
+
+
 //################################################################################################################################################################################################################################
-//                                                                                          USERS                                              
+// BOTTOM<-                                                                           Login Routes supplier                                            
+//################################################################################################################################################################################################################################
+
+// GET route for the authentication form
+Route::get('/topDogAuthsupplier', [topDogSAuthentication::class, 'theTopDogView'])->name('myRoutes.topDogRoutes.topDogAuthSupplier');
+
+// GET route for the admin page
+Route::get('/topDogAdmin', function () {
+    return view('myRoutes.topDogRoutes.topDogAuthSupplier');
+})->name('myRoutes.topDogRoutes.topDogAuthSupplier');
+
+// POST route for handling the authentication form submission
+Route::post('/topDogAdmin', [topDogSAuthentication::class, 'supplierPassword'])->name('myRoutes.topDogRoutes.topDogSupplier.post');
+
+
+
+//create admin 
+Route::get('/topdogCreateAdmin', [topDogSAuthentication::class, 'suppliertopdogCreate'])->name('topdogSupplierCreate');
+
+Route::post('/STOREtopdogCreateAdmin', [topDogSAuthentication::class, 'suppliertopdogStore'])->name('myRoutes.topdogS Store');
+
+
+//veiw
+Route::get('/myRoutes/supplierUserView', [topDogSAuthentication::class, 'theTopDogView'])->name('myRoutes.topDogRoutes.topDogAuthSupplierView');
+
+
+
+
+
+
+//################################################################################################################################################################################################################################
+// BOTTOM<-                                                                                  USERS                                              
 //################################################################################################################################################################################################################################
 
 //add users later today
 Route::get('/myRoutes/adminUserView', [UsersController::class, 'adminUserView'])->name('myRoutes.adminUserView');
-Route::get('/myRoutes/supplierUserView', [UsersController::class, 'supplierUserView'])->name('myRoutes.supplierUserView');
+
 
 
 
@@ -201,7 +227,7 @@ Route::get('/MainTestPage', [WoodController::class, 'viewTestPage'])->name('Main
 
 
 //################################################################################################################################################################################################################################
-//                                                                                          API                                               
+// BOTTOM<-                                                                                  API                                               
 //################################################################################################################################################################################################################################
 
 Route::get('/myRoutes/work', [ApiController::class, 'work'])->name('myRoutes.work');

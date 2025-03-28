@@ -1,5 +1,5 @@
-@props(['action', 'method', 'Admin' => null])
-<form method="POST" action="{{ route('myRoutes.topdogStore') }}">
+@props(['action', 'method', 'Supplier' => null])
+<form method="POST" action="{{ route('myRoutes.topdogSupplierStore') }}">
     @csrf
 
     <!-- Name -->
@@ -22,11 +22,6 @@
         <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
     </div>
 
-
-
-
-
-
     <!-- Email Address -->
     <div class="mt-4">
         <x-input-label for="email" :value="__('email')" />
@@ -39,11 +34,6 @@
         <x-text-input id="phoneNumber" class="block mt-1 w-full" type="tel" name="phoneNumber" :value="old('phoneNumber')"/>
         <x-input-error :messages="$errors->get('phoneNumber')" class="mt-2" />
     </div>
-
-
-
-    
-
 
     <!-- Password -->
     <div class="mt-4">
@@ -71,7 +61,7 @@
 
     <div>
         <x-primary-button>
-            {{ isset($Admin) ? 'register as admin' : 'register as admin' }}
+            {{ isset($Admin) ? 'register as supplier' : 'register as supplier' }}
         </x-primary-button>
     </div>
 

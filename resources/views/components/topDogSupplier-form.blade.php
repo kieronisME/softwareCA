@@ -1,4 +1,4 @@
-<form action="{{ route('myRoutes.topDogRoutes.topDogSupplier.post') }}" method="POST">
+<form action="{{ route('myRoutes.topDogRoutes.topDogAdmin.post') }}" method="POST">
     @csrf
 
     <div class="mb-4">

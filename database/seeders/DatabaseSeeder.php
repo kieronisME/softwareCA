@@ -28,6 +28,9 @@ class DatabaseSeeder extends Seeder
             CertifiedProductSuppliersTableSeeder::class,
             NotCertifiedProductSuppliersTableSeeder::class,
 
+            //seed 
+            
+
         ]);
     }
 }

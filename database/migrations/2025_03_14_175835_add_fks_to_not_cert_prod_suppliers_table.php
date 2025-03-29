@@ -17,16 +17,16 @@ return new class extends Migration
 
 
             //Nwood
-            $table->unsignedBigInteger('not_certfied_wood_products_id');
-            $table->foreign('not_certfied_wood_products_id', 'ncwp_fk')
+            $table->unsignedBigInteger('not_certfied_wood_product_id');
+            $table->foreign('not_certfied_wood_product_id', 'ncwp_fk')
                 ->references('id')
                 ->on('not_certfied_wood_products')
                 ->onDelete('cascade');
 
 
             //Nmetal
-            $table->unsignedBigInteger('not_certfied_metal_products_id');
-            $table->foreign('not_certfied_metal_products_id', 'ncmp_fk')
+            $table->unsignedBigInteger('not_certfied_metal_product_id');
+            $table->foreign('not_certfied_metal_product_id', 'ncmp_fk')
                 ->references('id')
                 ->on('not_certfied_metal_products')
                 ->onDelete('cascade');
@@ -34,8 +34,8 @@ return new class extends Migration
 
 
             //Nsteel
-            $table->unsignedBigInteger('not_certfied_steel_products_id');
-            $table->foreign('not_certfied_steel_products_id', 'ncsp_fk')
+            $table->unsignedBigInteger('not_certfied_steel_product_id');
+            $table->foreign('not_certfied_steel_product_id', 'ncsp_fk')
                 ->references('id')
                 ->on('not_certfied_steel_products')
                 ->onDelete('cascade');
@@ -51,9 +51,9 @@ return new class extends Migration
             $table->dropForeign('ncsp_fk');
 
             // Drop the columns
-            $table->dropColumn('not_certfied_wood_products_id');
-            $table->dropColumn('not_certfied_metal_products_id');
-            $table->dropColumn('not_certfied_steel_products_id');
+            $table->dropColumn('not_certfied_wood_product_id');
+            $table->dropColumn('not_certfied_metal_product_id');
+            $table->dropColumn('not_certfied_steel_product_id');
         });
     }
 };

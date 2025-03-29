@@ -12,16 +12,16 @@ return new class extends Migration
 
 
             //admin id
-            $table->unsignedBigInteger('admins_id')->nullable();;
-            $table->foreign('admins_id')
+            $table->unsignedBigInteger('admin_id')->nullable();;
+            $table->foreign('admin_id')
                 ->references('id')
                 ->on('admins')
                 ->onDelete('cascade');
 
 
             //supplier id
-            $table->unsignedBigInteger('suppliers_id')->nullable();;
-            $table->foreign('suppliers_id')
+            $table->unsignedBigInteger('supplier_id')->nullable();;
+            $table->foreign('supplier_id')
                 ->references('id')
                 ->on('suppliers')
                 ->onDelete('cascade');
@@ -32,11 +32,11 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('not_certified_product_suppliers', function (Blueprint $table) {
-            $table->dropForeign(['admins_id']);
-            $table->dropColumn('admins_id');
+            $table->dropForeign(['admin_id']);
+            $table->dropColumn('admin_id');
 
-            $table->dropForeign(['suppliers_id']);
-            $table->dropColumn('suppliers_id');
+            $table->dropForeign(['supplier_id']);
+            $table->dropColumn('supplier_id');
         });
     }
 };

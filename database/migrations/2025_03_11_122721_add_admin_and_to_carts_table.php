@@ -10,16 +10,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('carts', function (Blueprint $table) {
-            $table->unsignedBigInteger('admins_id')->nullable()->after('id');
-            $table->foreign('admins_id')
+            $table->unsignedBigInteger('admin_id')->nullable()->after('id');
+            $table->foreign('admin_id')
                 ->references('id')
                 ->on('admins')
                 ->onDelete('cascade');
         });
 
         Schema::table('carts', function (Blueprint $table) {
-            $table->unsignedBigInteger('suppliers_id')->nullable()->after('id');
-            $table->foreign('suppliers_id')
+            $table->unsignedBigInteger('supplier_id')->nullable()->after('id');
+            $table->foreign('supplier_id')
                 ->references('id')
                 ->on('suppliers')
                 ->onDelete('cascade');
@@ -29,13 +29,13 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('carts', function (Blueprint $table) {
-            $table->dropForeign(['admins_id']);
-            $table->dropColumn('admins_id');
+            $table->dropForeign(['admin_id']);
+            $table->dropColumn('admin_id');
         });
 
         Schema::table('carts', function (Blueprint $table) {
-            $table->dropForeign(['suppliers_id']);
-            $table->dropColumn('suppliers_id');
+            $table->dropForeign(['supplier_id']);
+            $table->dropColumn('supplier_id');
         });
     }
 };

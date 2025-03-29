@@ -13,22 +13,22 @@ return new class extends Migration
         // certfied wood
         Schema::create('cart_certified_wood', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('carts_id')->constrained('carts')->onDelete('cascade');
-            $table->foreignId('certfied_wood_products_id')->constrained('certfied_wood_products')->onDelete('cascade');
+            $table->foreignId('cart_id')->constrained('carts')->onDelete('cascade');
+            $table->foreignId('certfied_wood_product_id')->constrained('certfied_wood_product')->onDelete('cascade');
         });
 
         // certfied metal 
         Schema::create('cart_certified_metal', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('carts_id')->constrained('carts')->onDelete('cascade');
-            $table->foreignId('certfied_metal_products_id')->constrained('certfied_metal_products')->onDelete('cascade');
+            $table->foreignId('cart_id')->constrained('carts')->onDelete('cascade');
+            $table->foreignId('certfied_metal_product_id')->constrained('certfied_metal_product')->onDelete('cascade');
         });
 
         //certifed steel
         Schema::create('cart_certified_steel', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('carts_id')->constrained('carts')->onDelete('cascade');
-            $table->foreignId('certfied_steel_products_id')->constrained('certfied_steel_products')->onDelete('cascade');
+            $table->foreignId('cart_id')->constrained('carts')->onDelete('cascade');
+            $table->foreignId('certfied_steel_product_id')->constrained('certfied_steel_product')->onDelete('cascade');
         });
     }
 

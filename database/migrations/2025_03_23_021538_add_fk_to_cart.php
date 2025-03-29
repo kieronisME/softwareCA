@@ -33,16 +33,16 @@ return new class extends Migration
 
 
             // fk to certfiedProduct pivoit table 
-            $table->unsignedBigInteger('certified_product_suppliers_id')->nullable();
-            $table->foreign('certified_product_suppliers_id')
+            $table->unsignedBigInteger('certified_product_supplier_id')->nullable();
+            $table->foreign('certified_product_supplier_id')
                 ->references('id')
                 ->on('certified_product_suppliers')
                 ->onDelete('cascade');
 
 
             // fk to notCertifried pivoit table
-            $table->unsignedBigInteger('not_certified_product_suppliers_id')->nullable();
-            $table->foreign('not_certified_product_suppliers_id')
+            $table->unsignedBigInteger('not_certified_product_supplier_id')->nullable();
+            $table->foreign('not_certified_product_supplier_id')
                 ->references('id')
                 ->on('not_certified_product_suppliers')
                 ->onDelete('cascade');
@@ -55,23 +55,23 @@ return new class extends Migration
 
 
             // fk to not certfied WOOD products table
-            $table->unsignedBigInteger('certfied_wood_products_id')->nullable();
-            $table->foreign('certfied_wood_products_id')
+            $table->unsignedBigInteger('certfied_wood_product_id')->nullable();
+            $table->foreign('certfied_wood_product_id')
                 ->references('id')
                 ->on('certfied_wood_products')
                 ->onDelete('cascade');
 
             // fk to certfied METAL products table
-            $table->unsignedBigInteger('certfied_metal_products_id')->nullable();
-            $table->foreign('certfied_metal_products_id')
+            $table->unsignedBigInteger('certfied_metal_product_id')->nullable();
+            $table->foreign('certfied_metal_product_id')
                 ->references('id')
                 ->on('certfied_metal_products')
                 ->onDelete('cascade');
 
 
             // fk to certfied STEEL products table
-            $table->unsignedBigInteger('certfied_steel_products_id')->nullable();
-            $table->foreign('certfied_steel_products_id')
+            $table->unsignedBigInteger('certfied_steel_product_id')->nullable();
+            $table->foreign('certfied_steel_product_id')
                 ->references('id')
                 ->on('certfied_steel_products')
                 ->onDelete('cascade');
@@ -85,22 +85,22 @@ return new class extends Migration
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             // fk to not certfied WOOD products table
-            $table->unsignedBigInteger('not_certfied_wood_products_id')->nullable();
-            $table->foreign('not_certfied_wood_products_id')
+            $table->unsignedBigInteger('not_certfied_wood_product_id')->nullable();
+            $table->foreign('not_certfied_wood_product_id')
                 ->references('id')
                 ->on('not_certfied_wood_products')
                 ->onDelete('cascade');
 
             // fk to not certfied METAL products table
-            $table->unsignedBigInteger('not_certfied_metal_products_id')->nullable();
-            $table->foreign('not_certfied_metal_products_id')
+            $table->unsignedBigInteger('not_certfied_metal_product_id')->nullable();
+            $table->foreign('not_certfied_metal_product_id')
                 ->references('id')
                 ->on('not_certfied_metal_products')
                 ->onDelete('cascade');
 
             // fk to not certfied STEEL products table
-            $table->unsignedBigInteger('not_certfied_steel_products_id')->nullable();
-            $table->foreign('not_certfied_steel_products_id')
+            $table->unsignedBigInteger('not_certfied_steel_product_id')->nullable();
+            $table->foreign('not_certfied_steel_product_id')
                 ->references('id')
                 ->on('not_certfied_steel_products')
                 ->onDelete('cascade');
@@ -115,33 +115,33 @@ return new class extends Migration
         Schema::table('carts', function (Blueprint $table) {
 
             $table->dropForeign(['user_id']);
-            $table->dropForeign(['certified_product_suppliers_id']);
-            $table->dropForeign(['not_certified_product_suppliers_id']);
+            $table->dropForeign(['certified_product_supplier_id']);
+            $table->dropForeign(['not_certified_product_supplier_id']);
 
 
-            $table->dropForeign(['certfied_wood_products_id']);
-            $table->dropForeign(['certfied_metal_products_id']);
-            $table->dropForeign(['certfied_steel_products_id']);
+            $table->dropForeign(['certfied_wood_product_id']);
+            $table->dropForeign(['certfied_metal_product_id']);
+            $table->dropForeign(['certfied_steel_product_id']);
 
-            $table->dropForeign(['not_certfied_wood_products_id']);
-            $table->dropForeign(['not_certfied_metal_products_id']);
-            $table->dropForeign(['not_certfied_steel_products_id']);
+            $table->dropForeign(['not_certfied_wood_product_id']);
+            $table->dropForeign(['not_certfied_metal_product_id']);
+            $table->dropForeign(['not_certfied_steel_product_id']);
 
 
 
             $table->dropColumn([
                 'user_id',
-                'certified_product_suppliers_id',
-                'not_certified_product_suppliers_id',
+                'certified_product_supplier_id',
+                'not_certified_product_supplier_id',
 
 
-                'certfied_wood_products_id',
-                'certfied_metal_products_id',
-                'certfied_steel_products_id',
+                'certfied_wood_product_id',
+                'certfied_metal_product_id',
+                'certfied_steel_product_id',
 
-                'not_certfied_wood_products_id',
-                'not_certfied_metal_products_id',
-                'not_certfied_steel_products_id',
+                'not_certfied_wood_product_id',
+                'not_certfied_metal_product_id',
+                'not_certfied_steel_product_id',
 
             ]);
         });

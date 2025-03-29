@@ -12,8 +12,8 @@ return new class extends Migration
 
 
             //wood
-            $table->unsignedBigInteger('certfied_wood_products_id')->nullable();
-            $table->foreign('certfied_wood_products_id')
+            $table->unsignedBigInteger('certfied_wood_product_id')->nullable();
+            $table->foreign('certfied_wood_product_id')
                 ->references('id')
                 ->on('certfied_wood_products')
                 ->onDelete('cascade');
@@ -21,8 +21,8 @@ return new class extends Migration
 
 
             //metal
-            $table->unsignedBigInteger('certfied_metal_products_id')->nullable();
-            $table->foreign('certfied_metal_products_id')
+            $table->unsignedBigInteger('certfied_metal_product_id')->nullable();
+            $table->foreign('certfied_metal_product_id')
                 ->references('id')
                 ->on('certfied_metal_products')
                 ->onDelete('cascade');
@@ -31,8 +31,8 @@ return new class extends Migration
 
 
             //steel
-            $table->unsignedBigInteger('certfied_steel_products_id')->nullable();
-            $table->foreign('certfied_steel_products_id')
+            $table->unsignedBigInteger('certfied_steel_product_id')->nullable();
+            $table->foreign('certfied_steel_product_id')
                 ->references('id')
                 ->on('certfied_steel_products')
                 ->onDelete('cascade');
@@ -43,14 +43,14 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('certified_product_suppliers', function (Blueprint $table) {
-            $table->dropForeign(['certfied_wood_products_id']);
-            $table->dropColumn('certfied_wood_products_id');
+            $table->dropForeign(['certfied_wood_product_id']);
+            $table->dropColumn('certfied_wood_product_id');
 
-            $table->dropForeign(['certfied_metal_products_id']);
-            $table->dropColumn('certfied_metal_products_id');
+            $table->dropForeign(['certfied_metal_product_id']);
+            $table->dropColumn('certfied_metal_product_id');
 
-            $table->dropForeign(['certfied_steel_products_id']);
-            $table->dropColumn('certfied_steel_products_id');
+            $table->dropForeign(['certfied_steel_product_id']);
+            $table->dropColumn('certfied_steel_product_id');
         });
     }
 };

@@ -22,18 +22,18 @@
         </a>
 
         <ul>
-            @foreach ($metalPorducts as $certfiedSteelProducts)
+            @foreach ($metalPorducts as $certifiedSteelProducts)
             <li>
-                <strong>{{ $certfiedSteelProducts->Product_name }}</strong><br>
-                Certificate: {{ $certfiedSteelProducts->Certificate }}<br>
-                Price: ${{ $certfiedSteelProducts->Price }}<br>
-                Quantity: {{ $certfiedSteelProducts->quantity }}<br>
-                CO2: {{ $certfiedSteelProducts->co2 }}<br>
-                Weight: {{ $certfiedSteelProducts->weight }} {{ $certfiedSteelProducts->weight_unit }}<br>
-                About: {{ $certfiedSteelProducts->About }}
+                <strong>{{ $certifiedSteelProducts->Product_name }}</strong><br>
+                Certificate: {{ $certifiedSteelProducts->Certificate }}<br>
+                Price: ${{ $certifiedSteelProducts->Price }}<br>
+                Quantity: {{ $certifiedSteelProducts->quantity }}<br>
+                CO2: {{ $certifiedSteelProducts->co2 }}<br>
+                Weight: {{ $certifiedSteelProducts->weight }} {{ $certifiedSteelProducts->weight_unit }}<br>
+                About: {{ $certifiedSteelProducts->About }}
             </li>
 
-            <form action="{{ route('crud.destroy', $certfiedSteelProducts) }}" method="POST" onsubmit="return confirm('This action is permanent!');">
+            <form action="{{ route('crud.destroy', $certifiedSteelProducts) }}" method="POST" onsubmit="return confirm('This action is permanent!');">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="bg-red-800 rounded-lg mr-4 my-3 text-black py-1 px-1 hover:bg-red-300">
@@ -41,7 +41,7 @@
                 </button>
             </form>
 
-            <form action="{{ route('crud.edit', $certfiedSteelProducts) }}">
+            <form action="{{ route('crud.edit', $certifiedSteelProducts) }}">
                 @csrf
                 <button type="submit" class="bg-red-800 rounded-lg mr-4 my-3 text-black py-1 px-1 hover:bg-red-300">
                    edit

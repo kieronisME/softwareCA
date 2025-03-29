@@ -15,11 +15,11 @@ class NotCertifiedProductSuppliersTableSeeder extends Seeder
 
         // Insert certified product supplier data
         DB::table('not_certified_product_suppliers')->insert([
-            'admins_id' => 1,
-            'suppliers_id' => 1,
-            'not_certfied_wood_products_id' => 1,
-            'not_certfied_metal_products_id' => 1,
-            'not_certfied_steel_products_id' => 1,
+            'admin_id' => 1,
+            'supplier_id' => 1,
+            'not_certified_wood_product_id' => 1,
+            'not_certified_metal_product_id' => 1,
+            'not_certified_steel_product_id' => 1,
             'created_at' => now(),
             'updated_at' => now(),
         ]);

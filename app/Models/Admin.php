@@ -60,7 +60,7 @@ class Admin extends Authenticatable
 
     // to NOT CERTFIED PRODUCTS SUPPLIER table ↓
     // notcertifiedProductsSuppliers is the MANY in the one to many relation ship between admin and Not Certfied Product Suplier.
-    // an admin can supply many not certfied products but a not certfied product can only belong to one admin 
+    // an admin can supply many not certified products but a not certified product can only belong to one admin 
     public function notCertifiedProductSuppliers()
     {
         return $this->hasMany(NotCertifiedProductSupplier::class);

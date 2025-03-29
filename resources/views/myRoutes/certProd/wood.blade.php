@@ -22,18 +22,18 @@
         </a>
 
         <ul>
-            @foreach ($woodProducts as $certfiedWoodProducts)
+            @foreach ($woodProducts as $certifiedWoodProducts)
             <li>
-                <strong>{{ $certfiedWoodProducts->Product_name }}</strong><br>
-                Certificate: {{ $certfiedWoodProducts->Certificate }}<br>
-                Price: ${{ $certfiedWoodProducts->Price }}<br>
-                Quantity: {{ $certfiedWoodProducts->quantity }}<br>
-                CO2: {{ $certfiedWoodProducts->co2 }}<br>
-                Weight: {{ $certfiedWoodProducts->weight }} {{ $certfiedWoodProducts->weight_unit }}<br>
-                About: {{ $certfiedWoodProducts->About }}
+                <strong>{{ $certifiedWoodProducts->Product_name }}</strong><br>
+                Certificate: {{ $certifiedWoodProducts->Certificate }}<br>
+                Price: ${{ $certifiedWoodProducts->Price }}<br>
+                Quantity: {{ $certifiedWoodProducts->quantity }}<br>
+                CO2: {{ $certifiedWoodProducts->co2 }}<br>
+                Weight: {{ $certifiedWoodProducts->weight }} {{ $certifiedWoodProducts->weight_unit }}<br>
+                About: {{ $certifiedWoodProducts->About }}
             </li>
 
-            <form action="{{ route('crud.destroy', $certfiedWoodProducts) }}" method="POST" onsubmit="return confirm('This action is permanent!');">
+            <form action="{{ route('crud.destroy', $certifiedWoodProducts) }}" method="POST" onsubmit="return confirm('This action is permanent!');">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="bg-red-800 rounded-lg mr-4 my-3 text-black py-1 px-1 hover:bg-red-300">
@@ -41,14 +41,14 @@
                 </button>
             </form>
 
-            <form action="{{ route('crud.edit', $certfiedWoodProducts) }}">
+            <form action="{{ route('crud.edit', $certifiedWoodProducts) }}">
                 @csrf
                 <button type="submit" class="bg-red-800 rounded-lg mr-4 my-3 text-black py-1 px-1 hover:bg-red-300">
                    edit
                 </button>
             </form>
 
-            <form action="{{ route('crud.edit', $certfiedWoodProducts) }}">
+            <form action="{{ route('crud.edit', $certifiedWoodProducts) }}">
                 @csrf
                 <button type="submit" class="bg-red-800 rounded-lg mr-4 my-3 text-black py-1 px-1 hover:bg-red-300">
                    add to cart

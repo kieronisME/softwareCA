@@ -27,6 +27,6 @@ class NotCertifiedMetalProductsTableSeeder extends Seeder
         ];
 
         // Insert the data into the certified_wood_products table
-        DB::table('not_certfied_metal_products')->insert($products);
+        DB::table('not_certified_metal_products')->insert($products);
     }
 }

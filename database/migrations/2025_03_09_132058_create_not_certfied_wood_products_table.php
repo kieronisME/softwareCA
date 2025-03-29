@@ -11,7 +11,7 @@ return new class extends Migration
     {
 
  
-        Schema::create('not_certfied_wood_products', function (Blueprint $table) {
+        Schema::create('not_certified_wood_products', function (Blueprint $table) {
             $table->id();
             $table->string('Product_name'); 
             // $table->string('Certificate'); 
@@ -28,6 +28,6 @@ return new class extends Migration
   
     public function down(): void
     {
-        Schema::dropIfExists('not_certfied_wood_products');
+        Schema::dropIfExists('not_certified_wood_products');
     }
 };

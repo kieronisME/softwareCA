@@ -87,9 +87,9 @@ class WoodController extends Controller
     //                                                                                             Edit
     //################################################################################################################################################################################################################################
     
-    public function edit(CertfiedWoodProducts $certfiedWoodProducts)
+    public function edit(CertfiedWoodProducts $certifiedWoodProducts)
     {
-        return view('myRoutes.CRUD.edit', compact('certfiedWoodProducts'));
+        return view('myRoutes.CRUD.edit', compact('certifiedWoodProducts'));
     }
 
 
@@ -98,7 +98,7 @@ class WoodController extends Controller
     //################################################################################################################################################################################################################################
     //                                                                                           Update
     //################################################################################################################################################################################################################################
-    public function update(Request $request, CertfiedWoodProducts $certfiedWoodProducts)
+    public function update(Request $request, CertfiedWoodProducts $certifiedWoodProducts)
     {
         // Validations
         $request->validate([
@@ -114,25 +114,25 @@ class WoodController extends Controller
 
         // checks if image uplaoded
         // if ($request->hasFile('image')) {
-        //     if ($certfiedWoodProducts->image) {
-        //         Storage::delete('ArtistImg/images/' . $certfiedWoodProducts->image);
+        //     if ($certifiedWoodProducts->image) {
+        //         Storage::delete('ArtistImg/images/' . $certifiedWoodProducts->image);
         //     }
 
         //     $imageName = time() . '.' . $request->image->extension();
         //     $request->image->move(public_path('ArtistImg/images'), $imageName);
-        //     $certfiedWoodProducts->image = $imageName;
+        //     $certifiedWoodProducts->image = $imageName;
         // }
 
         // assighnes new meaning to each 
-        $certfiedWoodProducts->Product_name = $request->Product_name;
-        $certfiedWoodProducts->Certificate = $request->Certificate;
-        $certfiedWoodProducts->Price = $request->Price;
-        $certfiedWoodProducts->About = $request->About;
-        $certfiedWoodProducts->quantity = $request->quantity;
-        $certfiedWoodProducts->co2 = $request->co2;
-        $certfiedWoodProducts->weight = $request->weight;
-        $certfiedWoodProducts->weight_unit = $request->weight_unit;
-        $certfiedWoodProducts->save();
+        $certifiedWoodProducts->Product_name = $request->Product_name;
+        $certifiedWoodProducts->Certificate = $request->Certificate;
+        $certifiedWoodProducts->Price = $request->Price;
+        $certifiedWoodProducts->About = $request->About;
+        $certifiedWoodProducts->quantity = $request->quantity;
+        $certifiedWoodProducts->co2 = $request->co2;
+        $certifiedWoodProducts->weight = $request->weight;
+        $certifiedWoodProducts->weight_unit = $request->weight_unit;
+        $certifiedWoodProducts->save();
 
         return redirect()->route('myRoutes.certProd.wood')->with('success', 'Album updated successfully!');
     }
@@ -144,12 +144,12 @@ class WoodController extends Controller
    
 
 
-    public function destroy(CertfiedWoodProducts $certfiedWoodProducts)
+    public function destroy(CertfiedWoodProducts $certifiedWoodProducts)
     {
 
         //add delete images when you get the images 
 
-        $certfiedWoodProducts->delete();
+        $certifiedWoodProducts->delete();
         return redirect()->route('myRoutes.certProd.wood')->with('success', 'Album deleted successfully!');
     }
 

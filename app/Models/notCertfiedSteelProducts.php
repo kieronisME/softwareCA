@@ -10,7 +10,7 @@ class notCertfiedSteelProducts extends Model
 {
 
     //this is where i let the model know what table i want it to work with
-    protected $table = 'not_certfied_steel_products';
+    protected $table = 'not_certified_steel_products';
 
 
     protected $fillable = [

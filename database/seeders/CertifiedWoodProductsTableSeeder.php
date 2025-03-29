@@ -28,6 +28,6 @@ class CertifiedWoodProductsTableSeeder extends Seeder
         ];
 
         // Insert the data into the certified_wood_products table
-        DB::table('certfied_wood_products')->insert($products);
+        DB::table('certified_wood_products')->insert($products);
     }
 }

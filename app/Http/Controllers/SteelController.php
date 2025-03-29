@@ -90,9 +90,9 @@ class SteelController extends Controller
     //                                                                                             Edit
     //################################################################################################################################################################################################################################
     
-    public function edit(CertfiedSteelProducts $certfiedSteelProducts)
+    public function edit(CertfiedSteelProducts $certifiedSteelProducts)
     {
-        return view('myRoutes.CRUD.edit', compact('certfiedSteelProducts'));
+        return view('myRoutes.CRUD.edit', compact('certifiedSteelProducts'));
     }
 
 
@@ -101,7 +101,7 @@ class SteelController extends Controller
     //################################################################################################################################################################################################################################
     //                                                                                           Update
     //################################################################################################################################################################################################################################
-    public function update(Request $request, CertfiedSteelProducts $certfiedSteelProducts)
+    public function update(Request $request, CertfiedSteelProducts $certifiedSteelProducts)
     {
         // Validations
         $request->validate([
@@ -117,25 +117,25 @@ class SteelController extends Controller
 
         // checks if image uplaoded
         // if ($request->hasFile('image')) {
-        //     if ($certfiedSteelProducts->image) {
-        //         Storage::delete('ArtistImg/images/' . $certfiedSteelProducts->image);
+        //     if ($certifiedSteelProducts->image) {
+        //         Storage::delete('ArtistImg/images/' . $certifiedSteelProducts->image);
         //     }
 
         //     $imageName = time() . '.' . $request->image->extension();
         //     $request->image->move(public_path('ArtistImg/images'), $imageName);
-        //     $certfiedSteelProducts->image = $imageName;
+        //     $certifiedSteelProducts->image = $imageName;
         // }
 
         // assighnes new meaning to each 
-        $certfiedSteelProducts->Product_name = $request->Product_name;
-        $certfiedSteelProducts->Certificate = $request->Certificate;
-        $certfiedSteelProducts->Price = $request->Price;
-        $certfiedSteelProducts->About = $request->About;
-        $certfiedSteelProducts->quantity = $request->quantity;
-        $certfiedSteelProducts->co2 = $request->co2;
-        $certfiedSteelProducts->weight = $request->weight;
-        $certfiedSteelProducts->weight_unit = $request->weight_unit;
-        $certfiedSteelProducts->save();
+        $certifiedSteelProducts->Product_name = $request->Product_name;
+        $certifiedSteelProducts->Certificate = $request->Certificate;
+        $certifiedSteelProducts->Price = $request->Price;
+        $certifiedSteelProducts->About = $request->About;
+        $certifiedSteelProducts->quantity = $request->quantity;
+        $certifiedSteelProducts->co2 = $request->co2;
+        $certifiedSteelProducts->weight = $request->weight;
+        $certifiedSteelProducts->weight_unit = $request->weight_unit;
+        $certifiedSteelProducts->save();
 
         return redirect()->route('myRoutes.certProd.steel')->with('success', 'Album updated successfully!');
     }
@@ -150,12 +150,12 @@ class SteelController extends Controller
 
 
 
-    public function destroy(CertfiedSteelProducts $certfiedSteelProducts)
+    public function destroy(CertfiedSteelProducts $certifiedSteelProducts)
     {
 
         //add delete images when you get the images 
 
-        $certfiedSteelProducts->delete();
+        $certifiedSteelProducts->delete();
         return redirect()->route('myRoutes.certProd.steel')->with('success', 'Album deleted successfully!');
     }
 

@@ -9,7 +9,7 @@ class notCertfiedWoodProducts extends Model
 {
 
     //this is where i let the model know what table i want it to work with
-    protected $table = 'not_certfied_wood_products';
+    protected $table = 'not_certified_wood_products';
 
 
     protected $fillable = [

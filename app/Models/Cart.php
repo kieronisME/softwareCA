@@ -48,8 +48,6 @@ class Cart extends Model
 
 
 
-
-
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////                                    ↓ certified products ↓                                       ////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -57,12 +55,8 @@ class Cart extends Model
 
     public function certifiedWoods()
     {
-        return $this->belongsToMany(CertfiedWoodProducts::class, 'cart_certified_wood')
-            ->withPivot('quantity');
+        return $this->belongsToMany(CertfiedWoodProducts::class, 'cart_certified_wood');
     }
-
-
-    
 
     public function certifiedMetals()
     {

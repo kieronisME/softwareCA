@@ -44,6 +44,6 @@ class User extends Authenticatable
     // cart can have one supplier and supplier can only have one cart
     public function cart()
     {
-        return $this->hasOne(carts::class);
+        return $this->hasOne(Cart::class);
     }
 }

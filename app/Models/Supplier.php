@@ -31,7 +31,7 @@ class Supplier extends Model
     // cart can have one supplier and supplier can only have one cart
     public function cart()
     {
-        return $this->hasOne(carts::class, 'supplier_id', 'supplier_id');
+        return $this->hasOne(Cart::class, 'supplier_id', 'supplier_id');
     }
 
 

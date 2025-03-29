@@ -41,6 +41,6 @@ class notCertfiedSteelProducts extends Model
     //many to many relasionship to carts
     public function carts()
     {
-        return $this->belongsToMany(carts::class, 'cart_not_certified_steel');
+        return $this->belongsToMany(Cart::class, 'cart_not_certified_steel');
     }
 }

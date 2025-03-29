@@ -40,6 +40,6 @@ class notCertfiedWoodProducts extends Model
     //many to many relasionship to carts
     public function carts()
     {
-        return $this->belongsToMany(carts::class, 'cart_not_certified_wood');
+        return $this->belongsToMany(Cart::class, 'cart_not_certified_wood');
     }
 }

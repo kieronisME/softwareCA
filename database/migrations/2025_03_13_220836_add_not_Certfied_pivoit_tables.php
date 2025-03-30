@@ -14,6 +14,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('cart_id')->constrained('carts')->onDelete('cascade');
             $table->foreignId('not_certified_wood_product_id')->constrained('not_certified_wood_products')->onDelete('cascade');
+            $table->integer('quantity')->default(1); 
         });
 
 

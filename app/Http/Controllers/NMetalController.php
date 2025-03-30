@@ -41,7 +41,7 @@ class NMetalController extends Controller
     {
 
         // Pass the data to the view
-        return view('myRoutes.CRUD.create');
+
     }
 
 
@@ -93,7 +93,7 @@ class NMetalController extends Controller
     
     public function edit(notCertfiedMetalProducts $notCertifiedMetalProducts)
     {
-        return view('myRoutes.CRUD.edit', compact('notCertifiedMetalProducts'));
+        return view('myRoutes.crud.Woodedit', compact('notCertifiedMetalProducts'));
     }
 
 

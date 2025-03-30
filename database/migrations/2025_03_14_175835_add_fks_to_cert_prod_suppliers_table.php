@@ -28,8 +28,6 @@ return new class extends Migration
                 ->onDelete('cascade');
 
 
-
-
             //steel
             $table->unsignedBigInteger('certified_steel_product_id')->nullable();
             $table->foreign('certified_steel_product_id')

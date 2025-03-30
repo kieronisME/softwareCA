@@ -40,7 +40,7 @@ class SteelController extends Controller
     {
 
         // Pass the data to the view
-        return view('myRoutes.CRUD.create');
+        return view('myRoutes.CRUD.Steelcreate');
     }
 
 
@@ -92,7 +92,7 @@ class SteelController extends Controller
     
     public function edit(CertfiedSteelProducts $certifiedSteelProducts)
     {
-        return view('myRoutes.CRUD.edit', compact('certifiedSteelProducts'));
+        return view('myRoutes.crud.Woodedit', compact('certifiedSteelProducts'));
     }
 
 

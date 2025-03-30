@@ -52,20 +52,23 @@ class Cart extends Model
     //////////////////                                    ↓ certified products ↓                                       ////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
     public function certifiedWoods()
     {
-        return $this->belongsToMany(CertfiedWoodProducts::class, 'cart_certified_wood');
+        return $this->belongsToMany(CertfiedWoodProducts::class, 'cart_certified_wood', 'cart_id', 'certified_wood_product_id')
+            ->withPivot('quantity');
     }
+
 
     public function certifiedMetals()
     {
-        return $this->belongsToMany(CertifiedMetalProducts::class, 'cart_certified_metal');
+        return $this->belongsToMany(CertifiedMetalProducts::class, 'cart_certified_metal')
+            ->withPivot('quantity');
     }
 
     public function certifiedSteels()
     {
-        return $this->belongsToMany(CertfiedSteelProducts::class, 'cart_certified_steel');
+        return $this->belongsToMany(CertfiedSteelProducts::class, 'cart_certified_steel')
+            ->withPivot('quantity');
     }
 
 
@@ -76,16 +79,19 @@ class Cart extends Model
 
     public function nonCertifiedWoods()
     {
-        return $this->belongsToMany(notCertfiedWoodProducts::class, 'cart_non_certified_wood');
+        return $this->belongsToMany(notCertfiedWoodProducts::class, 'cart_non_certified_wood')
+            ->withPivot('quantity');
     }
 
     public function nonCertifiedSteel()
     {
-        return $this->belongsToMany(notCertfiedSteelProducts::class, 'cart_non_certified_steel');
+        return $this->belongsToMany(notCertfiedSteelProducts::class, 'cart_non_certified_steel')
+            ->withPivot('quantity');
     }
 
     public function nonCertifiedMetal()
     {
-        return $this->belongsToMany(notCertfiedMetalProducts::class, 'cart_non_certified_metal');
+        return $this->belongsToMany(notCertfiedMetalProducts::class, 'cart_non_certified_metal')
+            ->withPivot('quantity');
     }
 }

@@ -40,7 +40,7 @@ class NSteelController extends Controller
     {
 
         // Pass the data to the view
-        return view('myRoutes.CRUD.create');
+
     }
 
 
@@ -92,7 +92,7 @@ class NSteelController extends Controller
     
     public function edit(notCertfiedSteelProducts $notCertfiedSteelProducts)
     {
-        return view('myRoutes.CRUD.edit', compact('notCertfiedSteelProducts'));
+        return view('myRoutes.crud.Woodedit', compact('notCertfiedSteelProducts'));
     }
 
 

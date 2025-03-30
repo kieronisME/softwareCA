@@ -41,7 +41,7 @@ class MetalController extends Controller
     {
 
         // Pass the data to the view
-        return view('myRoutes.CRUD.create');
+        return view('myRoutes.CertifiedMetalCRUD.create');
     }
 
 
@@ -79,7 +79,7 @@ class MetalController extends Controller
             'weight_unit' => $request->weight_unit,
 
         ]);
-        return redirect()->route('myRoutes.certProd.steel');
+        return redirect()->route('myRoutes.certProd.metal');
     }
 
 
@@ -91,9 +91,9 @@ class MetalController extends Controller
     //                                                                                             Edit
     //################################################################################################################################################################################################################################
     
-    public function edit(CertifiedMetalProducts $CertifiedMetalProducts)
+    public function edit(CertifiedMetalProducts $certifiedMetalProducts)
     {
-        return view('myRoutes.CRUD.edit', compact('CertifiedMetalProducts'));
+        return view('myRoutes.CertifiedMetalCRUD.edit', compact('certifiedMetalProducts'));
     }
 
 
@@ -102,7 +102,7 @@ class MetalController extends Controller
     //################################################################################################################################################################################################################################
     //                                                                                           Update
     //################################################################################################################################################################################################################################
-    public function update(Request $request, CertifiedMetalProducts $CertifiedMetalProducts)
+    public function update(Request $request, CertifiedMetalProducts $certifiedMetalProducts)
     {
         // Validations
         $request->validate([
@@ -118,27 +118,27 @@ class MetalController extends Controller
 
         // checks if image uplaoded
         // if ($request->hasFile('image')) {
-        //     if ($CertifiedMetalProducts->image) {
-        //         Storage::delete('ArtistImg/images/' . $CertifiedMetalProducts->image);
+        //     if ($certifiedMetalProducts->image) {
+        //         Storage::delete('ArtistImg/images/' . $certifiedMetalProducts->image);
         //     }
 
         //     $imageName = time() . '.' . $request->image->extension();
         //     $request->image->move(public_path('ArtistImg/images'), $imageName);
-        //     $CertifiedMetalProducts->image = $imageName;
+        //     $certifiedMetalProducts->image = $imageName;
         // }
 
         // assighnes new meaning to each 
-        $CertifiedMetalProducts->Product_name = $request->Product_name;
-        $CertifiedMetalProducts->Certificate = $request->Certificate;
-        $CertifiedMetalProducts->Price = $request->Price;
-        $CertifiedMetalProducts->About = $request->About;
-        $CertifiedMetalProducts->quantity = $request->quantity;
-        $CertifiedMetalProducts->co2 = $request->co2;
-        $CertifiedMetalProducts->weight = $request->weight;
-        $CertifiedMetalProducts->weight_unit = $request->weight_unit;
-        $CertifiedMetalProducts->save();
+        $certifiedMetalProducts->Product_name = $request->Product_name;
+        $certifiedMetalProducts->Certificate = $request->Certificate;
+        $certifiedMetalProducts->Price = $request->Price;
+        $certifiedMetalProducts->About = $request->About;
+        $certifiedMetalProducts->quantity = $request->quantity;
+        $certifiedMetalProducts->co2 = $request->co2;
+        $certifiedMetalProducts->weight = $request->weight;
+        $certifiedMetalProducts->weight_unit = $request->weight_unit;
+        $certifiedMetalProducts->save();
 
-        return redirect()->route('myRoutes.certProd.steel')->with('success', 'Album updated successfully!');
+        return redirect()->route('myRoutes.certProd.metal')->with('success', 'product updated successfully!');
     }
 
 
@@ -151,13 +151,12 @@ class MetalController extends Controller
 
 
 
-    public function destroy(CertifiedMetalProducts $CertifiedMetalProducts)
+    public function destroy(CertifiedMetalProducts $certifiedMetalProducts)
     {
-
         //add delete images when you get the images 
 
-        $CertifiedMetalProducts->delete();
-        return redirect()->route('myRoutes.certProd.steel')->with('success', 'Album deleted successfully!');
+        $certifiedMetalProducts->delete();
+        return redirect()->route('myRoutes.certProd.metal')->with('success', 'product deleted successfully!');
     }
 
 

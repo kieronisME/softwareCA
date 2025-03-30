@@ -17,7 +17,7 @@
         <!-- <div class="navBarContainer"></div> -->
         <h1>Certified steel Products</h1>
 
-        <a href="{{ route('myRoutes.CRUD.create') }}">
+        <a href="{{ route('myRoutes.CRUD.Steelcreate') }}">
             <div class="btn btn-primary me-2">add a product</div>
         </a>
 
@@ -33,7 +33,7 @@
                 About: {{ $certifiedSteelProducts->About }}
             </li>
 
-            <form action="{{ route('crud.destroy', $certifiedSteelProducts) }}" method="POST" onsubmit="return confirm('This action is permanent!');">
+            <form action="{{ route('crud.Wooddestroy', $certifiedSteelProducts) }}" method="POST" onsubmit="return confirm('This action is permanent!');">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="bg-red-800 rounded-lg mr-4 my-3 text-black py-1 px-1 hover:bg-red-300">
@@ -41,7 +41,7 @@
                 </button>
             </form>
 
-            <form action="{{ route('crud.edit', $certifiedSteelProducts) }}">
+            <form action="{{ route('crud.Woodedit', $certifiedSteelProducts) }}">
                 @csrf
                 <button type="submit" class="bg-red-800 rounded-lg mr-4 my-3 text-black py-1 px-1 hover:bg-red-300">
                    edit

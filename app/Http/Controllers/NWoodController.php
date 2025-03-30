@@ -39,7 +39,7 @@ class NWoodController extends Controller
     {
 
         // Pass the data to the view
-        return view('myRoutes.CRUD.create');
+
     }
 
 
@@ -89,7 +89,7 @@ class NWoodController extends Controller
     
     public function edit(notCertfiedWoodProducts $notCertfiedWoodProducts)
     {
-        return view('myRoutes.CRUD.edit', compact('notCertfiedWoodProducts'));
+        return view('myRoutes.crud.Woodedit', compact('notCertfiedWoodProducts'));
     }
 
 

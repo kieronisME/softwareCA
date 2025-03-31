@@ -52,6 +52,8 @@ class Cart extends Model
     //////////////////                                    ↓ certified products ↓                                       ////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+    //i must explicetly add the name of the fk as singlure or laravl will make it pulral and if it does that it will error me saying my fk doesnt exsit.
     public function certifiedWoods()
     {
         return $this->belongsToMany(CertfiedWoodProducts::class, 'cart_certified_wood', 'cart_id', 'certified_wood_product_id')
@@ -61,13 +63,13 @@ class Cart extends Model
 
     public function certifiedMetals()
     {
-        return $this->belongsToMany(CertifiedMetalProducts::class, 'cart_certified_metal')
+        return $this->belongsToMany(CertifiedMetalProducts::class,'cart_certified_metal','cart_id','certified_metal_product_id')
             ->withPivot('quantity');
     }
 
     public function certifiedSteels()
     {
-        return $this->belongsToMany(CertfiedSteelProducts::class, 'cart_certified_steel')
+        return $this->belongsToMany(CertfiedSteelProducts::class, 'cart_certified_steel','cart_id','certified_steel_product_id')
             ->withPivot('quantity');
     }
 
@@ -77,6 +79,9 @@ class Cart extends Model
     //////////////////                                    ↓ not certified products ↓                                   ////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+
+    //fks might be too long to add i will see when i add these if i need to use the custom ones 
     public function nonCertifiedWoods()
     {
         return $this->belongsToMany(notCertfiedWoodProducts::class, 'cart_non_certified_wood')

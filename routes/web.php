@@ -64,8 +64,6 @@ Route::get('/dashboard', function () {
 
 
 
-
-
 //################################################################################################################################################################################################################################
 // TOP<-                                                                               certified materials views                                       
 //################################################################################################################################################################################################################################
@@ -94,15 +92,44 @@ Route::get('/myRoutes/certProd/Nsteel', [NSteelController::class, 'Nsteel'])->na
 // TOP<-                                                                                     Cart crud                                     
 //################################################################################################################################################################################################################################
 
-//VIEW
-// Route::get('/myRoutes/cart', [CartController::class, 'viewCart'])->name('myRoutes.cart');
-
 Route::middleware(['auth'])->group(function () {
-    Route::post('/cart/add/{product}', [CartController::class, 'addToCart'])->name('cart.add');
-    Route::post('/cart/remove/{product}', [CartController::class, 'removeFromCart'])->name('cart.remove');
-    Route::get('/myRoutes/cart', [CartController::class, 'viewCart'])->name('myRoutes.cart');
-});
 
+
+
+    Route::get('/myRoutes/cart', [CartController::class, 'viewCart'])->name('myRoutes.cart');
+    Route::patch('/cart/update/{product}', [CartController::class, 'update'])->name('cart.update');
+    
+    //                                           CERTIFIED                                                 //
+    //Wood cart routes
+    Route::post('/cart/add/{product}', [CartController::class, 'addWoodToCart'])->name('cart.add.wood');
+    Route::patch('/cart/update/wood/{product}', [CartController::class, 'Woodedit'])->name('cart.edit.wood');
+    Route::post('/cart/remove/{product}', [CartController::class, 'removeWoodFromCart'])->name('cart.remove');
+
+
+    //Metal cart routes
+    Route::post('/cart/add/metal/{product}', [CartController::class, 'addMetalToCart'])->name('cart.add.metal');
+    Route::patch('/cart/update/metal/{product}', [CartController::class, 'Metaledit'])->name('cart.edit.metal');
+    Route::delete('/cart/remove/metal/{product}', [CartController::class, 'removeMetalFromCart'])->name('cart.remove.metal');
+
+
+    //Steel cart routes
+    Route::post('/cart/add/steel/{product}', [CartController::class, 'addSteelToCart'])->name('cart.add.steel');
+    Route::patch('/cart/update/steel/{product}', [CartController::class, 'Steeledit'])->name('cart.edit.steel');
+    Route::delete('/cart/remove/steel/{product}', [CartController::class, 'removeSteelFromCart'])->name('cart.remove.steel');
+
+
+
+    //                                     NOT CERTIFIED                                              //
+
+
+
+
+
+
+
+
+
+});
 
 
 

@@ -12,12 +12,6 @@
         <h1 class="mb-4">Welcome</h1>
  
 
-            <div>
-
-                     <a href="{{ route('login') }}" class="btn btn-primary me-2">you did it</a>
-
-
-            </div>
    
     </div>
  

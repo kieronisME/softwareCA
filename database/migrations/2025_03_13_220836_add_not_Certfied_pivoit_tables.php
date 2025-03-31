@@ -23,6 +23,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('cart_id')->constrained('carts')->onDelete('cascade');
             $table->foreignId('not_certified_metal_product_id')->constrained('not_certified_metal_products')->onDelete('cascade');
+            $table->integer('quantity')->default(1);
         });
 
 
@@ -31,6 +32,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('cart_id')->constrained('carts')->onDelete('cascade');
             $table->foreignId('not_certified_steel_product_id')->constrained('not_certified_steel_products')->onDelete('cascade');
+            $table->integer('quantity')->default(1);
         });
     }
 

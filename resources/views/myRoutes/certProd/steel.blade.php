@@ -33,6 +33,13 @@
                 About: {{ $certifiedSteelProducts->About }}
             </li>
 
+            <form action="{{ route('cart.add.steel', $certifiedSteelProducts) }}" method="POST" class="d-inline">
+                @csrf
+                <input type="number" name="quantity" value="1" min="1" max="{{ $certifiedSteelProducts->quantity }}"
+                    class="form-control d-inline-block" style="width: 80px;">
+                <button type="submit" class="btn btn-primary">Add to Cart</button>
+            </form>
+
             <form action="{{ route('crud.Wooddestroy', $certifiedSteelProducts) }}" method="POST" onsubmit="return confirm('This action is permanent!');">
                 @csrf
                 @method('DELETE')
@@ -44,7 +51,7 @@
             <form action="{{ route('crud.Woodedit', $certifiedSteelProducts) }}">
                 @csrf
                 <button type="submit" class="bg-red-800 rounded-lg mr-4 my-3 text-black py-1 px-1 hover:bg-red-300">
-                   edit
+                    edit
                 </button>
             </form>
 
@@ -52,6 +59,6 @@
             <div>
 
 
-            @endforeach
+                @endforeach
         </ul>
     </div>

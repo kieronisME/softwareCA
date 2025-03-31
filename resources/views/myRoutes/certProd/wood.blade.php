@@ -27,7 +27,7 @@
 
                 <div class="mt-2">
                     <!-- Single Add to Cart Form -->
-                    <form action="{{ route('cart.add', $product) }}" method="POST" class="d-inline">
+                    <form action="{{ route('cart.add.wood', $product) }}" method="POST" class="d-inline">
                         @csrf
                         <input type="number" name="quantity" value="1" min="1" max="{{ $product->quantity }}" class="form-control d-inline-block" style="width: 80px;">
                         <button type="submit" class="btn btn-primary">Add to Cart</button>

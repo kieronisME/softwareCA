@@ -3,14 +3,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Wood Products</title>
+    <title>Metal Products</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <h1>Certified Wood Products</h1>
+        <h1>Certified Metal Products</h1>
 
-        <a href="{{ route('myRoutes.CertifiedWoodCRUD.create') }}" class="btn btn-primary me-2">
+        <a href="{{ route('myRoutes.CertifiedMetalCRUD.create') }}" class="btn btn-primary me-2">
             Add a product
         </a>
 
@@ -26,11 +26,7 @@
                 About: {{ $certifiedMetalProducts->About }}
 
                 <div class="mt-2">
-                    <form action="{{ route('Metalcart.add', $certifiedMetalProducts) }}" method="POST" class="d-inline">
-                        @csrf
-                        <input type="number" name="quantity" value="1" min="1" max="{{ $certifiedMetalProducts->quantity }}" class="form-control d-inline-block" style="width: 80px;">
-                        <button type="submit" class="btn btn-primary">Add to Cart</button>
-                    </form>
+
 
                     <form action="{{ route('crud.Metaldestroy', $certifiedMetalProducts) }}" method="POST" class="d-inline" onsubmit="return confirm('This action is permanent!');">
                         @csrf

@@ -17,7 +17,7 @@ class CertifiedMetalProductsTableSeeder extends Seeder
 
         $products = [
             [
-                'Product_name' => 'Certified Oak Wood',
+                'Product_name' => 'this is metal',
                 'Price' => 150.00,
                 'Certificate'=> 'fsc',
                 'About' => 'High-quality oak wood certified for sustainability.',

@@ -16,17 +16,58 @@ class RegistrationTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function test_new_users_can_register($name, $email, $password, $role): void
-    {
-        $response = $this->post('/register', [
-            'name' => $name,
-            'email' => $email,
-            'password' => $password,
-            'password_confirmation' => $password,
-            'role' => $role,
-        ]);
 
-        $this->assertAuthenticated();
-        $response->assertRedirect(route('dashboard', absolute: false));
+
+/*
+ * @return array[]
+*/
+
+    
+public static function userDataProvider(): array
+{
+    $users = [];
+    for ($i = 1; $i <= 100; $i++) {
+        $users[] = [
+            'name' => 'TEST_USER_' . $i,
+            'email' => 'test_' . $i . '@example.com',
+            'password' => 'Password123!',
+        ];
     }
+    return $users;
+}
+
+
+
+    /**
+     * @dataProvider userDataProvider
+     */
+
+
+
+public function test_new_users_can_register($name, $email, $password)
+{
+    $response = $this->post('/register', [
+        'name' => $name,
+        'email' => $email,
+        'password' => $password,
+        'password_confirmation' => $password,
+    ]);
+
+    $this->assertDatabaseHas('users', [
+        'email' => $email
+    ]);
+    
+    $this->assertAuthenticated();
+    
+    $response->assertRedirect(route('dashboard'));
+}
+
+
+
+
+
+
+
+
+    
 }

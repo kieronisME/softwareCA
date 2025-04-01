@@ -112,10 +112,6 @@
 
 
 
-        <form action="{{ route('cart.buy', $product) }}" method="POST" class="d-inline">
-            @csrf
-            <button type="submit" class="btn btn-danger">buy some shi</button>
-        </form>
 
 
     </div>

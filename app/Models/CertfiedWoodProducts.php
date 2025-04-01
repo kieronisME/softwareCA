@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 
@@ -9,6 +10,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class CertfiedWoodProducts extends Model
 {
+
+    use HasFactory;
 
     //this is where i let the model know what table i want it to work with
     protected $table = 'certified_wood_products';

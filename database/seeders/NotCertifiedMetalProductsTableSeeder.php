@@ -11,7 +11,7 @@ class NotCertifiedMetalProductsTableSeeder extends Seeder
 
     public function run(): void
     {
-        
+
         $products = [
             [
                 'Product_name' => 'Certified Oak Wood',
@@ -29,4 +29,11 @@ class NotCertifiedMetalProductsTableSeeder extends Seeder
         // Insert the data into the certified_wood_products table
         DB::table('not_certified_metal_products')->insert($products);
     }
+
+
+    //to test stress comment out the public function above and uncomment this public funtion 
+    // public function run(): void
+    // {
+    //      notCertfiedMetalProducts::factory()->count(10000)->create();
+    // }
 }

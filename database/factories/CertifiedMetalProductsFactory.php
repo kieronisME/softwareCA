@@ -4,7 +4,9 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class CertfiedWoodProductsFactory extends Factory
+
+
+class CertifiedMetalProductsFactory extends Factory
 {
     public function definition(): array
     {

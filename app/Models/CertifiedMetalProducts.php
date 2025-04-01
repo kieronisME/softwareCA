@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 
@@ -10,6 +10,9 @@ use Illuminate\Database\Eloquent\Model;
 class CertifiedMetalProducts extends Model
 {
 
+
+    use HasFactory;
+    
     //this is where i let the model know what table i want it to work with
     protected $table = 'certified_metal_products';
 

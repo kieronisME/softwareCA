@@ -32,7 +32,7 @@
                         <input type="number" name="quantity" value="1" min="1" max="{{ $notCertWoodproduct->quantity }}" class="form-control d-inline-block" style="width: 80px;">
                         <button type="submit" class="btn btn-primary">Add to Cart</button>
                     </form>
-
+                    @if((auth()->guard('admin')->check()) || (auth()->guard('supplier')->check()))
                     <form action="{{ route('pleasDelete', $notCertWoodproduct) }}" method="POST" class="d-inline" onsubmit="return confirm('This action is permanent!');">
                         @csrf
                         @method('DELETE')
@@ -41,6 +41,7 @@
                     
 
                     <a href="{{ route('crud.NWoodedit', $notCertWoodproduct) }}" class="btn btn-secondary">Edit</a>
+                    @endif
                 </div>
             </li>
             @endforeach

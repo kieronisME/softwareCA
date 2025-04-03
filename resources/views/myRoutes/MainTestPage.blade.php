@@ -12,6 +12,16 @@
     <div class="text-center">
         <h1 class="mb-4">Welcome</h1>
 
+
+        @if((auth()->guard('admin')->check()) || (auth()->guard('supplier')->check()))
+            <div class="alert alert-success mb-4">
+                <strong>YOU ARE VERIFIED</strong>
+            </div>
+        @endif
+
+
+
+
         <!-- CART -->
 
         @if (Route::has('myRoutes.cart'))

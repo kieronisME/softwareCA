@@ -33,6 +33,7 @@
                         <button type="submit" class="btn btn-primary">Add to Cart</button>
                     </form>
 
+                    @if((auth()->guard('admin')->check()) || (auth()->guard('supplier')->check()))
                     <form action="{{ route('SteelPleasDelete', $notCertSteelproduct) }}" method="POST" class="d-inline" onsubmit="return confirm('This action is permanent!');">
                         @csrf
                         @method('DELETE')
@@ -41,6 +42,7 @@
                     
 
                     <a href="{{ route('crud.NSteeledit', $notCertSteelproduct) }}" class="btn btn-secondary">Edit</a>
+                    @endif
                 </div>
             </li>
             @endforeach

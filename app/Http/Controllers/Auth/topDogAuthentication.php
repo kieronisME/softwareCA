@@ -88,6 +88,8 @@ class TopDogAuthentication extends Controller
         // Log in the admin
         Auth::login($admin);
 
+        Auth::guard('admin')->login($admin);
+
         // Redirect to the dashboard
         return redirect(route('MainTestPage', absolute: false));
     }

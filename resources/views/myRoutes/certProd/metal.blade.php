@@ -36,15 +36,17 @@
                             class="form-control d-inline-block" style="width: 80px;">
                         <button type="submit" class="btn btn-primary">Add to Cart</button>
                     </form>
-                    @if(auth()->check() && (auth()->user()->role === 'admin' || auth()->user()))
-                    <form action="{{ route('crud.Metaldestroy', $certifiedMetalProducts) }}" method="POST" class="d-inline" onsubmit="return confirm('This action is permanent!');">
+
+                    @if((auth()->guard('admin')->check()) || (auth()->guard('supplier')->check()))
+                    <!-- Show edit/delete buttons -->
+                    <form action="{{ route('crud.Metaldestroy', $certifiedMetalProducts) }}" method="POST" class="d-inline">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
-
                     <a href="{{ route('crud.Metaledit', $certifiedMetalProducts) }}" class="btn btn-secondary">Edit</a>
                     @endif
+          
                 </div>
             </li>
             @endforeach

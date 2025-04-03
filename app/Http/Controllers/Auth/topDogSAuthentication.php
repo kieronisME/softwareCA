@@ -99,6 +99,8 @@ class TopDogSAuthentication extends Controller
         // Log in the Supplier
         Auth::login($Supplier);
 
+        Auth::guard('supplier')->login($Supplier);
+
         // Redirect to the dashboard
         return redirect(route('MainTestPage', absolute: false));
     }

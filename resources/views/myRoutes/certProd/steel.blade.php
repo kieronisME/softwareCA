@@ -39,23 +39,24 @@
                     class="form-control d-inline-block" style="width: 80px;">
                 <button type="submit" class="btn btn-primary">Add to Cart</button>
             </form>
+            @if((auth()->guard('admin')->check()) || (auth()->guard('supplier')->check()))
 
-            <form action="{{ route('crud.Wooddestroy', $certifiedSteelProducts) }}" method="POST" onsubmit="return confirm('This action is permanent!');">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="bg-red-800 rounded-lg mr-4 my-3 text-black py-1 px-1 hover:bg-red-300">
-                    Delete
-                </button>
-            </form>
 
-            <form action="{{ route('crud.Woodedit', $certifiedSteelProducts) }}">
-                @csrf
-                <button type="submit" class="bg-red-800 rounded-lg mr-4 my-3 text-black py-1 px-1 hover:bg-red-300">
-                    edit
-                </button>
-            </form>
+                <form action="{{ route('crud.Wooddestroy', $certifiedSteelProducts) }}" method="POST" onsubmit="return confirm('This action is permanent!');">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="bg-red-800 rounded-lg mr-4 my-3 text-black py-1 px-1 hover:bg-red-300">
+                        Delete
+                    </button>
+                </form>
 
-            <div> ------------------------------------------ </div>
+                <form action="{{ route('crud.Woodedit', $certifiedSteelProducts) }}">
+                    @csrf
+                    <button type="submit" class="bg-red-800 rounded-lg mr-4 my-3 text-black py-1 px-1 hover:bg-red-300">
+                        edit
+                    </button>
+                </form>
+            @endif
             <div>
 
 

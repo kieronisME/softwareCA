@@ -33,14 +33,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-// ORDER 
 
-// Login Routes
-// USERS 
-// API 
-// Crud
-// certified materials
-// not certified materials
 
 //################################################################################################################################################################################################################################
 //                                                                                          REMEBER
@@ -97,39 +90,54 @@ Route::middleware(['auth'])->group(function () {
 
 
     Route::get('/myRoutes/cart', [CartController::class, 'viewCart'])->name('myRoutes.cart');
-    Route::patch('/cart/update/{product}', [CartController::class, 'update'])->name('cart.update');
-    
-    //                                           CERTIFIED                                                 //
+
+
+    //------------------------------------------------CERTIFIED------------------------------------------------//
     //Wood cart routes
     Route::post('/cart/add/{product}', [CartController::class, 'addWoodToCart'])->name('cart.add.wood');
-    Route::patch('/cart/update/wood/{product}', [CartController::class, 'Woodedit'])->name('cart.edit.wood');
-    Route::post('/cart/remove/{product}', [CartController::class, 'removeWoodFromCart'])->name('cart.remove');
-
+    Route::delete('/cart/remove/{product}', [CartController::class, 'removeWoodFromCart'])->name('cart.remove');
+    Route::patch('/cart/update/{product}', [CartController::class, 'Woodupdate'])->name('cart.update');
 
     //Metal cart routes
     Route::post('/cart/add/metal/{product}', [CartController::class, 'addMetalToCart'])->name('cart.add.metal');
-    Route::patch('/cart/update/metal/{product}', [CartController::class, 'Metaledit'])->name('cart.edit.metal');
     Route::delete('/cart/remove/metal/{product}', [CartController::class, 'removeMetalFromCart'])->name('cart.remove.metal');
+    Route::patch('/cart/update/metal/{product}', [CartController::class, 'Metalupdate'])->name('cart.update.metal');
 
 
     //Steel cart routes
     Route::post('/cart/add/steel/{product}', [CartController::class, 'addSteelToCart'])->name('cart.add.steel');
-    Route::patch('/cart/update/steel/{product}', [CartController::class, 'Steeledit'])->name('cart.edit.steel');
     Route::delete('/cart/remove/steel/{product}', [CartController::class, 'removeSteelFromCart'])->name('cart.remove.steel');
+    Route::patch('/cart/update/steel/{product}', [CartController::class, 'Steelupdate'])->name('cart.update.steel');
 
 
 
-    //                                     NOT CERTIFIED                                              //
+    //----------------------------------------------NOT CERTIFIED----------------------------------------------//
+
+    //Not Certified Wood cart routes
+    Route::post('/cart/Nadd/{product}', [CartController::class, 'addNWoodToCart'])->name('cart.add.Nwood');
+    Route::delete('/cart/Nremove/{notCertWoodproduct}', [CartController::class, 'removeNWoodFromCart'])->name('cart.Nremove');
+    Route::patch('/cart/Nupdate/{notCertWoodproduct}', [CartController::class, 'Nupdate'])->name('cart.Nupdate');
 
 
 
+    //Not Certified Metal cart routes
+    Route::post('/cart/NMadd/{product}', [CartController::class, 'addNMetalToCart'])->name('cart.add.Nmetal');
+    Route::delete('/cart/metalremove/{notCertMetalproduct}', [CartController::class, 'removeNMetalFromCart'])->name('cart.NMetalremove');
+    Route::patch('/cart/Nupdate/{notCertMetalproduct}', [CartController::class, 'NMetalupdate'])->name('cart.NMetalupdate');
 
 
 
-
-
-
+    //Not Certified Steel cart routes
+    Route::post('/cart/NSadd/{product}', [CartController::class, 'addNSteelToCart'])->name('cart.add.Nsteel');
+    Route::delete('/cart/NSteelremove/{notCertSteelproduct}', [CartController::class, 'removeNSteelFromCart'])->name('cart.NSteelremove');
+    Route::patch('/cart/Nupdate/{notCertSteelproduct}', [CartController::class, 'NSteelupdate'])->name('cart.NSteelupdate');
 });
+
+
+
+
+
+
 
 
 
@@ -166,11 +174,11 @@ Route::delete('/delete/{certifiedMetalProducts}', [MetalController::class, 'dest
 // MIDDLE<-                                                                            Certified Steel Crud                                              
 //################################################################################################################################################################################################################################
 
-Route::get('/myRoutes/CRUD/Steelcreate', [SteelController::class, 'create'])->name('myRoutes.CRUD.Steelcreate');
+Route::get('/myRoutes/CRUD/Steelcreate', [SteelController::class, 'create'])->name('myRoutes.CertifiedSteelCRUD.create');
 Route::post('/myRoutes/certProd/Steel', [SteelController::class, 'store'])->name('myRoutes.Steelstore');
 Route::put('/myRoutes/{certifiedSteelProducts}/update', [SteelController::class, 'update'])->name('crud.Steelupdate');
-Route::get('/myRoutes/{certifiedSteelProducts}/edit', [SteelController::class, 'edit'])->name('crud.Woodedit');
-Route::delete('/myRoutes/{certifiedSteelProducts}', [SteelController::class, 'destroy'])->name('crud.Wooddestroy');
+Route::get('/myRoutes/{certifiedSteelProducts}/edit', [SteelController::class, 'edit'])->name('crud.Steeledit');
+Route::delete('/myRoutes/{certifiedSteelProducts}', [SteelController::class, 'destroy'])->name('crud.Steeldestroy');
 
 
 
@@ -191,23 +199,21 @@ Route::delete('/myRoutes/{certifiedSteelProducts}', [SteelController::class, 'de
 // MIDDLE<-                                                                            not Certified Wood Crud                                              
 //################################################################################################################################################################################################################################
 
-// Route::get('/myRoutes/CRUD/Ncreate', [NWoodController::class, 'create'])->name('myRoutes.CRUD.Ncreate');
-// Route::post('/myRoutes/certProd/Nwood', [NWoodController::class, 'store'])->name('myRoutes.Nstore');
-// Route::put('/myRoutes/{notcertifiedWoodProducts}/Nupdate', [NWoodController::class, 'update'])->name('crud.Nupdate');
-// Route::get('/myRoutes/{notcertifiedWoodProducts}/edit', [NWoodController::class, 'edit'])->name('crud.Nedit');
-// Route::delete('/myRoutes/{notcertifiedWoodProducts}', [NWoodController::class, 'destroy'])->name('crud.Ndestroy');
+Route::get('/myRoutes/CRUD/Ncreate', [NWoodController::class, 'create'])->name('myRoutes.NotCertifiedWoodCRUD.create');
+Route::post('/myRoutes/certProd/Nwood', [NWoodController::class, 'store'])->name('myRoutes.NWoodstore');
 
 
 
-//################################################################################################################################################################################################################################
-// MIDDLE<-                                                                            not Certified Steel Crud                                              
-//################################################################################################################################################################################################################################
 
-// Route::get('/myRoutes/CRUD/create', [NSteelController::class, 'create'])->name('myRoutes.CertifiedWoodCRUD.create');
-// Route::post('/myRoutes/certProd/wood', [NSteelController::class, 'store'])->name('myRoutes.Nstore');
-// Route::put('/myRoutes/{certifiedWoodProducts}/update', [NSteelController::class, 'update'])->name('crud.Nupdate');
-// Route::get('/myRoutes/{certifiedWoodProducts}/edit', [NSteelController::class, 'edit'])->name('crud.Nedit');
-// Route::delete('/myRoutes/{certifiedWoodProducts}', [NSteelController::class, 'destroy'])->name('crud.Ndestroy');
+Route::put('/myRoutes/{notCertfiedWoodProducts}/Nupdate', [NWoodController::class, 'update'])->name('crud.Nupdate');
+
+
+
+
+
+Route::get('/MmyRoutes/{notCertfiedWoodProducts}/edit', [NWoodController::class, 'edit'])->name('crud.NWoodedit');
+Route::delete('/Notcertdelete/{notCertfiedWoodProducts}', [NWoodController::class, 'Ndestroy'])->name('pleasDelete');
+
 
 
 
@@ -216,11 +222,29 @@ Route::delete('/myRoutes/{certifiedSteelProducts}', [SteelController::class, 'de
 // MIDDLE<-                                                                            not Certified Metal Crud                                              
 //################################################################################################################################################################################################################################
 
-// Route::get('/myRoutes/CRUD/create', [NMetalController::class, 'create'])->name('myRoutes.CRUD.CertifiedWoodCRUD.Ncreate');
-// Route::post('/myRoutes/certProd/wood', [NMetalController::class, 'store'])->name('myRoutes.Nstore');
-// Route::put('/myRoutes/{certifiedWoodProducts}/update', [NMetalController::class, 'update'])->name('crud.Nupdate');
-// Route::get('/myRoutes/{certifiedWoodProducts}/edit', [NMetalController::class, 'edit'])->name('crud.Nedit');
-// Route::delete('/myRoutes/{certifiedWoodProducts}', [NMetalController::class, 'destroy'])->name('crud.Ndestroy');
+
+Route::get('/myRoutes/CRUD/MetalNcreate', [NMetalController::class, 'create'])->name('myRoutes.NotCertifiedMetalCRUD.create');
+Route::post('/myRoutes/certProd/Nmetal', [NMetalController::class, 'store'])->name('myRoutes.NMetalstore');
+Route::put('/myRoutes/{notCertfiedMetalProducts}/NMetalupdate', [NMetalController::class, 'update'])->name('crud.NMetalupdate');
+Route::get('/MetalmyRoutes/{notCertfiedMetalProducts}/edit', [NMetalController::class, 'edit'])->name('crud.NMetaledit');
+Route::delete('/NotcertMetaldelete/{notCertfiedMetalProducts}', [NMetalController::class, 'Ndestroy'])->name('MetalPleasDelete');
+
+
+
+//################################################################################################################################################################################################################################
+// MIDDLE<-                                                                            not Certified Steel Crud                                              
+//################################################################################################################################################################################################################################
+
+
+Route::get('/myRoutes/CRUD/SteelNcreate', [NSteelController::class, 'create'])->name('myRoutes.NotCertifiedSteelCRUD.create');
+Route::post('/myRoutes/certProd/Nsteel', [NSteelController::class, 'store'])->name('myRoutes.NSteelstore');
+Route::put('/pleasework/{notCertfiedSteelProducts}/NSteelupdate', [NSteelController::class, 'update'])->name('crud.NSteelupdate');
+Route::get('/notSteelmyRoutes/{notCertfiedSteelProducts}/edit', [NSteelController::class, 'edit'])->name('crud.NSteeledit');
+Route::delete('/NotcertSteeldelete/{notCertfiedSteelProducts}', [NSteelController::class, 'Ndestroy'])->name('SteelPleasDelete');
+
+
+
+
 
 
 

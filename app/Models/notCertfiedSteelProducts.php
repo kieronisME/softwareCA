@@ -21,8 +21,8 @@ class notCertfiedSteelProducts extends Model
         'About',
         'quantity',
         'co2',
-        // 'weight',
-        // 'weight_unit',
+        'weight',
+        'weight_unit',
     ];
 
     //this is how where i say how i want certain elemets to be displayed 

@@ -17,7 +17,7 @@
         <!-- <div class="navBarContainer"></div> -->
         <h1>Certified steel Products</h1>
 
-        <a href="{{ route('myRoutes.CRUD.Steelcreate') }}">
+        <a href="{{ route('myRoutes.CertifiedSteelCRUD.create') }}">
             <div class="btn btn-primary me-2">add a product</div>
         </a>
 

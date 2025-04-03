@@ -13,7 +13,7 @@ class NotCertifiedSteelProductsTableSeeder extends Seeder
 
         $products = [
             [
-                'Product_name' => 'Certified Oak Wood',
+                'Product_name' => 'not cert steel',
                 'Price' => 150.00,
                 'About' => 'High-quality oak wood certified for sustainability.',
                 'quantity' => 100,

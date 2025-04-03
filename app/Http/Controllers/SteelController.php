@@ -40,7 +40,7 @@ class SteelController extends Controller
     {
 
         // Pass the data to the view
-        return view('myRoutes.CRUD.Steelcreate');
+        return view('myRoutes.CertifiedSteelCRUD.create');
     }
 
 

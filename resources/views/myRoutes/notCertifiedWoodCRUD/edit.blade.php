@@ -17,11 +17,11 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-black opacity-75 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-black">
-                    <h3 class="font-semibold text-lg mb-4">YOU ARE IN  CERTIFIED WOOD PROUCT EDIT: {{ $certifiedWoodProducts->Product_name }}</h3>
-                    <x-pleasework-form
-                        :action="route('crud.update',  $certifiedWoodProducts->id)" 
+                    <h3 class="font-semibold text-lg mb-4">YOU ARE IN NOT CERT WOOD PROUCT EDIT: {{ $notCertfiedWoodProducts->Product_name }}</h3>
+                    <x-pleaseworkNotcert-form
+                        :action="route('crud.Nupdate',  $notCertfiedWoodProducts->id)" 
                         method="PUT" 
-                        :certifiedWoodProducts="$certifiedWoodProducts"
+                        :notCertfiedWoodProducts="$notCertfiedWoodProducts"
                     />
                 </div>
             </div>

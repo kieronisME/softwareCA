@@ -17,7 +17,7 @@ return new class extends Migration
             // $table->string('Certificate'); 
             $table->decimal('Price', 8, 3); 
             $table->string('About')->nullable(); 
-            $table->integer('quantity'); 
+            $table->integer('quantity')->default(0);
             $table->decimal('co2', 8, 2); 
             $table->string('weight'); 
             $table->string('weight_unit');

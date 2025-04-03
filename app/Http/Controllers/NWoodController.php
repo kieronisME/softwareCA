@@ -24,12 +24,12 @@ class NWoodController extends Controller
     //################################################################################################################################################################################################################################
     public function Nwood()
     {
-        $notWoodProducts = notCertfiedWoodProducts::all();
+        $notwoodProducts = notCertfiedWoodProducts::all();
 
         // Pass the data to the view
-        return view('myRoutes.notCertProd.Nwood', compact('notWoodProducts'));
+        return view('myRoutes.notCertProd.Nwood', compact('notwoodProducts'));
     }
-
+    
 
     //################################################################################################################################################################################################################################
     //                                                                                           Create
@@ -38,7 +38,7 @@ class NWoodController extends Controller
     public function create()
     {
 
-        // Pass the data to the view
+        return view('myRoutes.NOTCertifiedWoodCRUD.create');
 
     }
 
@@ -55,7 +55,6 @@ class NWoodController extends Controller
         //validations 
         $request->validate([
             'Product_name' => 'required|string|max:255',
-            'Certificate' => 'required|string|max:255',
             'Price' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
             'About' => 'required|string|max:1000',
             'quantity' => 'required|integer|min:1',
@@ -68,7 +67,6 @@ class NWoodController extends Controller
         //creating new artist in DB
         notCertfiedWoodProducts::create([
             'Product_name' => $request->Product_name,
-            'Certificate' => $request->Certificate,
             'Price' => $request->Price,
             'About' => $request->About,
             'quantity' => $request->quantity,
@@ -77,7 +75,7 @@ class NWoodController extends Controller
             'weight_unit' => $request->weight_unit,
 
         ]);
-        return redirect()->route('myRoutes.certProd.wood');
+        return redirect()->route('myRoutes.notCertProd.Nwood');
     }
 
 
@@ -89,7 +87,7 @@ class NWoodController extends Controller
     
     public function edit(notCertfiedWoodProducts $notCertfiedWoodProducts)
     {
-        return view('myRoutes.crud.Woodedit', compact('notCertfiedWoodProducts'));
+        return view('myRoutes.notCertifiedWoodCRUD.edit', compact('notCertfiedWoodProducts'));
     }
 
 
@@ -103,7 +101,6 @@ class NWoodController extends Controller
         // Validations
         $request->validate([
             'Product_name' => 'required|string|max:255',
-            'Certificate' => 'required|string|max:255',
             'Price' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
             'About' => 'required|string|max:1000',
             'quantity' => 'required|integer|min:1',
@@ -125,7 +122,6 @@ class NWoodController extends Controller
 
         // assighnes new meaning to each 
         $notCertfiedWoodProducts->Product_name = $request->Product_name;
-        $notCertfiedWoodProducts->Certificate = $request->Certificate;
         $notCertfiedWoodProducts->Price = $request->Price;
         $notCertfiedWoodProducts->About = $request->About;
         $notCertfiedWoodProducts->quantity = $request->quantity;
@@ -134,7 +130,7 @@ class NWoodController extends Controller
         $notCertfiedWoodProducts->weight_unit = $request->weight_unit;
         $notCertfiedWoodProducts->save();
 
-        return redirect()->route('myRoutes.certProd.wood')->with('success', 'Album updated successfully!');
+        return redirect()->route('myRoutes.certProd.Nwood')->with('success', 'Product updated successfully!');
     }
 
     
@@ -144,13 +140,14 @@ class NWoodController extends Controller
    
 
 
-    public function destroy(notCertfiedWoodProducts $notCertfiedWoodProducts)
+    public function Ndestroy(notCertfiedWoodProducts $notCertfiedWoodProducts)
     {
 
         //add delete images when you get the images 
 
         $notCertfiedWoodProducts->delete();
-        return redirect()->route('myRoutes.certProd.wood')->with('success', 'Album deleted successfully!');
+        
+        return redirect()->route('myRoutes.certProd.Nwood')->with('success', 'Product deleted successfully!');
     }
-
+    
 }

@@ -10,28 +10,17 @@ use Illuminate\Support\Facades\Storage;
 class NMetalController extends Controller
 {
 
-    //veiw test page
-    public function viewTestPage()
-    {
-
-
-        // Pass the data to the Steel
-        return view('myRoutes.MainTestPage');
-    }
-
     //################################################################################################################################################################################################################################
-    //                                                                                          certified steel view
+    //                                                                                   not certified metal view
     //################################################################################################################################################################################################################################
     public function Nmetal()
     {
-        $notMetalPorducts = notCertfiedMetalProducts::all();
+        $notmetalProducts = notCertfiedMetalProducts::all();
 
-        return view('myRoutes.notCertProd.Nmetal', compact('notMetalPorducts'));
+        // Pass the data to the view
+        return view('myRoutes.NotCertProd.Nmetal', compact('notmetalProducts'));
     }
-
-
-
-
+    
 
     //################################################################################################################################################################################################################################
     //                                                                                           Create
@@ -40,7 +29,7 @@ class NMetalController extends Controller
     public function create()
     {
 
-        // Pass the data to the view
+        return view('myRoutes.notCertifiedMetalCRUD.create');
 
     }
 
@@ -57,7 +46,6 @@ class NMetalController extends Controller
         //validations 
         $request->validate([
             'Product_name' => 'required|string|max:255',
-            'Certificate' => 'required|string|max:255',
             'Price' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
             'About' => 'required|string|max:1000',
             'quantity' => 'required|integer|min:1',
@@ -70,7 +58,6 @@ class NMetalController extends Controller
         //creating new artist in DB
         notCertfiedMetalProducts::create([
             'Product_name' => $request->Product_name,
-            'Certificate' => $request->Certificate,
             'Price' => $request->Price,
             'About' => $request->About,
             'quantity' => $request->quantity,
@@ -79,10 +66,8 @@ class NMetalController extends Controller
             'weight_unit' => $request->weight_unit,
 
         ]);
-        return redirect()->route('myRoutes.certProd.steel');
+        return redirect()->route('myRoutes.certProd.Nmetal');
     }
-
-
 
 
 
@@ -91,9 +76,9 @@ class NMetalController extends Controller
     //                                                                                             Edit
     //################################################################################################################################################################################################################################
     
-    public function edit(notCertfiedMetalProducts $notCertifiedMetalProducts)
+    public function edit(notCertfiedMetalProducts $notCertfiedMetalProducts)
     {
-        return view('myRoutes.crud.Woodedit', compact('notCertifiedMetalProducts'));
+        return view('myRoutes.notCertifiedMetalCRUD.edit', compact('notCertfiedMetalProducts'));
     }
 
 
@@ -102,12 +87,11 @@ class NMetalController extends Controller
     //################################################################################################################################################################################################################################
     //                                                                                           Update
     //################################################################################################################################################################################################################################
-    public function update(Request $request, notCertfiedMetalProducts $notCertifiedMetalProducts)
+    public function update(Request $request, notCertfiedMetalProducts $notCertfiedMetalProducts)
     {
         // Validations
         $request->validate([
             'Product_name' => 'required|string|max:255',
-            'Certificate' => 'required|string|max:255',
             'Price' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
             'About' => 'required|string|max:1000',
             'quantity' => 'required|integer|min:1',
@@ -118,51 +102,43 @@ class NMetalController extends Controller
 
         // checks if image uplaoded
         // if ($request->hasFile('image')) {
-        //     if ($notCertifiedMetalProducts->image) {
-        //         Storage::delete('ArtistImg/images/' . $notCertifiedMetalProducts->image);
+        //     if ($notCertfiedWoodProducts->image) {
+        //         Storage::delete('ArtistImg/images/' . $notCertfiedWoodProducts->image);
         //     }
 
         //     $imageName = time() . '.' . $request->image->extension();
         //     $request->image->move(public_path('ArtistImg/images'), $imageName);
-        //     $notCertifiedMetalProducts->image = $imageName;
+        //     $notCertfiedWoodProducts->image = $imageName;
         // }
 
         // assighnes new meaning to each 
-        $notCertifiedMetalProducts->Product_name = $request->Product_name;
-        $notCertifiedMetalProducts->Certificate = $request->Certificate;
-        $notCertifiedMetalProducts->Price = $request->Price;
-        $notCertifiedMetalProducts->About = $request->About;
-        $notCertifiedMetalProducts->quantity = $request->quantity;
-        $notCertifiedMetalProducts->co2 = $request->co2;
-        $notCertifiedMetalProducts->weight = $request->weight;
-        $notCertifiedMetalProducts->weight_unit = $request->weight_unit;
-        $notCertifiedMetalProducts->save();
+        $notCertfiedMetalProducts->Product_name = $request->Product_name;
+        $notCertfiedMetalProducts->Price = $request->Price;
+        $notCertfiedMetalProducts->About = $request->About;
+        $notCertfiedMetalProducts->quantity = $request->quantity;
+        $notCertfiedMetalProducts->co2 = $request->co2;
+        $notCertfiedMetalProducts->weight = $request->weight;
+        $notCertfiedMetalProducts->weight_unit = $request->weight_unit;
+        $notCertfiedMetalProducts->save();
 
-        return redirect()->route('myRoutes.certProd.steel')->with('success', 'Album updated successfully!');
+        return redirect()->route('myRoutes.certProd.Nmetal')->with('success', 'Product updated successfully!');
     }
 
-
-
-
+    
     //################################################################################################################################################################################################################################
     //                                                                                           delete
     //################################################################################################################################################################################################################################
    
 
 
-
-    public function destroy(notCertfiedMetalProducts $notCertifiedMetalProducts)
+    public function Ndestroy(notCertfiedMetalProducts $notCertfiedMetalProducts)
     {
 
         //add delete images when you get the images 
 
-        $notCertifiedMetalProducts->delete();
-        return redirect()->route('myRoutes.certProd.steel')->with('success', 'Album deleted successfully!');
+        $notCertfiedMetalProducts->delete();
+        
+        return redirect()->route('myRoutes.certProd.Nmetal')->with('success', 'Product deleted successfully!');
     }
-
-
-
-
-
-
+    
 }

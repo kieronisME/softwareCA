@@ -82,21 +82,25 @@ class Cart extends Model
 
 
     //fks might be too long to add i will see when i add these if i need to use the custom ones 
-    public function nonCertifiedWoods()
+    public function notCertifiedWoods()
     {
-        return $this->belongsToMany(notCertfiedWoodProducts::class, 'cart_non_certified_wood')
+        return $this->belongsToMany(notCertfiedWoodProducts::class, 'cart_not_certified_wood','cart_id','not_certified_wood_product_id')
             ->withPivot('quantity');
     }
 
-    public function nonCertifiedSteel()
+
+    public function notCertifiedMetal()
     {
-        return $this->belongsToMany(notCertfiedSteelProducts::class, 'cart_non_certified_steel')
+        return $this->belongsToMany(notCertfiedMetalProducts::class, 'cart_not_certified_metal','cart_id','not_certified_metal_product_id')
             ->withPivot('quantity');
     }
 
-    public function nonCertifiedMetal()
+    
+    public function notCertifiedSteel()
     {
-        return $this->belongsToMany(notCertfiedMetalProducts::class, 'cart_non_certified_metal')
+        return $this->belongsToMany(notCertfiedSteelProducts::class, 'cart_not_certified_steel','cart_id','not_certified_steel_product_id')
             ->withPivot('quantity');
     }
+
+
 }

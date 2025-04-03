@@ -21,8 +21,8 @@ class notCertfiedWoodProducts extends Model
         'About',
         'quantity',
         'co2',
-        // 'weight',
-        // 'weight_unit',
+        'weight',
+        'weight_unit',
     ];
 
 

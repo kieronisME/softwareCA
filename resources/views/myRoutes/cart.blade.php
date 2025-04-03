@@ -58,7 +58,7 @@
                 Price: ${{ number_format($product->Price, 2) }}<br>
                 Quantity in Cart: {{ $product->pivot->quantity }}<br>
 
-                <form action="{{ route('cart.update', $product) }}" method="POST" class="d-inline">
+                <form action="{{ route('cart.update.metal', $product) }}" method="POST" class="d-inline">
                     @csrf
                     @method('PATCH')
                     <input type="number" name="quantity" value="{{ $product->pivot->quantity }}"
@@ -66,7 +66,7 @@
                     <button type="submit" class="btn btn-primary">Update</button>
                 </form>
 
-                <form action="{{ route('cart.remove', $product) }}" method="POST" class="d-inline">
+                <form action="{{ route('cart.remove.metal', $product) }}" method="POST" class="d-inline">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Remove</button>
@@ -91,7 +91,7 @@
                 Price: ${{ number_format($product->Price, 2) }}<br>
                 Quantity in Cart: {{ $product->pivot->quantity }}<br>
 
-                <form action="{{ route('cart.update', $product) }}" method="POST" class="d-inline">
+                <form action="{{ route('cart.update.steel', $product) }}" method="POST" class="d-inline">
                     @csrf
                     @method('PATCH')
                     <input type="number" name="quantity" value="{{ $product->pivot->quantity }}"
@@ -99,7 +99,7 @@
                     <button type="submit" class="btn btn-primary">Update</button>
                 </form>
 
-                <form action="{{ route('cart.remove', $product) }}" method="POST" class="d-inline">
+                <form action="{{ route('cart.remove.steel', $product) }}" method="POST" class="d-inline">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Remove</button>
@@ -108,6 +108,168 @@
             @endforeach
         </ul>
         @endif
+
+
+
+
+
+
+<!-- NOT CERT -->
+        
+        @if($notCertWoodProducts->isNotEmpty())
+        <!-- <h2>Wood Products</h2> -->
+        <ul class="list-unstyled">
+            @foreach ($notCertWoodProducts as $product)
+            <li class="mb-4 p-3 border rounded">
+                <strong>{{ $product->Product_name }}</strong><br>
+                Price: ${{ number_format($product->Price, 2) }}<br>
+                Quantity in Cart: {{ $product->pivot->quantity }}<br>
+
+                <form action="{{ route('cart.update', $product) }}" method="POST" class="d-inline">
+                    @csrf
+                    @method('PATCH')
+                    <input type="number" name="quantity" value="{{ $product->pivot->quantity }}"
+                        min="1" max="{{ $product->quantity }}" class="form-control d-inline-block" style="width: 80px;">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+
+                <form action="{{ route('cart.Nremove', $product) }}" method="POST" class="d-inline">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Remove</button>
+                </form>
+            </li>
+            @endforeach
+        </ul>
+        @endif
+
+
+
+
+
+
+        @if($notCertMetalProducts->isNotEmpty())
+        <ul class="list-unstyled">
+            @foreach ($notCertMetalProducts as $notCertMetalproduct)
+            <li class="mb-4 p-3 border rounded">
+                <strong>{{ $notCertMetalproduct->Product_name }}</strong><br>
+                Price: ${{ number_format($notCertMetalproduct->Price, 2) }}<br>
+                Quantity in Cart: {{ $notCertMetalproduct->pivot->quantity }}<br>
+
+                <form action="{{ route('cart.NMetalupdate', $notCertMetalproduct) }}" method="POST" class="d-inline">
+                    @csrf
+                    @method('PATCH')
+                    <input type="number" name="quantity" value="{{ $notCertMetalproduct->pivot->quantity }}"
+                        min="1" max="{{ $notCertMetalproduct->quantity }}" class="form-control d-inline-block" style="width: 80px;">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+
+                <form action="{{ route('cart.NMetalremove', $notCertMetalproduct) }}" method="POST" class="d-inline">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Remove</button>
+                </form>
+            </li>
+            @endforeach
+        </ul>
+        @endif
+
+
+
+
+        @if($notCertSteelProducts->isNotEmpty())
+        <ul class="list-unstyled">
+            @foreach ($notCertSteelProducts as $product)
+            <li class="mb-4 p-3 border rounded">
+                <strong>{{ $product->Product_name }}</strong><br>
+                Price: ${{ number_format($product->Price, 2) }}<br>
+                Quantity in Cart: {{ $product->pivot->quantity }}<br>
+
+                <form action="{{ route('cart.NSteelupdate', $product) }}" method="POST" class="d-inline">
+                    @csrf
+                    @method('PATCH')
+                    <input type="number" name="quantity" value="{{ $product->pivot->quantity }}"
+                        min="1" max="{{ $product->quantity }}" class="form-control d-inline-block" style="width: 80px;">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+
+                <form action="{{ route('cart.NSteelremove', $product) }}" method="POST" class="d-inline">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Remove</button>
+                </form>
+            </li>
+            @endforeach
+        </ul>
+        @endif
+
+
+
+
+        <div class="card mt-4">
+    <div class="card-header">
+        <h3>Order Summary</h3>
+    </div>
+    <div class="card-body">
+        @if($woodSubtotal > 0)
+        <div class="d-flex justify-content-between">
+            <span>Certified Wood:</span>
+            <span>${{ number_format($woodSubtotal, 2) }}</span>
+        </div>
+        @endif
+        
+        @if($metalSubtotal > 0)
+        <div class="d-flex justify-content-between">
+            <span>Certified Metal:</span>
+            <span>${{ number_format($metalSubtotal, 2) }}</span>
+        </div>
+        @endif
+        
+        @if($steelSubtotal > 0)
+        <div class="d-flex justify-content-between">
+            <span>Certified Steel:</span>
+            <span>${{ number_format($steelSubtotal, 2) }}</span>
+        </div>
+        @endif
+        
+        @if($notCertWoodSubtotal > 0)
+        <div class="d-flex justify-content-between">
+            <span>Non-Certified Wood:</span>
+            <span>${{ number_format($notCertWoodSubtotal, 2) }}</span>
+        </div>
+        @endif
+        
+        @if($notCertMetalSubtotal > 0)
+        <div class="d-flex justify-content-between">
+            <span>Non-Certified Metal:</span>
+            <span>${{ number_format($notCertMetalSubtotal, 2) }}</span>
+        </div>
+        @endif
+        
+        @if($notCertSteelSubtotal > 0)
+        <div class="d-flex justify-content-between">
+            <span>Non-Certified Steel:</span>
+            <span>${{ number_format($notCertSteelSubtotal, 2) }}</span>
+        </div>
+        @endif
+        
+        <hr>
+        <div class="d-flex justify-content-between fw-bold">
+            <span>Total:</span>
+            <span>${{ number_format($grandTotal, 2) }}</span>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
 
 
 

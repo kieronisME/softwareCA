@@ -9,28 +9,18 @@ use Illuminate\Support\Facades\Storage;
 
 class NSteelController extends Controller
 {
-    //veiw test page
-    public function viewTestPage()
-    {
-
-
-        // Pass the data to the Steel
-        return view('myRoutes.MainTestPage');
-    }
 
     //################################################################################################################################################################################################################################
-    //                                                                                          certified steel view
+    //                                                                                   not certified wood view
     //################################################################################################################################################################################################################################
-    public function Nsteel()
+    public function NSteel()
     {
-        $notSteelProducts = notCertfiedSteelProducts::all();
+        $notsteelProducts = notCertfiedSteelProducts::all();
 
-        return view('myRoutes.notCertProd.Nsteel', compact('notSteelProducts'));
+        // Pass the data to the view
+        return view('myRoutes.NotCertProd.Nsteel', compact('notsteelProducts'));
     }
-
-
-
-
+    
 
     //################################################################################################################################################################################################################################
     //                                                                                           Create
@@ -39,7 +29,7 @@ class NSteelController extends Controller
     public function create()
     {
 
-        // Pass the data to the view
+        return view('myRoutes.notCertifiedSteelCRUD.create');
 
     }
 
@@ -56,7 +46,6 @@ class NSteelController extends Controller
         //validations 
         $request->validate([
             'Product_name' => 'required|string|max:255',
-            'Certificate' => 'required|string|max:255',
             'Price' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
             'About' => 'required|string|max:1000',
             'quantity' => 'required|integer|min:1',
@@ -69,7 +58,6 @@ class NSteelController extends Controller
         //creating new artist in DB
         notCertfiedSteelProducts::create([
             'Product_name' => $request->Product_name,
-            'Certificate' => $request->Certificate,
             'Price' => $request->Price,
             'About' => $request->About,
             'quantity' => $request->quantity,
@@ -78,10 +66,8 @@ class NSteelController extends Controller
             'weight_unit' => $request->weight_unit,
 
         ]);
-        return redirect()->route('myRoutes.certProd.steel');
+        return redirect()->route('myRoutes.certProd.Nsteel');
     }
-
-
 
 
 
@@ -92,7 +78,7 @@ class NSteelController extends Controller
     
     public function edit(notCertfiedSteelProducts $notCertfiedSteelProducts)
     {
-        return view('myRoutes.crud.Woodedit', compact('notCertfiedSteelProducts'));
+        return view('myRoutes.notCertifiedSteelCRUD.edit', compact('notCertfiedSteelProducts'));
     }
 
 
@@ -106,7 +92,6 @@ class NSteelController extends Controller
         // Validations
         $request->validate([
             'Product_name' => 'required|string|max:255',
-            'Certificate' => 'required|string|max:255',
             'Price' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
             'About' => 'required|string|max:1000',
             'quantity' => 'required|integer|min:1',
@@ -117,18 +102,17 @@ class NSteelController extends Controller
 
         // checks if image uplaoded
         // if ($request->hasFile('image')) {
-        //     if ($notCertfiedSteelProducts->image) {
-        //         Storage::delete('ArtistImg/images/' . $notCertfiedSteelProducts->image);
+        //     if ($notCertfiedWoodProducts->image) {
+        //         Storage::delete('ArtistImg/images/' . $notCertfiedWoodProducts->image);
         //     }
 
         //     $imageName = time() . '.' . $request->image->extension();
         //     $request->image->move(public_path('ArtistImg/images'), $imageName);
-        //     $notCertfiedSteelProducts->image = $imageName;
+        //     $notCertfiedWoodProducts->image = $imageName;
         // }
 
         // assighnes new meaning to each 
         $notCertfiedSteelProducts->Product_name = $request->Product_name;
-        $notCertfiedSteelProducts->Certificate = $request->Certificate;
         $notCertfiedSteelProducts->Price = $request->Price;
         $notCertfiedSteelProducts->About = $request->About;
         $notCertfiedSteelProducts->quantity = $request->quantity;
@@ -137,29 +121,24 @@ class NSteelController extends Controller
         $notCertfiedSteelProducts->weight_unit = $request->weight_unit;
         $notCertfiedSteelProducts->save();
 
-        return redirect()->route('myRoutes.certProd.steel')->with('success', 'Album updated successfully!');
+        return redirect()->route('myRoutes.certProd.Nsteel')->with('success', 'Product updated successfully!');
     }
 
-
-
+    
     //################################################################################################################################################################################################################################
     //                                                                                           delete
     //################################################################################################################################################################################################################################
    
 
 
-
-
-    public function destroy(notCertfiedSteelProducts $notCertfiedSteelProducts)
+    public function Ndestroy(notCertfiedSteelProducts $notCertfiedSteelProducts)
     {
 
         //add delete images when you get the images 
 
         $notCertfiedSteelProducts->delete();
-        return redirect()->route('myRoutes.certProd.steel')->with('success', 'Album deleted successfully!');
+        
+        return redirect()->route('myRoutes.certProd.Nsteel')->with('success', 'Product deleted successfully!');
     }
-
-
-
-
+    
 }

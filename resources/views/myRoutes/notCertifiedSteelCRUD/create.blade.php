@@ -9,8 +9,8 @@
         <div class="container-fluid mx-auto">
             <div class="bg-white overflow-hidden shadow-sm rounded">
                 <div class="p-4 text-dark">
-                    <h3 class="fw-semibold fs-4 mb-4">Add a New steel</h3>
-                    <x-pleasework-form :action="route('myRoutes.Woodstore')" method="POST" />
+                    <h3 class="fw-semibold fs-4 mb-4">YOU ARE IN NOT CERTIFIED STEEl CREATE</h3>
+                    <x-pleaseworkNotcert-form :action="route('myRoutes.NSteelstore')" method="POST" />
                 </div>
             </div>
         </div>

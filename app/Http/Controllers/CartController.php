@@ -45,18 +45,72 @@ class CartController extends Controller
     //                                                                                    View my items in cart
     //################################################################################################################################################################################################################################
 
+    //this function is whati will use to calc the total for everything in my table 
+    private function calculateSubtotal($products)
+    {
+        return $products->sum(function ($product) {
+            //GRABS its price from each product and times it by qunitity
+            return $product->Price * $product->pivot->quantity;
+        });
+    }
+
+
+
 
     public function viewCart()
     {
         $cart = $this->getCart();
 
+        //certified 
         $woodProducts = $cart->certifiedWoods()->withPivot('quantity')->get();
         $metalProducts = $cart->certifiedMetals()->withPivot('quantity')->get();
         $steelProducts = $cart->certifiedSteels()->withPivot('quantity')->get();
+
+
+
+        //not certified
+        $notCertWoodProducts = $cart->notCertifiedWoods()->withPivot('quantity')->get();
+        $notCertMetalProducts = $cart->notcertifiedMetal()->withPivot('quantity')->get();
+        $notCertSteelProducts = $cart->notcertifiedSteel()->withPivot('quantity')->get();
+
+        //stores totals 
+        $woodSubtotal = $this->calculateSubtotal($woodProducts);
+        $metalSubtotal = $this->calculateSubtotal($metalProducts);
+        $steelSubtotal = $this->calculateSubtotal($steelProducts);
+        $notCertWoodSubtotal = $this->calculateSubtotal($notCertWoodProducts);
+        $notCertMetalSubtotal = $this->calculateSubtotal($notCertMetalProducts);
+        $notCertSteelSubtotal = $this->calculateSubtotal($notCertSteelProducts);
+
+        //adds up all totals an stores them in total price
+        $TotalPrice = $woodSubtotal + $metalSubtotal + $steelSubtotal
+            + $notCertWoodSubtotal + $notCertMetalSubtotal + $notCertSteelSubtotal;
+
+
+
+
         return view('myRoutes.cart', [
+            //certified 
             'woodProducts' => $woodProducts,
             'metalProducts' => $metalProducts,
             'steelProducts' => $steelProducts,
+
+            //not certified
+            'notCertWoodProducts' => $notCertWoodProducts,
+            'notCertMetalProducts' => $notCertMetalProducts,
+            'notCertSteelProducts' => $notCertSteelProducts,
+
+
+
+            // subtotals
+            'woodSubtotal' => $woodSubtotal,
+            'metalSubtotal' => $metalSubtotal,
+            'steelSubtotal' => $steelSubtotal,
+            'notCertWoodSubtotal' => $notCertWoodSubtotal,
+            'notCertMetalSubtotal' => $notCertMetalSubtotal,
+            'notCertSteelSubtotal' => $notCertSteelSubtotal,
+
+            // grand total
+            'grandTotal' => $TotalPrice,
             'cart' => $cart
         ]);
     }
@@ -71,57 +125,13 @@ class CartController extends Controller
 
 
 
-    //################################################################################################################################################################################################################################
-    //                                                                                          Update
-    //################################################################################################################################################################################################################################
-
-    //W                             UPDATE                                            //
-    public function update(Request $request, $product)
-    {
-        $cart = $this->getCart();
-        $quantity = $request->quantity;
-
-        // Check if product is wood
-        if ($woodProduct = CertfiedWoodProducts::find($product)) {
-            $cart->certifiedWoods()->updateExistingPivot($woodProduct->id, [
-                'quantity' => $quantity
-            ]);
-            return back()->with('success', 'Wood product updated');
-        }
-
-        // Check if product is metal
-        if ($metalProduct = CertifiedMetalProducts::find($product)) {
-            $cart->certifiedMetals()->updateExistingPivot($metalProduct->id, [
-                'quantity' => $quantity
-            ]);
-            return back()->with('success', 'Metal product updated');
-        }
-
-        // Check if product is metal
-        if ($steelProduct = CertfiedSteelProducts::find($product)) {
-            $cart->certifiedSteels()->updateExistingPivot($steelProduct->id, [
-                'quantity' => $quantity
-            ]);
-            return back()->with('success', ' steel product updated');
-        }
-
-        return back()->with('error', 'Product not found');
-    }
-
-
-
-
-
-
-
 
     //################################################################################################################################################################################################################################
     //                                                                                          Wood cart logic
     //################################################################################################################################################################################################################################
 
 
-    //W                             Create                                            //
-
+    //W                             Create                                           //
     public function addWoodToCart(Request $request, CertfiedWoodProducts $product)
     {
         // Auth will check if the user is logged in or not. if "!Auth::check" is ture  then it will display an error message 
@@ -173,26 +183,49 @@ class CartController extends Controller
 
 
 
-    //W                             EDIT                                            // finnish this
-
-    public function Woodedit($id)
-    {
-        $certifiedWoodProducts = CertfiedWoodProducts::findOrFail($id);
-        return view('your.edit.view', compact('certifiedWoodProducts'));
-    }
 
 
-
-
-    //W                             DELETE                                         //
-
+    //W                             DELETE                                          //
     public function removeWoodFromCart(CertfiedWoodProducts $product)
     {
-        $cart = $this->getCart();
+        $cart = $this->getCart(); // like i said before this line will get the reuslt of what retured in get getCart function
         $cart->certifiedWoods()->detach($product->id);
+        // this line detaches the wood product from the pivoit table. its not actaully delteing it (i dont know how to do that) but to the user it looks its been delted
+
 
         return back()->with('success', 'Product removed from cart');
     }
+
+
+    //W                             Update                                         //
+
+    public function Woodupdate(Request $request, $productId)
+    {
+        $cart = $this->getCart(); // grabs whatever returend from getCart function
+        $quantity = $request->quantity; // makes the vairbale quanitry whaterver the quanitiy was in the form submitted 
+
+        // Validates quantity
+        $request->validate([
+            'quantity' => 'required|integer|min:1'
+        ]);
+
+        // this line uses laravel magic (like alot of things in this) to find the product and the id its tied to in the DB  
+        if ($woodProducts = CertfiedWoodProducts::find($productId)) {
+
+            //updates pivoit table
+            $cart->certifiedWoods()->updateExistingPivot($woodProducts->id, [
+                'quantity' => $quantity
+            ]);
+            return back();
+        }
+
+        return back();
+    }
+
+
+
+
+
 
 
 
@@ -243,27 +276,52 @@ class CartController extends Controller
 
 
 
-    //M                             EDIT                                            // finnish this
-
-    public function Metaledit($id)
-    {
-        $certifiedMetalProducts = CertifiedMetalProducts::findOrFail($id);
-        return view('your.edit.view', compact('certifiedMetalProducts'));
-    }
-
-
-
-
-
     //M                             DELETE                                          //
 
-    public function removeMetalFromCart(CertfiedWoodProducts $product)
+
+    public function removeMetalFromCart(CertifiedMetalProducts $product)
     {
         $cart = $this->getCart();
-        $cart->certifiedMetal()->detach($product->id);
-
+        $cart->certifiedMetals()->detach($product->id);
         return back()->with('success', 'Product removed from cart');
     }
+
+
+
+
+    //M                             Update                                         //
+
+    public function Metalupdate(Request $request, $productId)
+    {
+        $cart = $this->getCart();
+        $quantity = $request->quantity;
+
+        $request->validate([
+            'quantity' => 'required|integer|min:1'
+        ]);
+
+
+        if ($metalProducts = CertifiedMetalProducts::find($productId)) {
+
+            $cart->certifiedMetals()->updateExistingPivot($metalProducts->id, [
+                'quantity' => $quantity
+            ]);
+            return back();
+        }
+
+        return back();
+    }
+
+
+
+
+
+
+
+
+
+
+
 
     //################################################################################################################################################################################################################################
     //                                                                                          Steel cart logic
@@ -308,25 +366,313 @@ class CartController extends Controller
 
 
 
-
-    //S                             EDIT                                            // finnish this
-
-    public function Steeledit($id)
-    {
-        $certifiedMetalProducts = CertfiedSteelProducts::findOrFail($id);
-        return view('your.edit.view', compact('certifiedSteelProducts'));
-    }
-
-
-
-
     //S                             DELETE                                          //
 
     public function removeSteelFromCart(CertfiedSteelProducts $product)
     {
         $cart = $this->getCart();
-        $cart->certifiedSteel()->detach($product->id);
+        $cart->certifiedSteels()->detach($product->id);
 
         return back()->with('success', 'Product removed from cart');
+    }
+
+
+
+
+    //S                             UPDATE                                         //
+
+    public function Steelupdate(Request $request, $productId)
+    {
+        $cart = $this->getCart();
+        $quantity = $request->quantity;
+
+        // Validate quantity
+        $request->validate([
+            'quantity' => 'required|integer|min:1'
+        ]);
+
+
+        if ($steelProducts = CertfiedSteelProducts::find($productId)) {
+
+            $cart->certifiedSteels()->updateExistingPivot($steelProducts->id, [
+                'quantity' => $quantity
+            ]);
+            return back();
+        }
+
+        return back();
+    }
+
+
+
+
+    /////////////////////////////////////////////////////////////////////////////////           ↓ NOT CERTIFIED PRODUCTS ↓           ///////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////           ↓ NOT CERTIFIED PRODUCTS ↓           ///////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////           ↓ NOT CERTIFIED PRODUCTS ↓           ///////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////           ↓ NOT CERTIFIED PRODUCTS ↓           ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+    //################################################################################################################################################################################################################################
+    //                                                                                          NWood cart logic
+    //################################################################################################################################################################################################################################
+
+
+    //nW                             Create                                          //
+
+    public function addNWoodToCart(Request $request, NotCertfiedWoodProducts $product)
+    {
+
+
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'Please login to add items to cart');
+        }
+
+        $request->validate([
+            'quantity' => 'required|integer|min:1|'
+        ]);
+
+
+
+        $cart = $this->getCart();
+        $quantity = $request->quantity;
+
+
+        if ($cart->notCertifiedWoods()->where('not_certified_wood_product_id', $product->id)->exists()) {
+
+
+            $currentQuantity = $cart->notCertifiedWoods()->find($product->id)->pivot->quantity;
+
+
+            $newQuantity = $currentQuantity + $quantity;
+
+
+
+            if ($newQuantity > $product->quantity) {
+                return back()->with('error', 'Cannot add more than available stock');
+            }
+
+
+            $cart->notCertifiedWoods()->updateExistingPivot($product->id, [
+                'quantity' => $newQuantity
+            ]);
+        } else {
+
+            $cart->notCertifiedWoods()->attach($product->id, [
+                'quantity' => $quantity
+            ]);
+        }
+
+        return back()->with('success', 'Product added to cart');
+    }
+
+
+
+    //nW                             DELETE                                         //
+
+    public function removeNWoodFromCart(NotCertfiedWoodProducts $product)
+    {
+        $cart = $this->getCart();
+        $cart->notCertifiedWoods()->detach($product->id);
+
+        return back()->with('success', 'Product removed from cart');
+    }
+
+
+
+    //nW                             UPDATE                                         //
+    public function Nupdate(Request $request, $productId)
+    {
+        $cart = $this->getCart();
+        $quantity = $request->quantity;
+
+
+        $request->validate([
+            'quantity' => 'required|integer|min:1'
+        ]);
+
+
+        if ($notCertWoodProduct = notCertfiedWoodProducts::find($productId)) {
+
+            $cart->notCertifiedWoods()->updateExistingPivot($notCertWoodProduct->id, [
+                'quantity' => $quantity
+            ]);
+            return back()->with('success', 'Non-certified wood product updated');
+        }
+
+        return back()->with('error', 'Product not found in any category');
+    }
+
+
+
+
+
+
+
+
+
+    //################################################################################################################################################################################################################################
+    //                                                                                          NMetal cart logic
+    //################################################################################################################################################################################################################################
+
+
+    //nM                             Create                                            //
+
+    public function addNMetalToCart(Request $request, NotCertfiedMetalProducts $product)
+    {
+
+
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'Please login to add items to cart');
+        }
+
+
+        $request->validate([
+            'quantity' => 'required|integer|min:1|'
+        ]);
+
+
+
+        $cart = $this->getCart();
+        $quantity = $request->quantity;
+
+
+        if ($cart->notCertifiedMetal()->where('not_certified_metal_product_id', $product->id)->exists()) {
+
+            $currentQuantity = $cart->notCertifiedmetal()->find($product->id)->pivot->quantity;
+
+
+            $newQuantity = $currentQuantity + $quantity;
+
+            if ($newQuantity > $product->quantity) {
+                return back()->with('error', 'Cannot add more than available stock');
+            }
+
+
+            $cart->notCertifiedmetal()->updateExistingPivot($product->id, [
+                'quantity' => $newQuantity
+            ]);
+        } else {
+
+            $cart->notCertifiedmetal()->attach($product->id, [
+                'quantity' => $quantity
+            ]);
+        }
+
+        return back()->with('success', 'Product added to cart');
+    }
+
+
+
+    //nM                             DELETE                                         //
+
+    public function removeNMetalFromCart(NotCertfiedMetalProducts $notCertMetalproduct)
+    {
+        $cart = $this->getCart();
+        $cart->notCertifiedMetal()->detach($notCertMetalproduct->id);
+        return back()->with('success', 'Product removed from cart');
+    }
+
+    //nM                             UPDATE                                         //
+
+    public function NMetalupdate(Request $request, $productId)
+    {
+        $cart = $this->getCart();
+        $request->validate(['quantity' => 'required|integer|min:1']);
+    
+        if ($product = NotCertfiedMetalProducts::find($productId)) {
+            $cart->notCertifiedMetal()->updateExistingPivot($product->id, [
+                'quantity' => $request->quantity
+            ]);
+            return back()->with('success', 'Quantity updated');
+        }
+        return back()->with('error', 'Product not found');
+    }
+
+
+
+
+
+    //################################################################################################################################################################################################################################
+    //                                                                                          NSteel cart logic
+    //################################################################################################################################################################################################################################
+
+
+    //nS                             Create                                            //
+
+    public function addNSteelToCart(Request $request, notCertfiedSteelProducts $product)
+    {
+
+
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'Please login to add items to cart');
+        }
+
+
+        $request->validate([
+            'quantity' => 'required|integer|min:1|'
+        ]);
+
+
+
+        $cart = $this->getCart();
+        $quantity = $request->quantity;
+
+
+        if ($cart->notCertifiedSteel()->where('not_certified_steel_product_id', $product->id)->exists()) {
+
+            $currentQuantity = $cart->notCertifiedSteel()->find($product->id)->pivot->quantity;
+
+            $newQuantity = $currentQuantity + $quantity;
+
+
+            if ($newQuantity > $product->quantity) {
+                return back()->with('error', 'Cannot add more than available stock');
+            }
+
+
+            $cart->notCertifiedSteel()->updateExistingPivot($product->id, [
+                'quantity' => $newQuantity
+            ]);
+        } else {
+
+            $cart->notCertifiedSteel()->attach($product->id, [
+                'quantity' => $quantity
+            ]);
+        }
+
+        return back()->with('success', 'Product added to cart');
+    }
+
+
+
+    //nW                             DELETE                                         //
+
+    public function removeNSteelFromCart(NotCertfiedSteelProducts $product)
+    {
+        $cart = $this->getCart();
+        $cart->notCertifiedSteel()->detach($product->id);
+
+        return back()->with('success', 'Product removed from cart');
+    }
+
+
+
+    //nW                             UPDATE                                         //
+    public function NSteelupdate(Request $request, $productId)
+    {
+        $cart = $this->getCart();
+        $request->validate(['quantity' => 'required|integer|min:1']);
+    
+        if ($product = NotCertfiedSteelProducts::find($productId)) {
+            $cart->notCertifiedSteel()->updateExistingPivot($product->id, [
+                'quantity' => $request->quantity
+            ]);
+            return back()->with('success', 'Quantity updated');
+        }
+        return back()->with('error', 'Product not found');
     }
 }

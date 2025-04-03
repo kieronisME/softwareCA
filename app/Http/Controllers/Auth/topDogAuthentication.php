@@ -21,6 +21,11 @@ class TopDogAuthentication extends Controller
         return view('myRoutes.topDogRoutes.topDogAuth');
     }
 
+
+
+
+    
+
     /**
      * Handle the admin password authentication.
      */

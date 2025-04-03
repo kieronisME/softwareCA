@@ -1,5 +1,5 @@
 @props(['action', 'method', 'Supplier' => null])
-<form method="POST" action="{{ route('myRoutes.topdogSupplierStore') }}">
+<form method="POST" action="{{ route('myRoutes.topdogSuplierStore') }}">
     @csrf
 
     <!-- Name -->
@@ -66,10 +66,6 @@
     </div>
 
     <div>
-        <label for="role" class="block text-sm font-medium text-gray-700">role</label>
-        <select id="role" name="role" class="mt-1 block w-full" required>
-            <option value="admin" select>admin</option>
-        </select>
         @error('role')
         <span class="text-red-500 text-xs mt-12">{{$message}}</span>
         @enderror

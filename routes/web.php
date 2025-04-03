@@ -252,6 +252,8 @@ Route::delete('/NotcertSteeldelete/{notCertfiedSteelProducts}', [NSteelControlle
 
 
 
+Route::get('/myRoutes/certProd/Nwood', [NWoodController::class, 'Nwood'])->name('myRoutes.certProd.Nwood');
+
 
 
 
@@ -265,30 +267,18 @@ Route::delete('/NotcertSteeldelete/{notCertfiedSteelProducts}', [NSteelControlle
 // MIDDLE<-                                                                           Login Routes Admin                                            
 //################################################################################################################################################################################################################################
 
-// GET route for the authentication form
+// route to admin password
 Route::get('/topDogAuth', [TopDogAuthentication::class, 'theTopDogView'])->name('myRoutes.topDogRoutes.topDogAuth');
 
-// GET route for the admin page
-Route::get('/topDogAdmin', function () {
-    return view('myRoutes.topDogRoutes.topDogAdmin');
-})->name('myRoutes.topDogRoutes.topDogAdmin');
+//route to admin create
+Route::get('/topDogCreateAuth', [TopDogAuthentication::class, 'topdogCreate'])->name('topDogRoutes.create.Admin');
 
-// POST route for handling the authentication form submission
-Route::post('/topDogAdmin', [TopDogAuthentication::class, 'adminPassword'])->name('myRoutes.topDogRoutes.topDogAdmin.post');
-
-
-
-//create admin 
-Route::get('/topdogCreateAdmin', [TopDogAuthentication::class, 'topdogCreate'])->name('topdogCreate');
-
+//store
 Route::post('/STOREtopdogCreateAdmin', [TopDogAuthentication::class, 'topdogStore'])->name('myRoutes.topdogStore');
 
 
-
-
-
-
-
+// POST route for handling the authentication form submission
+Route::post('/topDogAdmin', [TopDogAuthentication::class, 'adminPassword'])->name('myRoutes.topDogRoutes.topDogAdmin.post');
 
 //################################################################################################################################################################################################################################
 // BOTTOM<-                                                                           Login Routes supplier                                            
@@ -297,24 +287,26 @@ Route::post('/STOREtopdogCreateAdmin', [TopDogAuthentication::class, 'topdogStor
 // GET route for the authentication form
 Route::get('/topDogAuthsupplier', [topDogSAuthentication::class, 'theTopDogView'])->name('myRoutes.topDogRoutes.topDogAuthSupplier');
 
+//create supllier  
+Route::post('/topdogCreateSupplier', [topDogSAuthentication::class, 'suppliertopdogCreate'])->name('myRoutes.topDogRoutes.topdogSupplierCreate');
+
 // GET route for the admin page
-Route::get('/topDogAdmin', function () {
-    return view('myRoutes.topDogRoutes.topDogAuthSupplier');
-})->name('myRoutes.topDogRoutes.topDogAuthSupplier');
+// Route::get('/topDogAdmin', function () {
+//     return view('myRoutes.topDogRoutes.topDogAuthSupplier');
+// })->name('myRoutes.topDogRoutes.topDogAuthSupplier');
 
 // POST route for handling the authentication form submission
-Route::post('/topDogAdmin', [topDogSAuthentication::class, 'supplierPassword'])->name('myRoutes.topDogRoutes.topDogSupplier.post');
+Route::post('/topDogSupplier', [topDogSAuthentication::class, 'supplierPassword'])->name('myRoutes.topDogRoutes.topDogSupplier.post');
 
 
 
-//create admin 
-Route::get('/topdogCreateAdmin', [topDogSAuthentication::class, 'suppliertopdogCreate'])->name('topdogSupplierCreate');
 
-Route::post('/STOREtopdogCreateAdmin', [topDogSAuthentication::class, 'suppliertopdogStore'])->name('myRoutes.topdogS Store');
+
+Route::post('/STOREtopdogCreateStore', [topDogSAuthentication::class, 'suppliertopdogStore'])->name('myRoutes.topdogSuplierStore');
 
 
 //veiw
-Route::get('/myRoutes/supplierUserView', [topDogSAuthentication::class, 'theTopDogView'])->name('myRoutes.topDogRoutes.topDogAuthSupplierView');
+Route::get('/myRoutesSup/supplierUserView', [topDogSAuthentication::class, 'theTopDogView'])->name('myRoutes.topDogRoutes.topDogAuthSupplierView');
 
 
 
@@ -327,10 +319,6 @@ Route::get('/myRoutes/supplierUserView', [topDogSAuthentication::class, 'theTopD
 
 //add users later today
 Route::get('/myRoutes/adminUserView', [UsersController::class, 'adminUserView'])->name('myRoutes.adminUserView');
-
-
-
-
 
 //test page view
 Route::get('/MainTestPage', [WoodController::class, 'viewTestPage'])->name('MainTestPage');

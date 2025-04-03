@@ -23,8 +23,8 @@ class UserTableSeeder extends Seeder
                 'last_name' => 'deault user',
                 'email' => 'admin01@gmail.com',
                 'phoneNumber' => 1234567490,
-                // 'created_at' => now(),
-                // 'updated_at' => now(),
+                'role' => 'notVerified',
+
             ],
         ];
 

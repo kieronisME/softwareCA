@@ -59,7 +59,7 @@ class TopDogSAuthentication extends Controller
 
     public function suppliertopdogCreate(): View
     {
-        return view('myRoutes.topDogRoutes.topDogSupplier');
+        return view('myRoutes.topDogRoutes.topDogAuthSupplier');
     }
 
 

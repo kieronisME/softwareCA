@@ -82,7 +82,7 @@
 
                             @if (Route::has('myRoutes.topDogRoutes.topDogAuthSupplierView'))
                             <a class="btn btn-link" href="{{ route('myRoutes.topDogRoutes.topDogAuthSupplierView') }}">
-                                {{ __('i am an supplier') }}
+                                {{ __('----------i am an supplier') }}
                             </a>
                             @endif
 

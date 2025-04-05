@@ -15,7 +15,7 @@
             <div class="card-body">
                 <p>Thank you for your purchase. Your payment was successful.</p>
                 <p>A confirmation email has been sent to your registered email address.</p>
-                <a href="{{ url('/') }}" class="btn btn-primary">Return to Home</a>
+                <a href="{{ route('topDogRoutes.create.Admin') }}" class="btn btn-primary">Return to Home</a>
             </div>
         </div>
     </div>

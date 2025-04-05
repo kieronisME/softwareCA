@@ -17,7 +17,7 @@ use App\Http\Controllers\NMetalController;
 
 //CARTS
 use App\Http\Controllers\CartController;
-
+use App\Http\Controllers\StripeController;
 
 
 //USER TYPES
@@ -136,6 +136,9 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/cart/Nupdate/{notCertSteelproduct}', [CartController::class, 'NSteelupdate'])->name('cart.NSteelupdate');
 });
 
+Route::get('stripe', [StripeController::class, 'index']);
+Route::post('stripe/create-charge', [StripeController::class, 'createCharge'])->name('stripe.create-charge');
+Route::get('/payment/success', [StripeController::class, 'paymentSuccess'])->name('cartsuc');
 
 
 

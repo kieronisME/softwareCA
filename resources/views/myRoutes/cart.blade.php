@@ -114,8 +114,8 @@
 
 
 
-<!-- NOT CERT -->
-        
+        <!-- NOT CERT -->
+
         @if($notCertWoodProducts->isNotEmpty())
         <!-- <h2>Wood Products</h2> -->
         <ul class="list-unstyled">
@@ -207,71 +207,60 @@
 
 
         <div class="card mt-4">
-    <div class="card-header">
-        <h3>Order Summary</h3>
-    </div>
-    <div class="card-body">
-        @if($woodSubtotal > 0)
-        <div class="d-flex justify-content-between">
-            <span>Certified Wood:</span>
-            <span>${{ number_format($woodSubtotal, 2) }}</span>
+            <div class="card-header">
+                <h3>Order Summary</h3>
+            </div>
+            <div class="card-body">
+                @if($woodSubtotal > 0)
+                <div class="d-flex justify-content-between">
+                    <span>Certified Wood:</span>
+                    <span>${{ number_format($woodSubtotal, 2) }}</span>
+                </div>
+                @endif
+
+                @if($metalSubtotal > 0)
+                <div class="d-flex justify-content-between">
+                    <span>Certified Metal:</span>
+                    <span>${{ number_format($metalSubtotal, 2) }}</span>
+                </div>
+                @endif
+
+                @if($steelSubtotal > 0)
+                <div class="d-flex justify-content-between">
+                    <span>Certified Steel:</span>
+                    <span>${{ number_format($steelSubtotal, 2) }}</span>
+                </div>
+                @endif
+
+                @if($notCertWoodSubtotal > 0)
+                <div class="d-flex justify-content-between">
+                    <span>Non-Certified Wood:</span>
+                    <span>${{ number_format($notCertWoodSubtotal, 2) }}</span>
+                </div>
+                @endif
+
+                @if($notCertMetalSubtotal > 0)
+                <div class="d-flex justify-content-between">
+                    <span>Non-Certified Metal:</span>
+                    <span>${{ number_format($notCertMetalSubtotal, 2) }}</span>
+                </div>
+                @endif
+
+                @if($notCertSteelSubtotal > 0)
+                <div class="d-flex justify-content-between">
+                    <span>Non-Certified Steel:</span>
+                    <span>${{ number_format($notCertSteelSubtotal, 2) }}</span>
+                </div>
+                @endif
+
+                <hr>
+                <div class="d-flex justify-content-between fw-bold">
+                    <span>Total:</span>
+                    <span>${{ number_format($grandTotal, 2) }}</span>
+                </div>
+
+            </div>
         </div>
-        @endif
-        
-        @if($metalSubtotal > 0)
-        <div class="d-flex justify-content-between">
-            <span>Certified Metal:</span>
-            <span>${{ number_format($metalSubtotal, 2) }}</span>
-        </div>
-        @endif
-        
-        @if($steelSubtotal > 0)
-        <div class="d-flex justify-content-between">
-            <span>Certified Steel:</span>
-            <span>${{ number_format($steelSubtotal, 2) }}</span>
-        </div>
-        @endif
-        
-        @if($notCertWoodSubtotal > 0)
-        <div class="d-flex justify-content-between">
-            <span>Non-Certified Wood:</span>
-            <span>${{ number_format($notCertWoodSubtotal, 2) }}</span>
-        </div>
-        @endif
-        
-        @if($notCertMetalSubtotal > 0)
-        <div class="d-flex justify-content-between">
-            <span>Non-Certified Metal:</span>
-            <span>${{ number_format($notCertMetalSubtotal, 2) }}</span>
-        </div>
-        @endif
-        
-        @if($notCertSteelSubtotal > 0)
-        <div class="d-flex justify-content-between">
-            <span>Non-Certified Steel:</span>
-            <span>${{ number_format($notCertSteelSubtotal, 2) }}</span>
-        </div>
-        @endif
-        
-        <hr>
-        <div class="d-flex justify-content-between fw-bold">
-            <span>Total:</span>
-            <span>${{ number_format($grandTotal, 2) }}</span>
-        </div>
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

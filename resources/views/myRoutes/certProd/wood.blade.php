@@ -27,6 +27,7 @@
 
                 <div class="mt-2">
                     <!-- Single Add to Cart Form -->
+
                     <form action="{{ route('cart.add.wood', $product) }}" method="POST" class="d-inline">
                         @csrf
                         <input type="number" name="quantity" value="1" min="1" max="{{ $product->quantity }}" class="form-control d-inline-block" style="width: 80px;">
@@ -42,6 +43,8 @@
 
                     <a href="{{ route('crud.Woodedit', $product) }}" class="btn btn-secondary">Edit</a>
                     @endif
+
+
                 </div>
             </li>
             @endforeach

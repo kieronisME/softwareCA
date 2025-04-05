@@ -41,20 +41,26 @@ class ProfileController extends Controller
      * Delete the user's account.
      */
     public function destroy(Request $request): RedirectResponse
-    {
-        $request->validateWithBag('userDeletion', [
-            'password' => ['required', 'current_password'],
-        ]);
+{
+    $request->validateWithBag('userDeletion', [
+        'password' => ['required', 'current_password'],
+    ]);
 
-        $user = $request->user();
+    $user = $request->user();
 
-        Auth::logout();
+    // Logout from all guards
+    Auth::guard('web')->logout();
+    Auth::guard('admin')->logout();
+    Auth::guard('supplier')->logout();
 
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+
+    // Delete only if using the web guard
+    if (Auth::getDefaultDriver() === 'web') {
         $user->delete();
-
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return Redirect::to('/');
     }
+
+    return Redirect::to('/');
+}
 }

@@ -13,11 +13,43 @@
         <h1 class="mb-4">Welcome</h1>
 
 
-        @if((auth()->guard('admin')->check()) || (auth()->guard('supplier')->check()))
-            <div class="alert alert-success mb-4">
-                <strong>YOU ARE VERIFIED</strong>
+        <div class="card">
+            <div class="card-header">{{ __('Dashboard') }}</div>
+
+
+
+            {{-- User Type Indicator --}}
+            <div class="float-end">
+                @auth
+                <span class="badge 
+                                @if(auth()->guard('admin')->check()) bg-danger
+                                @elseif(auth()->guard('supplier')->check()) bg-warning text-dark
+                                @else bg-primary
+                                @endif">
+                    @if(auth()->guard('admin')->check()) ADMIN
+                    @elseif(auth()->guard('supplier')->check()) SUPPLIER
+                    @else USER
+                    @endif
+                </span>
+                <span class="ms-2">{{ Auth::user()->user_name ?? Auth::user()->name }}</span>
+                @endauth
             </div>
+        </div>
+
+        @if((auth()->guard('admin')->check()) || (auth()->guard('supplier')->check()))
+        <div class="alert alert-success mb-4">
+            <strong>YOU ARE VERIFIED</strong>
+        </div>
         @endif
+
+        <a class="btn btn-outline-danger" href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+            {{ __('Log Out') }}
+        </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form>
 
 
 

@@ -1,7 +1,9 @@
 <?php
 
-//CERTIFIED
+
 use App\Http\Controllers\ApiController;
+
+//CERTIFIED
 use App\Http\Controllers\WoodController;
 use App\Http\Controllers\SteelController;
 use App\Http\Controllers\MetalController;
@@ -15,6 +17,7 @@ use App\Http\Controllers\NMetalController;
 
 //CARTS
 use App\Http\Controllers\CartController;
+
 
 
 //USER TYPES
@@ -60,7 +63,7 @@ Route::get('/dashboard', function () {
 //################################################################################################################################################################################################################################
 // TOP<-                                                                               certified materials views                                       
 //################################################################################################################################################################################################################################
-
+//fix wood
 Route::get('/myRoutes/certProd/wood', [WoodController::class, 'wood'])->name('myRoutes.certProd.wood');
 Route::get('/myRoutes/certProd/metal', [MetalController::class, 'metal'])->name('myRoutes.certProd.metal');
 Route::get('/myRoutes/certProd/steel', [SteelController::class, 'steel'])->name('myRoutes.certProd.steel');
@@ -132,8 +135,6 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/cart/NSteelremove/{notCertSteelproduct}', [CartController::class, 'removeNSteelFromCart'])->name('cart.NSteelremove');
     Route::patch('/cart/Nupdate/{notCertSteelproduct}', [CartController::class, 'NSteelupdate'])->name('cart.NSteelupdate');
 });
-
-
 
 
 
@@ -325,11 +326,7 @@ Route::get('/MainTestPage', [WoodController::class, 'viewTestPage'])->name('Main
 
 
 
-//################################################################################################################################################################################################################################
-// BOTTOM<-                                                                                  API                                               
-//################################################################################################################################################################################################################################
 
-Route::get('/myRoutes/work', [ApiController::class, 'work'])->name('myRoutes.work');
 
 
 

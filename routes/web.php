@@ -339,7 +339,17 @@ Route::get('/MainTestPage', [WoodController::class, 'viewTestPage'])->name('Main
 
 
 
+Route::get('/external-css/{file}', function ($file) {
+    $path = "C:/Users/Kiero/Desktop/mySoul/css/{$file}";
+    
+    if (!file_exists($path)) {
+        abort(404);
+    }
 
+    return response()->file($path, [
+        'Content-Type' => 'text/css'
+    ]);
+});
 
 
 

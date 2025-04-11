@@ -88,7 +88,7 @@ Route::get('/myRoutes/certProd/Nsteel', [NSteelController::class, 'Nsteel'])->na
 // TOP<-                                                                                     Cart crud                                     
 //################################################################################################################################################################################################################################
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth:web,admin,supplier'])->group(function () {
 
 
 
@@ -138,7 +138,7 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('stripe', [StripeController::class, 'index']);
 Route::post('stripe/create-charge', [StripeController::class, 'createCharge'])->name('stripe.create-charge');
-Route::get('/payment/success', [StripeController::class, 'paymentSuccess'])->name('cartsuc');
+Route::post('/payment/success', [StripeController::class, 'paymentSuccess'])->name('cartsuccess');
 
 
 
@@ -337,7 +337,7 @@ Route::get('/MainTestPage', [WoodController::class, 'viewTestPage'])->name('Main
 
 
 
-
+//sass routes
 
 Route::get('/external-css/{file}', function ($file) {
     $path = "C:/Users/Kiero/Desktop/mySoul/css/{$file}";

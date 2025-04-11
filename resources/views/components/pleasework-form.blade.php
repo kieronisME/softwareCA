@@ -1,6 +1,6 @@
 @props(['action', 'method', 'CertfiedWoodProducts' => null])
 
-<form action="{{ $action }}" method="POST">
+<form action="{{ $action }}" method="POST" enctype="multipart/form-data">
     @csrf
     @if($method === 'PUT' || $method === 'PATCH')
     @method($method)
@@ -20,7 +20,7 @@
     <!-- product -->
 
 
-    
+
 
     <!-- Certificate -->
     <div class="mb-4">
@@ -48,6 +48,8 @@
         @enderror
     </div>
     <!-- Price -->
+
+
 
 
 
@@ -134,6 +136,28 @@
     </div>
     <!-- weight_unit -->
 
+
+
+    <!-- Image Upload -->
+    <div class="mb-4">
+        <label for="image" class="block text-sm text-gray-700">Product Image</label>
+        <input type="file" name="image" id="image" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
+            @if(!isset($CertfiedWoodProducts)) required @endif>
+        @error('image')
+        <p class="text-sm text-red-600">{{ $message }}</p>
+        @enderror
+
+        @if(isset($CertfiedWoodProducts) && $CertfiedWoodProducts->image)
+        <div class="mt-2">
+            <p>Current Image:</p>
+            <img src="{{ asset('img/woodimages/' . $CertfiedWoodProducts->image) }}"
+                alt="Current product image"
+                class="h-20 w-20 object-cover rounded">
+            <input type="hidden" name="current_image" value="{{ $CertfiedWoodProducts->image }}">
+        </div>
+        @endif
+    </div>
+    <!-- Image Upload -->
 
 
     <div>

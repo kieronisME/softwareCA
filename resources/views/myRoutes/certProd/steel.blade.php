@@ -16,6 +16,12 @@
     <div class="bgContainer">
         <!-- <div class="navBarContainer"></div> -->
         <h1>Certified steel Products</h1>
+        <a
+            href="{{ route('MainTestPage') }}"
+            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+            Home
+        </a>
+
 
         <a href="{{ route('myRoutes.CertifiedSteelCRUD.create') }}">
             <div class="btn btn-primary me-2">add a product</div>
@@ -27,6 +33,7 @@
                 <strong>{{ $certifiedSteelProducts->Product_name }}</strong><br>
                 Certificate: {{ $certifiedSteelProducts->Certificate }}<br>
                 Price: ${{ $certifiedSteelProducts->Price }}<br>
+                <img src="{{ asset('img/steelimages/' . $certifiedSteelProducts->image) }}" alt="{{ $certifiedSteelProducts->Product_name }}" style="max-width: 200px; max-height: 200px;" class="img-thumbnail my-2"><br>
                 Quantity: {{ $certifiedSteelProducts->quantity }}<br>
                 CO2: {{ $certifiedSteelProducts->co2 }}<br>
                 Weight: {{ $certifiedSteelProducts->weight }} {{ $certifiedSteelProducts->weight_unit }}<br>

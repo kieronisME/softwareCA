@@ -56,6 +56,7 @@ class SteelController extends Controller
         //validations 
         $request->validate([
             'Product_name' => 'required|string|max:255',
+            'image' => 'required|image|mimes:jpeg,png,gif|max:2048',
             'Certificate' => 'required|string|max:255',
             'Price' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
             'About' => 'required|string|max:1000',
@@ -64,6 +65,14 @@ class SteelController extends Controller
             'weight' => 'required|string|max:50',
             'weight_unit' => 'required|string|max:50',
         ]);
+    
+
+        $imageName = null;
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('img/steelimages'), $imageName);
+        }
+    
 
 
         //creating new artist in DB
@@ -72,6 +81,7 @@ class SteelController extends Controller
             'Certificate' => $request->Certificate,
             'Price' => $request->Price,
             'About' => $request->About,
+            'image' => $imageName,
             'quantity' => $request->quantity,
             'co2' => $request->co2,
             'weight' => $request->weight,
@@ -115,16 +125,20 @@ class SteelController extends Controller
             'weight_unit' => 'required|string|max:50',
         ]);
 
-        // checks if image uplaoded
-        // if ($request->hasFile('image')) {
-        //     if ($certifiedSteelProducts->image) {
-        //         Storage::delete('ArtistImg/images/' . $certifiedSteelProducts->image);
-        //     }
+       // checks if image uplaoded
+       if ($request->hasFile('image')) {
+        // Delete old image if it exists
+        if ($certifiedSteelProducts->image) {
+            Storage::delete('img/steelimages/' . $certifiedSteelProducts->image);
+        }
+    
+        $imageName = time() . '.' . $request->image->extension();
+        $request->image->move(public_path('img/steelimages/'), $imageName);
+        $certifiedSteelProducts->image = $imageName;
+    } elseif ($request->has('current_image')) {
+        $certifiedSteelProducts->image = $request->current_image;
+    }
 
-        //     $imageName = time() . '.' . $request->image->extension();
-        //     $request->image->move(public_path('ArtistImg/images'), $imageName);
-        //     $certifiedSteelProducts->image = $imageName;
-        // }
 
         // assighnes new meaning to each 
         $certifiedSteelProducts->Product_name = $request->Product_name;

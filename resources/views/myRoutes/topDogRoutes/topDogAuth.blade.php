@@ -9,9 +9,9 @@
         <div class="container-fluid mx-auto">
             <div class="bg-white overflow-hidden shadow-sm rounded">
                 <div class="p-4 text-dark">
-                    <h3 class="fw-semibold fs-4 mb-4">type in Authentifcation code for to begin sighn up for admin role (CODE IS lmao)</h3>
+                    <!-- <h3 class="fw-semibold fs-4 mb-4">type in Authentifcation code for to begin sighn up for admin role (CODE IS lmao)</h3> -->
                     <x-topDog-form />
-                                                 <!-- form -->
+                                       
 
                 </div>
 

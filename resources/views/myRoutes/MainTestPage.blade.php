@@ -10,22 +10,18 @@
 
 <body class="d-flex justify-content-center align-items-center vh-100 bg-light">
     <div class="text-center">
-        <h1 class="mb-4">Welcome</h1>
+        <h1 class="mb-4">Welcome to Sutain</h1>
 
 
-        <div class="card">
-            <div class="card-header">{{ __('Dashboard') }}</div>
-
-
-
+        <div>
             {{-- User Type Indicator --}}
-            <div class="float-end">
+            <div>
                 @auth
                 <span class="badge 
                                 @if(auth()->guard('admin')->check()) bg-danger
                                 @elseif(auth()->guard('supplier')->check()) bg-warning text-dark
                                 @else bg-primary
-                                @endif">
+                                @endif p-2 mb-5">
                     @if(auth()->guard('admin')->check()) ADMIN
                     @elseif(auth()->guard('supplier')->check()) SUPPLIER
                     @else USER
@@ -36,17 +32,24 @@
             </div>
         </div>
 
-        @if((auth()->guard('admin')->check()) || (auth()->guard('supplier')->check()))
+        @if(auth()->guard('supplier')->check())
         <div class="alert alert-success mb-4">
-            <strong>YOU ARE VERIFIED</strong>
+            <strong>SUPPLIER STATUS</strong>
+        </div>
+        @elseif(auth()->guard('admin')->check())
+        <div class="alert alert-success mb-4">
+            <strong>ADMIN STATUS</strong>
         </div>
         @endif
 
+
+
         <a class="btn btn-outline-danger" href="{{ route('logout') }}"
-            onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
+            onclick="event.preventDefault();  
+        document.getElementById('logout-form').submit();">
             {{ __('Log Out') }}
         </a>
+
         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
             @csrf
         </form>
@@ -56,71 +59,193 @@
 
         <!-- CART -->
 
+        <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0">Our Products</h2>
         @if (Route::has('myRoutes.cart'))
-        <x-secondary-button>
-            <a href="{{ route('myRoutes.cart') }}" class="text-decoration-none text-dark">Carts</a>
-        </x-secondary-button>
+        <a href="{{ route('myRoutes.cart') }}" class="btn btn-primary position-relative">
+            <i class="bi bi-cart3"></i> View Cart
+
+
+        </a>
         @endif
-
-        <!-- API -->
-
-        @if (Route::has('myRoutes.work'))
-        <x-secondary-button class="btn-warning">
-            <a href="{{ route('myRoutes.work') }}" class="text-decoration-none text-dark">Carbon Footprint API</a>
-        </x-secondary-button>
-        @endif
-
-        <!-- USER DASHBOARDS -->
-
-        @if (Route::has('myRoutes.adminUserView'))
-        <x-secondary-button class="btn-success">
-            <a href="{{ route('myRoutes.adminUserView') }}" class="text-decoration-none text-dark">Admin Dashboard</a>
-        </x-secondary-button>
-        @endif
-
+    </div>
 
 
         <!-- CERT -->
 
-        @if (Route::has('myRoutes.certProd.wood'))
-        <x-secondary-button>
-            <a href="{{ route('myRoutes.certProd.wood') }}" class="text-decoration-none text-dark">Show Wood</a>
-        </x-secondary-button>
-        @endif
+        <div class="container">
 
-        @if (Route::has('myRoutes.certProd.metal'))
-        <x-secondary-button>
-            <a href="{{ route('myRoutes.certProd.metal') }}" class="text-decoration-none text-dark">Show Metal</a>
-        </x-secondary-button>
-        @endif
+    <h2 class="my-4 text-center">Certified Products</h2>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <!-- Wood -->
+        <div class="col">
+            <div class="card h-100">
+                <div class="row g-0 h-100">
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Wood Products</h5>
+                            <p class="card-text"><small class="text-success">Certified</small></p>
+                            <p class="card-text">Premium sustainably sourced hardwood with FSC certification.</p>
+                            @if (Route::has('myRoutes.certProd.wood'))
+                            <div class="mt-3">
+                                <a href="{{ route('myRoutes.certProd.wood') }}" class="btn btn-outline-success">
+                                    <i class="bi bi-eye"></i> View Wood
+                                </a>
+                            </div>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="/tree.png" class="img-fluid rounded-start h-100" alt="Wood Products" style="object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        @if (Route::has('myRoutes.certProd.steel'))
-        <x-secondary-button>
-            <a href="{{ route('myRoutes.certProd.steel') }}" class="text-decoration-none text-dark">Show Steel</a>
-        </x-secondary-button>
-        @endif
+        <!-- Metal -->
+        <div class="col">
+            <div class="card h-100">
+                <div class="row g-0 h-100">
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Metal Products</h5>
+                            <p class="card-text"><small class="text-success">Certified</small></p>
+                            <p class="card-text">High-grade metal stock with ISO 9001 certification.</p>
+                            @if (Route::has('myRoutes.certProd.metal'))
+                            <div class="mt-3">
+                                <a href="{{ route('myRoutes.certProd.metal') }}" class="btn btn-outline-success">
+                                    <i class="bi bi-eye"></i> View Metal
+                                </a>
+                            </div>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="/metal.png" class="img-fluid rounded-start h-100" alt="Metal Products" style="object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
 
-
-        <!-- NOT CERT -->
-
-        @if (Route::has('myRoutes.certProd.Nwood'))
-        <x-secondary-button>
-            <a href="{{ route('myRoutes.certProd.Nwood') }}" class="text-decoration-none text-dark">NOT Wood</a>
-        </x-secondary-button>
-        @endif
-
-        @if (Route::has('myRoutes.certProd.Nmetal'))
-        <x-secondary-button>
-            <a href="{{ route('myRoutes.certProd.Nmetal') }}" class="text-decoration-none text-dark">NOT Metal</a>
-        </x-secondary-button>
-        @endif
-
-        @if (Route::has('myRoutes.certProd.Nsteel'))
-        <x-secondary-button>
-            <a href="{{ route('myRoutes.certProd.Nsteel') }}" class="text-decoration-none text-dark">NOT Steel</a>
-        </x-secondary-button>
-        @endif
+        <!-- Steel -->
+        <div class="col">
+            <div class="card h-100">
+                <div class="row g-0 h-100">
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Steel Products</h5>
+                            <p class="card-text"><small class="text-success">Certified</small></p>
+                            <p class="card-text">Structural steel components meeting AISC standards.</p>
+                            @if (Route::has('myRoutes.certProd.steel'))
+                            <div class="mt-3">
+                                <a href="{{ route('myRoutes.certProd.steel') }}" class="btn btn-outline-success">
+                                    <i class="bi bi-eye"></i> View Steel
+                                </a>
+                            </div>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="/steel.png" class="img-fluid rounded-start h-100" alt="Steel Products" style="object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+
+    <h2 class="my-4 text-center">Non-Certified Products</h2>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <!-- Wood -->
+        <div class="col">
+            <div class="card h-100">
+                <div class="row g-0 h-100">
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Wood Products</h5>
+                            <p class="card-text"><small class="text-secondary">Not Certified</small></p>
+                            <p class="card-text">Standard wood products for general applications.</p>
+                            @if (Route::has('myRoutes.certProd.Nwood'))
+                            <div class="mt-3">
+                                <a href="{{ route('myRoutes.certProd.Nwood') }}" class="btn btn-outline-secondary">
+                                    <i class="bi bi-eye"></i> View Wood
+                                </a>
+                            </div>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="/tree.png" class="img-fluid rounded-start h-100" alt="Wood Products" style="object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Metal -->
+        <div class="col">
+            <div class="card h-100">
+                <div class="row g-0 h-100">
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Metal Products</h5>
+                            <p class="card-text"><small class="text-secondary">Not Certified</small></p>
+                            <p class="card-text">Standard metal stock for general fabrication.</p>
+                            @if (Route::has('myRoutes.certProd.Nmetal'))
+                            <div class="mt-3">
+                                <a href="{{ route('myRoutes.certProd.Nmetal') }}" class="btn btn-outline-secondary">
+                                    <i class="bi bi-eye"></i> View Metal
+                                </a>
+                            </div>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="/metal.png" class="img-fluid rounded-start h-100" alt="Metal Products" style="object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Steel -->
+        <div class="col">
+            <div class="card h-100">
+                <div class="row g-0 h-100">
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Steel Products</h5>
+                            <p class="card-text"><small class="text-secondary">Not Certified</small></p>
+                            <p class="card-text">Standard steel products for general construction.</p>
+                            @if (Route::has('myRoutes.certProd.Nsteel'))
+                            <div class="mt-3">
+                                <a href="{{ route('myRoutes.certProd.Nsteel') }}" class="btn btn-outline-secondary">
+                                    <i class="bi bi-eye"></i> View Steel
+                                </a>
+                            </div>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="/steel.png" class="img-fluid rounded-start h-100" alt="Steel Products" style="object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .text-success {
+        color: #28a745 !important;
+    }
+</style>
+
 </body>
 
 </html>

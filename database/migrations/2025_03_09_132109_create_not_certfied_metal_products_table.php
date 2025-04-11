@@ -18,6 +18,7 @@ return new class extends Migration
             $table->decimal('Price', 8, 3); 
             $table->string('About')->nullable(); 
             $table->integer('quantity'); 
+            $table->string('image')->nullable(); 
             $table->decimal('co2', 8, 2); 
             $table->string('weight'); 
             $table->string('weight_unit');

@@ -30,7 +30,6 @@ class StripeController extends Controller
 
 
 
-
     public function paymentSuccess(Request $request)
     {
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
@@ -40,7 +39,7 @@ class StripeController extends Controller
             "source" => $request->stripeToken,
             "description" => "Binaryboxtuts Payment Test"
         ]);
-
-        return redirect('cartsuc')->with('success', 'Payment Successful!');
+    
+        return redirect()->route('MainTestPage')->with('success', 'Payment Successful!');
     }
 }

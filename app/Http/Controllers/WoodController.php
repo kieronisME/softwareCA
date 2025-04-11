@@ -52,9 +52,10 @@ class WoodController extends Controller
 
     public function store(Request $request)
     {
-        //validations 
+        // Validations 
         $request->validate([
             'Product_name' => 'required|string|max:255',
+            'image' => 'required|image|mimes:jpeg,png,gif|max:2048',
             'Certificate' => 'required|string|max:255',
             'Price' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
             'About' => 'required|string|max:1000',
@@ -63,21 +64,28 @@ class WoodController extends Controller
             'weight' => 'required|string|max:50',
             'weight_unit' => 'required|string|max:50',
         ]);
-
-
-        //creating new artist in DB
+    
+        // Handle image upload
+        $imageName = null;
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('img/woodimages'), $imageName);
+        }
+    
+        // Create new product in DB
         CertfiedWoodProducts::create([
             'Product_name' => $request->Product_name,
             'Certificate' => $request->Certificate,
             'Price' => $request->Price,
             'About' => $request->About,
+            'image' => $imageName,
             'quantity' => $request->quantity,
             'co2' => $request->co2,
             'weight' => $request->weight,
             'weight_unit' => $request->weight_unit,
-
         ]);
-        return redirect()->route('myRoutes.certProd.wood');
+    
+        return redirect()->route('myRoutes.certProd.wood')->with('success', 'Product created successfully!');
     }
 
 
@@ -106,6 +114,7 @@ class WoodController extends Controller
             'Certificate' => 'required|string|max:255',
             'Price' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
             'About' => 'required|string|max:1000',
+            'image' => 'required|image|mimes:jpeg,png,gif|max:2048',
             'quantity' => 'required|integer|min:1',
             'co2' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
             'weight' => 'required|string|max:50',
@@ -113,15 +122,18 @@ class WoodController extends Controller
         ]);
 
         // checks if image uplaoded
-        // if ($request->hasFile('image')) {
-        //     if ($certifiedWoodProducts->image) {
-        //         Storage::delete('ArtistImg/images/' . $certifiedWoodProducts->image);
-        //     }
-
-        //     $imageName = time() . '.' . $request->image->extension();
-        //     $request->image->move(public_path('ArtistImg/images'), $imageName);
-        //     $certifiedWoodProducts->image = $imageName;
-        // }
+        if ($request->hasFile('image')) {
+            // Delete old image if it exists
+            if ($certifiedWoodProducts->image) {
+                Storage::delete('img/woodimages/' . $certifiedWoodProducts->image);
+            }
+        
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('img/woodimages/'), $imageName);
+            $certifiedWoodProducts->image = $imageName;
+        } elseif ($request->has('current_image')) {
+            $certifiedWoodProducts->image = $request->current_image;
+        }
 
         // assighnes new meaning to each 
         $certifiedWoodProducts->Product_name = $request->Product_name;
@@ -146,11 +158,12 @@ class WoodController extends Controller
 
     public function destroy(CertfiedWoodProducts $certifiedWoodProducts)
     {
-
-        //add delete images when you get the images 
-
+        if ($certifiedWoodProducts->image) {
+            Storage::delete('img/woodimages/' . $certifiedWoodProducts->image);
+        }
+        
         $certifiedWoodProducts->delete();
-        return redirect()->route('myRoutes.certProd.wood')->with('success', 'Album deleted successfully!');
+        return redirect()->route('myRoutes.certProd.wood')->with('success', 'Product deleted successfully!');
     }
 
 }

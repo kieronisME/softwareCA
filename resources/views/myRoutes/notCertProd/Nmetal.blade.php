@@ -9,6 +9,11 @@
 <body>
     <div class="container">
         <h1>Not Certified Metal Products</h1>
+        <a
+            href="{{ route('MainTestPage') }}"
+            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+            Home
+        </a>
 
         <a href="{{ route('myRoutes.NotCertifiedMetalCRUD.create') }}" class="btn btn-primary me-2">
             Add a not certified Metal Products
@@ -19,6 +24,11 @@
             <li class="mb-4 p-3 border rounded">
                 <strong>{{ $notCertfiedMetalProducts->Product_name }}</strong><br>
                 Certificate: {{ $notCertfiedMetalProducts->Certificate }}<br>
+                @if($notCertfiedMetalProducts->image)
+                    <img src="{{ asset('img/metalimages/' . $notCertfiedMetalProducts->image) }}" alt="{{ $notCertfiedMetalProducts->Product_name }}" style="max-width: 200px; max-height: 200px;" class="img-thumbnail my-2"><br>
+                @else
+                    <p>No image available</p><br>
+                @endif
                 Price: ${{ number_format($notCertfiedMetalProducts->Price, 2) }}<br>
                 Quantity: {{ $notCertfiedMetalProducts->quantity }}<br>
                 CO2: {{ $notCertfiedMetalProducts->co2 }}<br>
@@ -34,7 +44,6 @@
                     </form>
                     
                     @if((auth()->guard('admin')->check()) || (auth()->guard('supplier')->check()))
-
                     <form action="{{ route('MetalPleasDelete', $notCertfiedMetalProducts) }}" method="POST" class="d-inline" onsubmit="return confirm('This action is permanent!');">
                         @csrf
                         @method('DELETE')

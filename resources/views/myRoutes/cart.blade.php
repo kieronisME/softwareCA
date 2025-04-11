@@ -11,7 +11,11 @@
 <body>
     <div class="container">
         <h1>Your Shopping Cart</h1>
-
+        <a
+            href="{{ route('MainTestPage') }}"
+            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+            Home
+        </a>
 
 
         <!-- Wood -->
@@ -262,64 +266,64 @@
             </div>
         </div>
         <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-4">
-                <div class="card">
-                    <div class="card-body">
-                        @if (session('success'))
-                        <div 
-                            style="color: green;
+            <div class="row justify-content-center">
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            @if (session('success'))
+                            <div
+                                style="color: green;
                                 border: 2px green solid;
                                 text-align: center;
                                 padding: 5px;margin-bottom: 10px;">
-                            Payment Successful!
+                                Payment Successful!
+                            </div>
+                            @endif
+                            <form id='checkout-form' method='post' action="{{ route('cartsuccess') }}">
+                                @csrf
+                                <input type='hidden' name='stripeToken' id='stripe-token-id'>
+                                <label for="card-element" class="mb-5">Checkout Forms</label>
+                                <br>
+                                <div id="card-element" class="form-control"></div>
+                                <button
+                                    id='pay-btn'
+                                    class="btn btn-success mt-3"
+                                    type="button"
+                                    style="margin-top: 20px; width: 100%;padding: 7px;"
+                                    onclick="createToken()">PAY $5
+                                </button>
+                                <form>
                         </div>
-                        @endif
-                        <form id='checkout-form' method='post' action="{{ route('cartsuc') }}">   
-                            @csrf             
-                            <input type='hidden' name='stripeToken' id='stripe-token-id'>                              
-                            <label for="card-element" class="mb-5">Checkout Forms</label>
-                            <br>
-                            <div id="card-element" class="form-control" ></div>
-                            <button 
-                                id='pay-btn'
-                                class="btn btn-success mt-3"
-                                type="button"
-                                style="margin-top: 20px; width: 100%;padding: 7px;"
-                                onclick="createToken()">PAY $5
-                            </button>
-                        <form>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
- 
-    <script src="https://js.stripe.com/v3/"></script>
-    <script>
-        var stripe = Stripe('{{ env("STRIPE_KEY") }}')
-        var elements = stripe.elements();
-        var cardElement = elements.create('card');
-        cardElement.mount('#card-element');
-  
-        function createToken() {
-            document.getElementById("pay-btn").disabled = true;
-            stripe.createToken(cardElement).then(function(result) {
-  
-                  
-                if(typeof result.error != 'undefined') {
-                    document.getElementById("pay-btn").disabled = false;
-                    alert(result.error.message);
-                }
-  
-                // creating token success
-                if(typeof result.token != 'undefined') {
-                    document.getElementById("stripe-token-id").value = result.token.id;
-                    document.getElementById('checkout-form').submit();
-                }
-            });
-        }
-    </script>
+
+        <script src="https://js.stripe.com/v3/"></script>
+        <script>
+            var stripe = Stripe('{{ env("STRIPE_KEY") }}')
+            var elements = stripe.elements();
+            var cardElement = elements.create('card');
+            cardElement.mount('#card-element');
+
+            function createToken() {
+                document.getElementById("pay-btn").disabled = true;
+                stripe.createToken(cardElement).then(function(result) {
+
+
+                    if (typeof result.error != 'undefined') {
+                        document.getElementById("pay-btn").disabled = false;
+                        alert(result.error.message);
+                    }
+
+                    // creating token success
+                    if (typeof result.token != 'undefined') {
+                        document.getElementById("stripe-token-id").value = result.token.id;
+                        document.getElementById('checkout-form').submit();
+                    }
+                });
+            }
+        </script>
 
     </div>
 </body>

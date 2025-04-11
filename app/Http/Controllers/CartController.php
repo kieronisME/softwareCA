@@ -28,15 +28,24 @@ class CartController extends Controller
 
     protected function getCart()
     {
-        // this gets the logged in user 
-        $user = Auth::user();
-
-        // this checks if carts exists and if it doesnt then it will create one 
-        $cart = Cart::firstOrCreate(
-            ['user_id' => $user->id],
-            ['user_id' => $user->id]
-        );
-
+        // Check if user is logged in via any guard
+        if (Auth::guard('admin')->check()) {
+            $user = Auth::guard('admin')->user();
+            $cart = Cart::firstOrCreate(['admin_id' => $user->id]);
+        } 
+        elseif (Auth::guard('supplier')->check()) {
+            $user = Auth::guard('supplier')->user();
+            $cart = Cart::firstOrCreate(['supplier_id' => $user->id]);
+        }
+        elseif (Auth::check()) {
+            $user = Auth::user();
+            $cart = Cart::firstOrCreate(['user_id' => $user->id]);
+        }
+        else {
+            // If no user is authenticated, redirect to login
+            return redirect()->route('myRoutes.wood');
+        }
+    
         return $cart;
     }
 

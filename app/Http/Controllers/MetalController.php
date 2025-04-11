@@ -58,6 +58,7 @@ class MetalController extends Controller
         $request->validate([
             'Product_name' => 'required|string|max:255',
             'Certificate' => 'required|string|max:255',
+            'image' => 'required|image|mimes:jpeg,png,gif|max:2048',
             'Price' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
             'About' => 'required|string|max:1000',
             'quantity' => 'required|integer|min:1',
@@ -66,6 +67,12 @@ class MetalController extends Controller
             'weight_unit' => 'required|string|max:50',
         ]);
 
+        $imageName = null;
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('img/metalimages'), $imageName);
+        }
+    
 
         //creating new artist in DB
         CertifiedMetalProducts::create([
@@ -75,6 +82,7 @@ class MetalController extends Controller
             'About' => $request->About,
             'quantity' => $request->quantity,
             'co2' => $request->co2,
+            'image' => $imageName,
             'weight' => $request->weight,
             'weight_unit' => $request->weight_unit,
 
@@ -110,6 +118,7 @@ class MetalController extends Controller
             'Certificate' => 'required|string|max:255',
             'Price' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
             'About' => 'required|string|max:1000',
+            'image' => 'required|image|mimes:jpeg,png,gif|max:2048',
             'quantity' => 'required|integer|min:1',
             'co2' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
             'weight' => 'required|string|max:50',
@@ -117,15 +126,19 @@ class MetalController extends Controller
         ]);
 
         // checks if image uplaoded
-        // if ($request->hasFile('image')) {
-        //     if ($certifiedMetalProducts->image) {
-        //         Storage::delete('ArtistImg/images/' . $certifiedMetalProducts->image);
-        //     }
+        if ($request->hasFile('image')) {
+            // Delete old image if it exists
+            if ($certifiedMetalProducts->image) {
+                Storage::delete('img/metalimages/' . $certifiedMetalProducts->image);
+            }
+        
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('img/metalimages/'), $imageName);
+            $certifiedMetalProducts->image = $imageName;
+        } elseif ($request->has('current_image')) {
+            $certifiedMetalProducts->image = $request->current_image;
+        }
 
-        //     $imageName = time() . '.' . $request->image->extension();
-        //     $request->image->move(public_path('ArtistImg/images'), $imageName);
-        //     $certifiedMetalProducts->image = $imageName;
-        // }
 
         // assighnes new meaning to each 
         $certifiedMetalProducts->Product_name = $request->Product_name;

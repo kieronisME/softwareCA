@@ -41,13 +41,14 @@ class NMetalController extends Controller
     //                                                                                           Store
     //################################################################################################################################################################################################################################
 
-    public function store(Request $request)
+    public function store(Request $request, $notCertfiedMetalProducts)
     {
         //validations 
         $request->validate([
             'Product_name' => 'required|string|max:255',
             'Price' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
             'About' => 'required|string|max:1000',
+            'image' => 'required|image|mimes:jpeg,png,gif|max:2048',
             'quantity' => 'required|integer|min:1',
             'co2' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
             'weight' => 'required|string|max:50',
@@ -55,10 +56,18 @@ class NMetalController extends Controller
         ]);
 
 
+        $imageName = null;
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('img/metalimages'), $imageName);
+        }
+    
+
         //creating new artist in DB
         notCertfiedMetalProducts::create([
             'Product_name' => $request->Product_name,
             'Price' => $request->Price,
+            'image' => $imageName,
             'About' => $request->About,
             'quantity' => $request->quantity,
             'co2' => $request->co2,
@@ -103,7 +112,7 @@ class NMetalController extends Controller
         // checks if image uplaoded
         // if ($request->hasFile('image')) {
         //     if ($notCertfiedWoodProducts->image) {
-        //         Storage::delete('ArtistImg/images/' . $notCertfiedWoodProducts->image);
+        //         Storage::delete('img/woodimages/' . $notCertfiedWoodProducts->image);
         //     }
 
         //     $imageName = time() . '.' . $request->image->extension();

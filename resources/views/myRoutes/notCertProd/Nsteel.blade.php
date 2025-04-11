@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Not Steel Products</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
     <div class="container">
         <h1>Not Certified Steel Products</h1>
+        <a
+            href="{{ route('MainTestPage') }}"
+            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+            Home
+        </a>
+
 
         <a href="{{ route('myRoutes.NotCertifiedSteelCRUD.create') }}" class="btn btn-primary me-2">
             Add a not certified Steel Products
@@ -19,6 +27,11 @@
             <li class="mb-4 p-3 border rounded">
                 <strong>{{ $notCertSteelproduct->Product_name }}</strong><br>
                 Certificate: {{ $notCertSteelproduct->Certificate }}<br>
+                @if($notCertSteelproduct->image)
+                <img src="{{ asset('img/steelimages/' . $notCertSteelproduct->image) }}" alt="{{ $notCertSteelproduct->Product_name }}" style="max-width: 200px; max-height: 200px;" class="img-thumbnail my-2"><br>
+                @else
+                <p>No image available</p><br>
+                @endif
                 Price: ${{ number_format($notCertSteelproduct->Price, 2) }}<br>
                 Quantity: {{ $notCertSteelproduct->quantity }}<br>
                 CO2: {{ $notCertSteelproduct->co2 }}<br>
@@ -39,7 +52,7 @@
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
-                    
+
 
                     <a href="{{ route('crud.NSteeledit', $notCertSteelproduct) }}" class="btn btn-secondary">Edit</a>
                     @endif
@@ -49,4 +62,5 @@
         </ul>
     </div>
 </body>
+
 </html>

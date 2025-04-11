@@ -57,6 +57,7 @@ class NWoodController extends Controller
             'Product_name' => 'required|string|max:255',
             'Price' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
             'About' => 'required|string|max:1000',
+            'image' => 'required|image|mimes:jpeg,png,gif|max:2048',
             'quantity' => 'required|integer|min:1',
             'co2' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
             'weight' => 'required|string|max:50',
@@ -64,10 +65,17 @@ class NWoodController extends Controller
         ]);
 
 
+        $imageName = null;
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('img/woodimages'), $imageName);
+        }
+    
         //creating new artist in DB
         notCertfiedWoodProducts::create([
             'Product_name' => $request->Product_name,
             'Price' => $request->Price,
+            'image' => $imageName,
             'About' => $request->About,
             'quantity' => $request->quantity,
             'co2' => $request->co2,
@@ -103,23 +111,20 @@ class NWoodController extends Controller
             'Product_name' => 'required|string|max:255',
             'Price' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
             'About' => 'required|string|max:1000',
+            'image' => 'required|image|mimes:jpeg,png,gif|max:2048',
             'quantity' => 'required|integer|min:1',
             'co2' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
             'weight' => 'required|string|max:50',
             'weight_unit' => 'required|string|max:50',
         ]);
 
-        // checks if image uplaoded
-        // if ($request->hasFile('image')) {
-        //     if ($notCertfiedWoodProducts->image) {
-        //         Storage::delete('ArtistImg/images/' . $notCertfiedWoodProducts->image);
-        //     }
 
-        //     $imageName = time() . '.' . $request->image->extension();
-        //     $request->image->move(public_path('ArtistImg/images'), $imageName);
-        //     $notCertfiedWoodProducts->image = $imageName;
-        // }
-
+        $imageName = null;
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('img/woodimages'), $imageName);
+        }
+    
         // assighnes new meaning to each 
         $notCertfiedWoodProducts->Product_name = $request->Product_name;
         $notCertfiedWoodProducts->Price = $request->Price;
